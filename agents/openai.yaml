@@ -1,0 +1,5 @@
+interface:
+  display_name: "Fly Brief"
+  short_description: "把杂乱广告 Brief 转成可执行创作方向、脚本与逐项覆盖检查"
+  default_prompt: "使用 $fly-brief 分析这份广告 Brief，先告诉我产品、推广重点、硬性要求和可选创作方向。"
+
