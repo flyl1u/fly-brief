@@ -57,7 +57,7 @@ async function main() {
     assert.equal(await page.locator('.summary:visible').count(), 4);
     const capabilities = page.locator('#product .branch').first();
     assert.equal(await capabilities.locator('li').count(), 3);
-    assert.notEqual(await capabilities.locator('ul').evaluate(node => getComputedStyle(node).listStyleType), 'none');
+    assert.equal(await capabilities.locator('ul').evaluate(node => getComputedStyle(node).listStyleType), 'disc');
     const itemBoxes = await capabilities.locator('li').evaluateAll(nodes => nodes.map(node => node.getBoundingClientRect().toJSON()));
     assert.ok(itemBoxes.every((box, index) => index === 0 || box.top >= itemBoxes[index - 1].bottom));
     assert.equal(await capabilities.locator('.source-button').allTextContents().then(texts => texts.every(text => text === '[原文]')), true);
