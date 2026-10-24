@@ -2,6 +2,12 @@
 
 North star: 打开能复述合作，展开能开始构思视频。
 
+## 当前状态 · 模板风格重新探索
+
+用户已否定首版排版、风格和过多说明文字。下文首版设计与评分仅为历史记录，不代表方向获得认可。当前以 `design-exploration/01/` 的三套首屏供用户选择；选择后才将对应模板接入正式生成器。真实 brief 测试延后。
+
+当前固定要求：只呈现四个核心问题及其内容；不在正文放工具口号、使用教程、制作说明或重复的身份标签。来源、详情和必要状态以后通过固定模板中的轻量入口承载。演示数据的虚构性质在对比页与交付说明中明确，不占候选正文。
+
 - A creator's private reading tool, not a dashboard or marketing page. The four questions are always the top-level navigation and content structure.
 - Quiet ivory background, dark ink, one muted blue accent, and a readable Chinese system font. Color differentiates evidence types only where it aids interpretation.
 - Use a compact 2 × 2 desktop overview with independently expanding panels; narrow screens use a single column. Open content should flow naturally, never inside a nested scroll box. Preserve other summaries when a panel expands.
