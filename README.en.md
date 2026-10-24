@@ -8,20 +8,50 @@ Fly Brief is an agent skill for creators working with brands. Give your agent th
 
 [Install](#install) · [First use](#first-use) · [Try the example](#try-the-example)
 
-## See the result
+## See the interaction: expand with “+”
 
-<img src="./examples/preview-desktop.png" width="100%" alt="Fictional brand brief shown as four report sections, with mandatory shots, restrictions, and deadlines visible before expansion.">
+The report opens with a four-question overview. **Each row has its own `+` control to reveal detail; `[原文]` opens the supporting source passage.** Expanded sections explain capabilities, conditions, complete requirements, and specific video topics.
 
-This is a **fictional example**, not a client report. The report interface and default writing are currently in Chinese.
+These are **real expanded states from the same fictional example**. The images are screenshots; the clickable experience lives in the generated `report.html`.
+
+### Expand the product: understand the workflow and its conditions
+
+Each capability explains inputs, processing, outputs, and conditions, with source links for supported claims.
+
+<picture>
+  <source media="(max-width: 600px)" srcset="./assets/readme/product-expanded-mobile.png">
+  <img src="./assets/readme/product-expanded.png" width="100%" alt="Expanded product explanation covers clip recommendations, subtitles, export, required human checks, and source links.">
+</picture>
+
+### Expand video ideas: see the case, material, and intended result
+
+This is one of three topic options. Each includes a **title, creator perspective, promoted features, pain point, and case details**, so you can decide what to prepare and film.
+
+<picture>
+  <source media="(max-width: 600px)" srcset="./assets/readme/topic-expanded-mobile.png">
+  <img src="./assets/readme/topic-expanded.png" width="100%" alt="One fully expanded topic includes the creator perspective, feature choice, audience problem, input material, and video progression.">
+</picture>
+
+### Open the source: check the evidence directly
+
+The dialog shows the document name, passage location, exact excerpt, and original-file link together.
+
+<picture>
+  <source media="(max-width: 600px)" srcset="./assets/readme/source-open-mobile.png">
+  <img src="./assets/readme/source-open.png" width="100%" alt="A source dialog opened from a claim shows the product's original description, passage location, and source-file link.">
+</picture>
+
+The report interface and default writing are currently in Chinese. All material shown here is fictional and contains no client data.
 
 <details>
-<summary>See the mobile layout and source excerpts</summary>
+<summary>Also see the collapsed overview and mobile layout</summary>
+
+<p>
+  <img src="./examples/preview-desktop.png" width="100%" alt="Collapsed overview with a plus control on each row; mandatory filming requirements stay visible.">
+</p>
 
 <p>
   <img src="./examples/preview-mobile.png" width="280" alt="The same four questions stacked vertically on a narrow phone screen.">
-</p>
-<p>
-  <img src="./examples/preview-source.png" width="100%" alt="An original-source dialog shows the document name, passage location, exact excerpt, and original-file link.">
 </p>
 
 </details>

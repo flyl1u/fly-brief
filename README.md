@@ -8,20 +8,50 @@ Fly Brief 是给接品牌合作的博主用的 agent skill。把 brief 和补充
 
 [安装](#安装) · [开始使用](#开始使用) · [试跑示例](#试跑示例)
 
-## 先看成品
+## 先看交互：点「＋」，展开细节
 
-<img src="./examples/preview-desktop.png" width="100%" alt="虚构 brief 被整理为四块报告，收起时仍能看到必拍画面、禁区和交付时间。">
+报告默认显示四问概览。**每一行右侧的 `＋` 都能独立展开；内容里的 `[原文]` 可以打开来源摘录。** 展开后，功能解释、使用条件、完整要求和具体选题都能继续往下读。
 
-这是**虚构示例**，不含真实客户资料。目前报告界面和默认文案使用中文。
+下面直接展示同一份**虚构示例的真实展开状态**。这些图片是截图；实际点击交互在生成的 `report.html` 中进行。
+
+### 展开产品说明：知道怎么用，也知道哪里需要人工
+
+每项能力分别说明输入、处理、产物和使用条件；有依据的解释附上 `[原文]`。
+
+<picture>
+  <source media="(max-width: 600px)" srcset="./assets/readme/product-expanded-mobile.png">
+  <img src="./assets/readme/product-expanded.png" width="100%" alt="产品说明已展开：逐项解释推荐片段、生成字幕和导出短片，保留人工检查条件与原文入口。">
+</picture>
+
+### 展开视频方向：选题具体到场景、材料和成果
+
+这是三个备选方向中的一个。每个方向都有**标题、达人身份、推广功能、解决痛点、选题详情**，能据此决定准备什么、拍什么。
+
+<picture>
+  <source media="(max-width: 600px)" srcset="./assets/readme/topic-expanded-mobile.png">
+  <img src="./assets/readme/topic-expanded.png" width="100%" alt="一个完整视频选题已展开，包含达人身份、推广功能、具体痛点、素材准备和视频推进方式。">
+</picture>
+
+### 点击原文：直接核对依据
+
+资料名称、段落位置、原句摘录和原始文件入口一起显示。
+
+<picture>
+  <source media="(max-width: 600px)" srcset="./assets/readme/source-open-mobile.png">
+  <img src="./assets/readme/source-open.png" width="100%" alt="点击原文后打开的来源弹窗，展示产品介绍的原句、所在段落与原始资料链接。">
+</picture>
+
+目前报告界面和默认文案使用中文。以上均为虚构样例，不含真实客户资料。
 
 <details>
-<summary>查看手机布局和原文入口</summary>
+<summary>补充查看：收起时的四问概览与手机布局</summary>
+
+<p>
+  <img src="./examples/preview-desktop.png" width="100%" alt="报告收起时的四问概览，右侧加号用于展开；关键拍摄要求仍然可见。">
+</p>
 
 <p>
   <img src="./examples/preview-mobile.png" width="280" alt="窄屏下，四个问题与答案自然纵向排列。">
-</p>
-<p>
-  <img src="./examples/preview-source.png" width="100%" alt="原文弹窗展示资料名称、具体位置、原句摘录和原始文件入口。">
 </p>
 
 </details>
