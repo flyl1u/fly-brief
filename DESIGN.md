@@ -2,11 +2,13 @@
 
 North star: 打开能复述合作，展开能开始构思视频。
 
-## 当前状态 · 模板风格重新探索
+## 当前状态 · 已选 01 白纸文档
 
-用户已否定首版排版、风格和过多说明文字。下文首版设计与评分仅为历史记录，不代表方向获得认可。当前以 `design-exploration/01/` 的三套首屏供用户选择；选择后才将对应模板接入正式生成器。真实 brief 测试延后。
+用户选择：`01：选 01 白纸文档`。以 `design-exploration/01/01-document.html` 为正式模板的视觉基线。下文首版卡片布局及其评分为历史记录，不作为后续设计依据。真实 brief 测试继续延后。
 
 当前固定要求：只呈现四个核心问题及其内容；不在正文放工具口号、使用教程、制作说明或重复的身份标签。来源、详情和必要状态以后通过固定模板中的轻量入口承载。演示数据的虚构性质在对比页与交付说明中明确，不占候选正文。
+
+实施约束：纯白底、单列四行、左问题右答案、右端加号展开；桌面保留选定方向的 1056 px 阅读宽度和排版尺度，窄屏自然堆叠问题与答案。原文入口集中在页头，具体出处放在展开内容中。不恢复首版的品牌行、复制／全部展开工具条、页尾教程和彩色身份标签。固定模板由生成器填充，agent 不为每份 brief 改结构。
 
 - A creator's private reading tool, not a dashboard or marketing page. The four questions are always the top-level navigation and content structure.
 - Quiet ivory background, dark ink, one muted blue accent, and a readable Chinese system font. Color differentiates evidence types only where it aids interpretation.
