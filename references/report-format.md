@@ -9,8 +9,8 @@
 | `schema_version` | integer | Always `1`. |
 | `title` | nonempty string | Brief/report identity, e.g. `随剪 · 口播拆条合作`. |
 | `subtitle` | string, optional | Cooperation topic. Prefer `title: 随剪` with `subtitle: 口播拆条合作`. Old reports with a combined title still work. |
-| `context` | string, optional | One short known identifier such as the platform. Put dates and specifications in requirements, not repeated in the header. |
-| `demo` | boolean, optional | `true` for fictional examples; adds a compact header marker, not an explanatory banner. |
+| `context` | string, optional | Legacy metadata, retained for compatibility but not shown in the header. Put platform, dates and specifications in requirements. |
+| `demo` | boolean, optional | Internal marker for fictional examples; retained in data, never rendered as a header label. |
 | `sources` | array | Source records, each with a unique `id`. |
 | `sections` | object | Exactly `product`, `promotion`, `requirements`, `video`, in that display order. |
 

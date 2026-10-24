@@ -6,14 +6,14 @@ North star: 打开能复述合作，展开能开始构思视频。
 
 用户选择：`01：选 01 白纸文档`。以 `design-exploration/01/01-document.html` 为正式模板的视觉基线。下文首版卡片布局及其评分为历史记录，不作为后续设计依据。真实 brief 测试继续延后。
 
-当前固定要求：只呈现四个核心问题及其内容；不在正文放工具口号、使用教程、制作说明或重复的身份标签。来源、详情和必要状态通过固定模板中的轻量入口承载。演示数据以页头一个短标记及材料出处注明虚构性质。
+当前固定要求：只呈现四个核心问题及其内容；不在正文放工具口号、使用教程、制作说明或重复的身份标签。来源、详情和必要状态通过固定模板中的轻量入口承载。按用户批注，页头不显示“演示”和单独的平台标签；虚构性质保留在样例材料和说明中。
 
 实施约束：纯白底、单列四行、左问题右答案、右端加号展开；桌面保留选定方向的 1056 px 阅读宽度和排版尺度，窄屏自然堆叠问题与答案。原文入口集中在页头，具体出处放在展开内容中。不恢复首版的品牌行、复制／全部展开工具条、页尾教程和彩色身份标签。固定模板由生成器填充，agent 不为每份 brief 改结构。
 
 - A creator's private reading tool, not a dashboard or marketing page. The four questions are always the top-level navigation and content structure.
 - Pure white document, black text, gray secondary text and thin structural rules. No panel containers, tinted page background or brand masthead. The selected preview in `design-exploration/01/01-document.html` is the visual baseline.
 - Four document rows with left-aligned questions and answers; 1056 px reading width on desktop. Each plus independently opens details under its answer. Narrow screens stack question and answer. Reading follows the document; there is no nested reading scrollbar.
-- Header contains only product/title, optional cooperation subtitle, compact known context and the original-brief entry. Fictional samples have one short `演示` marker. No toolbar or tutorial footer. Sources are in the header and expanded details, not appended repeatedly to default summaries.
+- Header contains only product/title, optional cooperation subtitle and the original-brief entry. No demonstration marker or separate platform label, as requested in the browser annotations. No toolbar or tutorial footer. Sources are in the header and expanded details, not appended repeatedly to default summaries.
 - Default content is short. Critical obligations cannot be collapsed, truncated or hidden in tooltips to fit a viewport. Reference video links belong in the fourth panel's default view.
 - Show source excerpts on demand in a native dialog with keyboard close and focus return. Noto Sans SC and Noto Serif SC are embedded from local, licensed WOFF2 assets. Opening the standalone report requires no remote libraries, images, fonts or analytics.
 - Three restrained interaction cues: button press feedback, plus-to-minus transition and source-dialog entrance. Respect reduced-motion settings. Reading never waits for an entrance animation.
