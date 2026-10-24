@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="590" viewBox="0 0 1200 590" role="img" aria-labelledby="title desc">
+  <title id="title">先看结论，需要时再展开</title>
+  <desc id="desc">虚构内容节选示意：四问概览右侧有加号，展开后可查看选题的场景、材料与推进方式，品牌要求可通过原文核对。</desc>
+  <rect width="1200" height="590" fill="#fff"/>
+  <g font-family="'Segoe UI','Microsoft YaHei','PingFang SC',sans-serif">
+    <text x="40" y="52" fill="#717176" font-size="22">概览</text>
+    <text x="666" y="52" fill="#717176" font-size="22">点击 ＋ 展开</text>
+    <g fill="#202022" font-size="28">
+      <text x="40" y="117">产品到底做什么？</text>
+      <text x="40" y="219">这次要推什么？</text>
+      <text x="40" y="321">哪些要求不能漏？</text>
+      <text x="40" y="423">这条视频可以怎么拍？</text>
+    </g>
+    <g fill="#656569" font-size="23">
+      <text x="40" y="153">把长口播拆成几条短视频。</text>
+      <text x="40" y="255">主推按主题拆条。</text>
+      <text x="40" y="357">必拍、禁区、时间先看清。</text>
+      <text x="40" y="459">给几个具体选题，自己选。</text>
+    </g>
+    <g stroke="#dedee0" stroke-width="1">
+      <path d="M40 178H552 M40 280H552 M40 382H552 M40 484H552"/>
+    </g>
+    <g fill="#656569" font-size="32">
+      <text x="518" y="131">＋</text><text x="518" y="233">＋</text><text x="518" y="335">＋</text>
+    </g>
+    <circle cx="534" cy="433" r="24" fill="#202022"/>
+    <path d="M524 433h20m-10-10v20" stroke="#fff" stroke-width="2"/>
+    <path d="M584 433h38m-9-8 9 8-9 8" fill="none" stroke="#929297" stroke-width="2"/>
+    <path d="M642 86V484" stroke="#dedee0"/>
+    <text x="674" y="115" fill="#202022" font-size="28" font-weight="600">旧教程，回答粉丝的新问题</text>
+    <g fill="#656569" font-size="21">
+      <text x="674" y="169">场景</text><text x="674" y="247">材料</text><text x="674" y="325">怎么拍</text>
+    </g>
+    <g fill="#202022" font-size="25">
+      <text x="674" y="207">粉丝总问：逆光人像怎么拍？</text>
+      <text x="674" y="285">一条旧摄影教程 ＋ 那条评论</text>
+      <text x="674" y="363">找到完整答案，校对后导出短片。</text>
+      <text x="674" y="403">从评论问题，讲到选段依据和结果。</text>
+    </g>
+    <path d="M674 435H1160" stroke="#dedee0"/>
+    <text x="674" y="476" fill="#656569" font-size="23">品牌要求有出处 → 点［原文］核对</text>
+    <text x="40" y="548" fill="#85858a" font-size="20">交互示意 · 虚构内容节选，完整报告可查看真实截图</text>
+  </g>
+</svg>
