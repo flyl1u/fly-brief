@@ -4,7 +4,7 @@ North star: 打开能复述合作，展开能开始构思视频。
 
 ## 当前状态 · 已选 01 白纸文档
 
-用户选择：`01：选 01 白纸文档`。以 `design-exploration/01/01-document.html` 为正式模板的视觉基线。下文首版卡片布局及其评分为历史记录，不作为后续设计依据。真实 brief 测试继续延后。
+用户选择：`01：选 01 白纸文档`。以 `design-exploration/01/01-document.html` 为正式模板的视觉基线。下文首版卡片布局及其评分为历史记录，不作为后续设计依据。真实 brief 测试已用于迭代通用规则，客户材料只保留在本地忽略目录。
 
 当前固定要求：只呈现四个核心问题及其内容；不在正文放工具口号、使用教程、制作说明或重复的身份标签。来源、详情和必要状态通过固定模板中的轻量入口承载。按用户批注，页头不显示“演示”和单独的平台标签；虚构性质保留在样例材料和说明中。
 
@@ -16,10 +16,15 @@ North star: 打开能复述合作，展开能开始构思视频。
 - Header contains only product/title, optional cooperation subtitle and the original-brief entry. No demonstration marker or separate platform label, as requested in the browser annotations. No toolbar or tutorial footer. Sources are in the header and expanded details, not appended repeatedly to default summaries.
 - Default content is short. Critical obligations cannot be collapsed, truncated or hidden in tooltips to fit a viewport. Reference video links belong in the fourth panel's default view.
 - Show source excerpts on demand in a native dialog with keyboard close and focus return. Noto Sans SC and Noto Serif SC are embedded from local, licensed WOFF2 assets. Opening the standalone report requires no remote libraries, images, fonts or analytics.
+- All four summaries use regular weight. Expanded headings are bold; each capability occupies its own dash-marked list item. Use direct headings and enough words to distinguish similar concepts.
+- Inline citations read `[原文]`. The dialog emphasizes the source document name, followed by the secondary location and normal-weight excerpt; no generic heading competes with the source name.
+- The video section offers a few distinct directions and short outlines, normally 2–3. It does not select the creator's topic or supply dialogue, detailed scripts or finished content.
 - Three restrained interaction cues: button press feedback, plus-to-minus transition and source-dialog entrance. Respect reduced-motion settings. Reading never waits for an entrance animation.
 - No additional summary module, invented brand claims, decorative charts, canvas panning, autoplay video, editing controls or backend.
 
 Development sample content must be explicitly identified as fictional. Client output has no developer notes. QA evidence and results are recorded after implementation.
+
+Current readability validation: 12 Python tests, skill validation and 16 browser checks pass. Desktop and phone overview, expanded capability/direction lists and source dialogs were visually checked. The fictional previews are regenerated from the fixed template; real client artifacts remain in ignored local output.
 
 ## Historical verification · initial card layout
 

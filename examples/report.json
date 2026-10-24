@@ -58,10 +58,24 @@
       },
       "details": [
         {
-          "title": "怎么用？",
+          "title": "能做什么？",
           "items": [
             {
-              "text": "导入长口播 → 查看按主题推荐的片段 → 选片段、校对字幕 → 导出。",
+              "text": "推荐片段：按主题找出长口播里能单独讲清问题的短片段。",
+              "kind": "fact",
+              "source_ids": [
+                "product"
+              ]
+            },
+            {
+              "text": "生成字幕：为片段生成字幕，仍需你人工检查和校对。",
+              "kind": "fact",
+              "source_ids": [
+                "product"
+              ]
+            },
+            {
+              "text": "导出短片：选好片段、确认字幕后导出成片。",
               "kind": "fact",
               "source_ids": [
                 "product"
@@ -70,10 +84,10 @@
           ]
         },
         {
-          "title": "它替你省了哪一步？",
+          "title": "怎么用？",
           "items": [
             {
-              "text": "少做反复拖动时间轴找片段的工作。选片和字幕仍要人工检查。",
+              "text": "导入长口播 → 查看推荐片段 → 选片段、校对字幕 → 导出。",
               "kind": "fact",
               "source_ids": [
                 "product"
@@ -215,12 +229,8 @@
     },
     "video": {
       "summary": {
-        "text": "从“长口播里找一条能发的”切入。",
-        "kind": "suggestion",
-        "source_ids": [
-          "focus",
-          "must-show"
-        ]
+        "text": "任务实测、拆条对照、成果倒推，三个方向可选。",
+        "kind": "suggestion"
       },
       "references": [
         {
@@ -234,52 +244,45 @@
       ],
       "details": [
         {
-          "title": "推荐怎么推进？",
+          "title": "方向一 · 任务实测",
           "items": [
             {
-              "text": "开头：真人说清今天想从哪段口播里，找出一个什么问题。",
+              "text": "切入点：从一段长口播里，挑出一条能独立发布的短片。",
               "kind": "suggestion"
             },
             {
-              "text": "中间：录屏展示导入和推荐片段；挑一条，说明为什么它能独立讲清楚。",
-              "kind": "suggestion"
-            },
-            {
-              "text": "结尾：展示字幕人工校对和导出结果，给观众看最终得到的短片段。",
+              "text": "大纲：交代任务 → 导入与推荐 → 挑选完整片段 → 校对并导出。",
               "kind": "suggestion"
             }
           ]
         },
         {
-          "title": "为什么选这个方向？",
+          "title": "方向二 · 拆条对照",
           "items": [
             {
-              "text": "把主推功能放进一个具体任务，能顺带完成四个必拍动作。",
-              "kind": "suggestion",
-              "source_ids": [
-                "focus",
-                "must-show"
-              ]
+              "text": "切入点：同一段长素材，按不同主题拆出几条各自完整的短片。",
+              "kind": "suggestion"
+            },
+            {
+              "text": "大纲：原素材结构 → 按主题看推荐 → 检查各条是否讲清问题 → 展示导出结果。",
+              "kind": "suggestion"
             }
           ]
         },
         {
-          "title": "拍之前准备什么？",
+          "title": "方向三 · 成果倒推",
           "items": [
             {
-              "text": "找一段有清晰话题的自有口播。先试跑流程，保留真实结果，不预设能省多少时间。",
+              "text": "切入点：先看拆出的短片成果，再回到长素材了解挑选过程。",
+              "kind": "suggestion"
+            },
+            {
+              "text": "大纲：成果展示 → 回到原素材 → 演示选片与字幕校对 → 归纳选片标准。",
               "kind": "suggestion"
             }
           ]
         }
-      ],
-      "note": {
-        "text": "用自己的素材走完拆条，最后展示成片。",
-        "kind": "suggestion",
-        "source_ids": [
-          "must-show"
-        ]
-      }
+      ]
     }
   },
   "subtitle": "口播拆条合作"

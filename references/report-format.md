@@ -56,6 +56,12 @@ Content items may have a short `label`, used for default highlights, for example
 
 The selected white-document template owns all layout and UI text. The agent fills data only; do not provide CSS/HTML or additional top-level sections. Internal `kind` is always retained, but routine fact/required tags are not repeated on screen. Suggestions and unresolved information are identified where needed. Individual citations appear in expanded details, with one overview source entry in the header. Reference videos remain visible before expansion; any viewed-reference analysis is in the expanded fourth section.
 
+All four summaries use regular weight. Expanded branch titles are bold; each `items` entry is a separate line with a short dash marker. For multiple capabilities, write one capability per item, never one paragraph combining several capabilities. Use direct branch titles without editorial suffixes such as “说人话”. Explain similar concepts separately, including the actor, action and required conditions rather than compressing away the distinction.
+
+Inline source controls display `[原文]`, regardless of how many source IDs they contain; IDs remain internal and still resolve to the exact passages. The dialog uses the document name as its visible heading, without a second generic “原文” heading.
+
+In `video`, summarize the available angles rather than selecting a winner. Usually provide 2–3 distinct direction branches using the existing `details` structure. Each direction has a short angle and an outline such as “痛点 → 操作 → 结果”. These are planning choices, not dialogue, shot-by-shot scripts or finished content. Keep all options within the brief; if only one is supported, explain that constraint instead of inventing alternatives. No new schema fields are needed.
+
 ### Video reference
 
 ```json

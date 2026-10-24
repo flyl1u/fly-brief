@@ -43,11 +43,26 @@ async function main() {
     assert.match(visibleOverview, /10\.28 18:00/);
     checks.push('Desktop fits all four answers and shows mandatory shots, restrictions and deadline without repeated identity labels');
 
+    const weights = await page.locator('.summary').evaluateAll(nodes => nodes.map(node => getComputedStyle(node).fontWeight));
+    assert.equal(new Set(weights).size, 1);
+    assert.equal(weights[0], '400');
+    checks.push('All four peer summaries use the same regular font weight');
+
+    await page.screenshot({ path: path.join(out, 'desktop-overview.png'), fullPage: true });
+
     await page.locator('#details-product summary').click();
     assert.equal(await page.locator('details[open]').count(), 1);
     await page.locator('#details-product summary[aria-label^="收起"]').waitFor();
     assert.equal(await page.locator('#details-product .detail-body').isVisible(), true);
     assert.equal(await page.locator('.summary:visible').count(), 4);
+    const capabilities = page.locator('#product .branch').first();
+    assert.equal(await capabilities.locator('li').count(), 3);
+    assert.notEqual(await capabilities.locator('ul').evaluate(node => getComputedStyle(node).listStyleType), 'none');
+    const itemBoxes = await capabilities.locator('li').evaluateAll(nodes => nodes.map(node => node.getBoundingClientRect().toJSON()));
+    assert.ok(itemBoxes.every((box, index) => index === 0 || box.top >= itemBoxes[index - 1].bottom));
+    assert.equal(await capabilities.locator('.source-button').allTextContents().then(texts => texts.every(text => text === '[原文]')), true);
+    await page.screenshot({ path: path.join(out, 'desktop-product-expanded.png'), fullPage: true });
+    checks.push('Each capability has its own marked line and readable original-source control');
     await page.locator('#details-product summary').press('Enter');
     assert.equal(await page.locator('details[open]').count(), 0);
     checks.push('Plus disclosure works by mouse and keyboard, changes its accessible action and preserves all conclusions');
@@ -62,6 +77,8 @@ async function main() {
 
     await page.locator('#open-sources').click();
     assert.equal(await page.locator('dialog').isVisible(), true);
+    assert.equal(await page.getByRole('dialog', { name: '来源摘录' }).count(), 1);
+    assert.equal(await page.locator('dialog .dialog-header h2').count(), 0);
     assert.equal(await page.locator('dialog .evidence').count(), 6);
     await page.locator('#evidence-dialog').evaluate(node => Promise.all(node.getAnimations().map(animation => animation.finished.catch(() => {}))));
     await page.screenshot({ path: path.join(out, 'all-sources.png') });
@@ -83,6 +100,15 @@ async function main() {
     assert.equal(await citation.evaluate(node => node === document.activeElement), true);
     await page.locator('#details-product summary').click();
     checks.push('Expanded detail cites the exact source excerpt, location and original file; close returns to the cited item');
+
+    await page.locator('#details-video summary').click();
+    assert.equal(await page.locator('#video .branch').count(), 3);
+    for (const direction of await page.locator('#video .branch').all()) {
+      assert.equal(await direction.locator('li').count(), 2);
+    }
+    await page.screenshot({ path: path.join(out, 'desktop-video-expanded.png'), fullPage: true });
+    await page.locator('#details-video summary').click();
+    checks.push('Video suggestions expose several separate directions with short outlines');
 
     const referenceUrl = 'https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4';
     await context.route(referenceUrl, route => route.fulfill({ contentType: 'text/plain', body: 'Local intercepted navigation check.' }));
@@ -109,6 +135,16 @@ async function main() {
       assert.equal(await page.locator('details[open]').count(), 4);
       assert.equal(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth), true);
       if (width !== 768) await page.screenshot({ path: path.join(out, `mobile-${width}-expanded.png`), fullPage: true });
+      if (width === 390) {
+        await page.locator('#product').screenshot({ path: path.join(out, 'mobile-product-expanded.png') });
+        await page.locator('#video').screenshot({ path: path.join(out, 'mobile-video-expanded.png') });
+        await page.locator('#product .branch .source-button').first().click();
+        assert.equal(await page.locator('dialog').isVisible(), true);
+        assert.equal(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth), true);
+        await page.locator('#evidence-dialog').evaluate(node => Promise.all(node.getAnimations().map(animation => animation.finished.catch(() => {}))));
+        await page.screenshot({ path: path.join(out, 'mobile-source-dialog.png') });
+        await page.keyboard.press('Escape');
+      }
     }
     checks.push('320, 390 and 768 px layouts have no horizontal overflow; phone disclosure targets are at least 44 px');
 
