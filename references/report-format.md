@@ -8,8 +8,9 @@
 | --- | --- | --- |
 | `schema_version` | integer | Always `1`. |
 | `title` | nonempty string | Brief/report identity, e.g. `随剪 · 口播拆条合作`. |
-| `context` | string, optional | Short known context such as platform and content format. Do not invent it. |
-| `demo` | boolean, optional | `true` for fictional developer examples. An explicit notice appears. |
+| `subtitle` | string, optional | Cooperation topic. Prefer `title: 随剪` with `subtitle: 口播拆条合作`. Old reports with a combined title still work. |
+| `context` | string, optional | One short known identifier such as the platform. Put dates and specifications in requirements, not repeated in the header. |
+| `demo` | boolean, optional | `true` for fictional examples; adds a compact header marker, not an explanatory banner. |
 | `sources` | array | Source records, each with a unique `id`. |
 | `sections` | object | Exactly `product`, `promotion`, `requirements`, `video`, in that display order. |
 
@@ -24,6 +25,7 @@ For pasted text without a file, omit `url` and `path`, and give a useful `title`
 ## Each section
 
 - `summary`: one content item, required.
+- `note`: optional content item, one short supporting sentence. It needs its own kind and sources, under the same rules as any other item. It supplements the summary, not repeats it.
 - `highlights`: optional array of content items, visible before expansion. Primarily for critical requirements and unresolved blockers. No hard count limit: do not hide obligations to fit a layout.
 - `details`: optional array of branches, each with `title` and nonempty `items` (content items). Group by questions users have, not by the original document order.
 - `references`: optional array, allowed in `video` only. Every reference entry is visible before expansion.
@@ -49,6 +51,10 @@ For pasted text without a file, omit `url` and `path`, and give a useful `title`
 | `conflict` | 有冲突 | Incompatible source statements, citing the relevant passages. |
 
 Every `fact`, `required` or `conflict` item needs at least one valid source ID. `source_ids` may be omitted for suggestions and unknowns. Do not use `suggestion` to evade sourcing a factual assertion. Source buttons open the exact excerpts in a native dialog.
+
+Content items may have a short `label`, used for default highlights, for example `必拍`, `禁区`, `素材`, `时间`, `待确认`. Do not repeat that label in `text`. The `时间` label uses the template's compact date style. Missing labels render as normal short lines, preserving compatibility with earlier data.
+
+The selected white-document template owns all layout and UI text. The agent fills data only; do not provide CSS/HTML or additional top-level sections. Internal `kind` is always retained, but routine fact/required tags are not repeated on screen. Suggestions and unresolved information are identified where needed. Individual citations appear in expanded details, with one overview source entry in the header. Reference videos remain visible before expansion; any viewed-reference analysis is in the expanded fourth section.
 
 ### Video reference
 
