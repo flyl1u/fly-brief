@@ -53,6 +53,7 @@ async function main() {
     assert.match(await page.locator('dialog blockquote').innerText(), /推荐片段和字幕仍需人工检查/);
     assert.match(await page.locator('dialog .location').innerText(), /第 1 节/);
     assert.match(await page.locator('dialog .original').getAttribute('href'), /^file:.*brief\.md$/);
+    await page.locator('dialog').evaluate(node => Promise.all(node.getAnimations().map(animation => animation.finished.catch(() => {}))));
     await page.screenshot({ path: path.join(out, 'source-dialog.png') });
     await page.keyboard.press('Escape');
     assert.equal(await page.locator('dialog').isVisible(), false);
