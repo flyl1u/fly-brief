@@ -73,8 +73,8 @@
     "requirements": {
       "summary": {"text": "真人出镜，60–90 秒竖屏。10 月 28 日 18:00 前交脚本，30 日发布（北京时间）。", "kind": "required", "source_ids": ["delivery"]},
       "highlights": [
-        {"text": "必拍：导入、推荐片段、字幕校对、导出；用自有或已授权素材。", "kind": "required", "source_ids": ["must-show", "limits"]},
-        {"text": "禁区：竞品露出、承诺零错误、编造效率数据。", "kind": "required", "source_ids": ["limits"]}
+        {"text": "必拍：导入、推荐片段、人工校对字幕、导出；用自有或已授权素材。", "kind": "required", "source_ids": ["must-show", "limits"]},
+        {"text": "禁区：竞品露出、宣称无需检查或零错误、编造效率数据。", "kind": "required", "source_ids": ["limits"]}
       ],
       "details": [
         {"title": "发布时不能漏什么？", "items": [
@@ -101,7 +101,7 @@
           {"text": "结尾：展示字幕人工校对和导出结果，给观众看最终得到的短片段。", "kind": "suggestion"}
         ]},
         {"title": "为什么选这个方向？", "items": [
-          {"text": "把主推功能放进一个具体任务，能顺带完成四个必拍动作。无需假设你的账号人设。", "kind": "suggestion", "source_ids": ["focus", "must-show"]}
+          {"text": "把主推功能放进一个具体任务，能顺带完成四个必拍动作。", "kind": "suggestion", "source_ids": ["focus", "must-show"]}
         ]},
         {"title": "拍之前准备什么？", "items": [
           {"text": "找一段有清晰话题的自有口播。先试跑流程，保留真实结果，不预设能省多少时间。", "kind": "suggestion"}

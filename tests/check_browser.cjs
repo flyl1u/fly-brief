@@ -63,7 +63,7 @@ async function main() {
     await page.locator('#feedback').filter({ hasText: '已复制' }).waitFor();
     const clipboard = await page.evaluate(() => navigator.clipboard.readText());
     assert.match(clipboard, /\[品牌要求\].*真人出镜/);
-    assert.match(clipboard, /必拍：导入、推荐片段、字幕校对、导出/);
+    assert.match(clipboard, /必拍：导入、推荐片段、人工校对字幕、导出/);
     assert.match(clipboard, /我可以怎么做这条视频/);
     checks.push('Clipboard copy includes all four conclusions, critical requirements and source labels');
 
