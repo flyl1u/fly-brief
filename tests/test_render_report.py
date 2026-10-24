@@ -37,6 +37,32 @@ def sourced():
 
 
 class ReportTests(unittest.TestCase):
+    def test_compact_subtitle_note_and_requirement_labels_are_sourced(self):
+        raw = sourced()
+        raw["subtitle"] = "口播合作"
+        raw["sections"]["product"]["note"] = {"text": "字幕仍需校对。", "kind": "fact", "source_ids": ["s1"]}
+        raw["sections"]["requirements"]["highlights"][0]["label"] = "必拍"
+        data, _ = renderer.validate_report(raw, ROOT)
+        self.assertEqual(data["subtitle"], "口播合作")
+        self.assertEqual(data["sections"]["requirements"]["highlights"][0]["label"], "必拍")
+        del raw["sections"]["product"]["note"]["source_ids"]
+        with self.assertRaisesRegex(renderer.ReportError, "必须附来源"):
+            renderer.validate_report(raw, ROOT)
+
+    def test_notes_count_toward_the_default_reading_budget(self):
+        raw = minimal()
+        raw["sections"]["product"]["note"] = {"text": "补充说明" * 120, "kind": "unknown"}
+        _, warnings = renderer.validate_report(raw, ROOT)
+        self.assertTrue(any("默认态" in warning for warning in warnings))
+
+    def test_report_contains_offline_fonts_and_accepts_old_data(self):
+        data, _ = renderer.validate_report(minimal(), ROOT)
+        document = renderer.render_html(data)
+        self.assertEqual(document.count("data:font/woff2;base64,"), 2)
+        self.assertNotIn("__FLY_BRIEF_FONTS__", document)
+        self.assertNotIn("fonts.googleapis.com", document)
+        self.assertIn("font-src data:", document)
+
     def test_sparse_report_has_exactly_four_sections(self):
         data, warnings = renderer.validate_report(minimal(), ROOT)
         self.assertEqual(set(data["sections"]), set(renderer.SECTION_KEYS))

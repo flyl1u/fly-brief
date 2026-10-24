@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
-  "title": "随剪 · 口播拆条合作",
-  "context": "小红书 · 1 条竖屏视频 · 2026.10.30 发布",
+  "title": "随剪",
+  "context": "小红书",
   "demo": true,
   "sources": [
     {
@@ -49,64 +49,238 @@
   ],
   "sections": {
     "product": {
-      "summary": {"text": "帮口播博主从一段长视频里找出能单独发布的短片段，选好、校对后导出。", "kind": "fact", "source_ids": ["product"]},
+      "summary": {
+        "text": "把一段长口播，拆成几条能单独发布的短视频。",
+        "kind": "fact",
+        "source_ids": [
+          "product"
+        ]
+      },
       "details": [
-        {"title": "怎么用？", "items": [
-          {"text": "导入长口播 → 查看按主题推荐的片段 → 选片段、校对字幕 → 导出。", "kind": "fact", "source_ids": ["product"]}
-        ]},
-        {"title": "它替你省了哪一步？", "items": [
-          {"text": "少做反复拖动时间轴找片段的工作。选片和字幕仍要人工检查。", "kind": "fact", "source_ids": ["product"]}
-        ]}
+        {
+          "title": "怎么用？",
+          "items": [
+            {
+              "text": "导入长口播 → 查看按主题推荐的片段 → 选片段、校对字幕 → 导出。",
+              "kind": "fact",
+              "source_ids": [
+                "product"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "它替你省了哪一步？",
+          "items": [
+            {
+              "text": "少做反复拖动时间轴找片段的工作。选片和字幕仍要人工检查。",
+              "kind": "fact",
+              "source_ids": [
+                "product"
+              ]
+            }
+          ]
+        }
       ]
     },
     "promotion": {
-      "summary": {"text": "重点推“按主题拆条”：长口播不用从头反复找片段。字幕只做辅助展示。", "kind": "required", "source_ids": ["focus"]},
+      "summary": {
+        "text": "按主题拆条",
+        "kind": "required",
+        "source_ids": [
+          "focus"
+        ]
+      },
       "details": [
-        {"title": "观众要记住什么？", "items": [
-          {"text": "一段长口播，可以先按主题找出适合独立讲清问题的片段。", "kind": "fact", "source_ids": ["focus"]}
-        ]},
-        {"title": "怎么让功能看得见？", "items": [
-          {"text": "先说清要找的那个问题，再展示推荐片段是否讲完整了它。少做菜单功能盘点。", "kind": "suggestion", "source_ids": ["focus"]}
-        ]}
-      ]
+        {
+          "title": "观众要记住什么？",
+          "items": [
+            {
+              "text": "一段长口播，可以先按主题找出适合独立讲清问题的片段。",
+              "kind": "fact",
+              "source_ids": [
+                "focus"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "怎么让功能看得见？",
+          "items": [
+            {
+              "text": "先说清要找的那个问题，再展示推荐片段是否讲完整了它。少做菜单功能盘点。",
+              "kind": "suggestion",
+              "source_ids": [
+                "focus"
+              ]
+            }
+          ]
+        }
+      ],
+      "note": {
+        "text": "重点演示怎么选片段，字幕只做辅助。",
+        "kind": "required",
+        "source_ids": [
+          "focus"
+        ]
+      }
     },
     "requirements": {
-      "summary": {"text": "真人出镜，60–90 秒竖屏。10 月 28 日 18:00 前交脚本，30 日发布（北京时间）。", "kind": "required", "source_ids": ["delivery"]},
+      "summary": {
+        "text": "真人出镜 · 60–90 秒竖屏",
+        "kind": "required",
+        "source_ids": [
+          "delivery"
+        ]
+      },
       "highlights": [
-        {"text": "必拍：导入、推荐片段、人工校对字幕、导出；用自有或已授权素材。", "kind": "required", "source_ids": ["must-show", "limits"]},
-        {"text": "禁区：竞品露出、宣称无需检查或零错误、编造效率数据。", "kind": "required", "source_ids": ["limits"]}
+        {
+          "label": "必拍",
+          "text": "导入素材 → 推荐片段 → 人工校对字幕 → 导出成片",
+          "kind": "required",
+          "source_ids": [
+            "must-show"
+          ]
+        },
+        {
+          "label": "禁区",
+          "text": "不露竞品，不说全自动或零错误，不编造效率数据。",
+          "kind": "required",
+          "source_ids": [
+            "limits"
+          ]
+        },
+        {
+          "label": "素材",
+          "text": "使用自有或已获授权的素材。",
+          "kind": "required",
+          "source_ids": [
+            "limits"
+          ]
+        },
+        {
+          "label": "时间",
+          "text": "2026.10.28 18:00 交脚本 · 10.30 发布（北京时间）",
+          "kind": "required",
+          "source_ids": [
+            "delivery"
+          ]
+        }
       ],
       "details": [
-        {"title": "发布时不能漏什么？", "items": [
-          {"text": "小红书 1 条视频；文案注明“品牌合作”，带 #随剪、#口播剪辑。", "kind": "required", "source_ids": ["delivery", "must-show"]}
-        ]},
-        {"title": "审稿和表达自由度？", "items": [
-          {"text": "脚本和成片各 1 轮集中修改；没有固定口播句式。", "kind": "fact", "source_ids": ["delivery", "must-show"]},
-          {"text": "不说“全自动不用检查”“字幕零错误”。需要演示字幕人工校对。", "kind": "required", "source_ids": ["limits", "must-show"]}
-        ]},
-        {"title": "需要确认", "items": [
-          {"text": "这条视频是否会投流或二次使用？请确认授权范围、期限，以及费用和付款安排。", "kind": "unknown"}
-        ]}
+        {
+          "title": "发布时不能漏什么？",
+          "items": [
+            {
+              "text": "小红书 1 条视频；文案注明“品牌合作”，带 #随剪、#口播剪辑。",
+              "kind": "required",
+              "source_ids": [
+                "delivery",
+                "must-show"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "审稿和表达自由度？",
+          "items": [
+            {
+              "text": "脚本和成片各 1 轮集中修改；没有固定口播句式。",
+              "kind": "fact",
+              "source_ids": [
+                "delivery",
+                "must-show"
+              ]
+            },
+            {
+              "text": "不说“全自动不用检查”“字幕零错误”。需要演示字幕人工校对。",
+              "kind": "required",
+              "source_ids": [
+                "limits",
+                "must-show"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "需要确认",
+          "items": [
+            {
+              "text": "这条视频是否会投流或二次使用？请确认授权范围、期限，以及费用和付款安排。",
+              "kind": "unknown"
+            }
+          ]
+        }
       ]
     },
     "video": {
-      "summary": {"text": "从“长口播里找一条能发的片段”开场，再用自己的素材走完拆条、校对和导出。", "kind": "suggestion", "source_ids": ["focus", "must-show"]},
+      "summary": {
+        "text": "从“长口播里找一条能发的”切入。",
+        "kind": "suggestion",
+        "source_ids": [
+          "focus",
+          "must-show"
+        ]
+      },
       "references": [
-        {"title": "参考入口 · 公开测试片段", "url": "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4", "status": "unviewed", "source_ids": ["reference"]}
+        {
+          "title": "参考视频",
+          "url": "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4",
+          "status": "unviewed",
+          "source_ids": [
+            "reference"
+          ]
+        }
       ],
       "details": [
-        {"title": "推荐怎么推进？", "items": [
-          {"text": "开头：真人说清今天想从哪段口播里，找出一个什么问题。", "kind": "suggestion"},
-          {"text": "中间：录屏展示导入和推荐片段；挑一条，说明为什么它能独立讲清楚。", "kind": "suggestion"},
-          {"text": "结尾：展示字幕人工校对和导出结果，给观众看最终得到的短片段。", "kind": "suggestion"}
-        ]},
-        {"title": "为什么选这个方向？", "items": [
-          {"text": "把主推功能放进一个具体任务，能顺带完成四个必拍动作。", "kind": "suggestion", "source_ids": ["focus", "must-show"]}
-        ]},
-        {"title": "拍之前准备什么？", "items": [
-          {"text": "找一段有清晰话题的自有口播。先试跑流程，保留真实结果，不预设能省多少时间。", "kind": "suggestion"}
-        ]}
-      ]
+        {
+          "title": "推荐怎么推进？",
+          "items": [
+            {
+              "text": "开头：真人说清今天想从哪段口播里，找出一个什么问题。",
+              "kind": "suggestion"
+            },
+            {
+              "text": "中间：录屏展示导入和推荐片段；挑一条，说明为什么它能独立讲清楚。",
+              "kind": "suggestion"
+            },
+            {
+              "text": "结尾：展示字幕人工校对和导出结果，给观众看最终得到的短片段。",
+              "kind": "suggestion"
+            }
+          ]
+        },
+        {
+          "title": "为什么选这个方向？",
+          "items": [
+            {
+              "text": "把主推功能放进一个具体任务，能顺带完成四个必拍动作。",
+              "kind": "suggestion",
+              "source_ids": [
+                "focus",
+                "must-show"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "拍之前准备什么？",
+          "items": [
+            {
+              "text": "找一段有清晰话题的自有口播。先试跑流程，保留真实结果，不预设能省多少时间。",
+              "kind": "suggestion"
+            }
+          ]
+        }
+      ],
+      "note": {
+        "text": "用自己的素材走完拆条，最后展示成片。",
+        "kind": "suggestion",
+        "source_ids": [
+          "must-show"
+        ]
+      }
     }
-  }
+  },
+  "subtitle": "口播拆条合作"
 }

@@ -4,6 +4,7 @@
 from __future__ import annotations
 
 import argparse
+import base64
 from copy import deepcopy
 import html
 import json
@@ -72,8 +73,9 @@ def validate_report(raw: object, base_dir: Path) -> tuple[dict, list[str]]:
     require(type(data.get("schema_version")) is int and data["schema_version"] == 1,
             "schema_version 必须是整数 1")
     string(data.get("title"), "title")
-    if "context" in data:
-        string(data["context"], "context")
+    for field in ("subtitle", "context"):
+        if field in data:
+            string(data[field], field)
     if "demo" in data:
         require(type(data["demo"]) is bool, "demo 必须是布尔值")
 
@@ -101,6 +103,8 @@ def validate_report(raw: object, base_dir: Path) -> tuple[dict, list[str]]:
         kind = record.get("kind")
         require(isinstance(kind, str) and kind in KINDS, f"{at}: kind 不在支持的五类中")
         refs(record, at, mandatory=kind in {"fact", "required", "conflict"})
+        if "label" in record:
+            string(record["label"], f"{at}.label")
 
     sections = data.get("sections")
     require(isinstance(sections, dict) and set(sections) == set(SECTION_KEYS),
@@ -112,6 +116,9 @@ def validate_report(raw: object, base_dir: Path) -> tuple[dict, list[str]]:
         require(isinstance(section, dict), f"{at}: 需要对象")
         item(section.get("summary"), f"{at}.summary")
         visible.append(section["summary"]["text"])
+        if "note" in section:
+            item(section["note"], f"{at}.note")
+            visible.append(section["note"]["text"])
         for index, highlight in enumerate(array(section.get("highlights", []), f"{at}.highlights")):
             item(highlight, f"{at}.highlights[{index}]")
             visible.append(highlight["text"])
@@ -162,9 +169,16 @@ def safe_json(data: dict) -> str:
 def render_html(data: dict) -> str:
     template = (ROOT / "assets" / "report.html").read_text(encoding="utf-8")
     require(template.count("__FLY_BRIEF_DATA__") == 1, "模板缺少唯一的数据插入点")
-    replacements = {"TITLE": html.escape(data["title"], quote=True), "DATA": safe_json(data)}
+    faces = []
+    for family, filename, weight in (("Fly Sans", "noto-sans.woff2", "400"),
+                                      ("Fly Serif", "noto-serif.woff2", "700")):
+        encoded = base64.b64encode((ROOT / "assets" / "fonts" / filename).read_bytes()).decode("ascii")
+        faces.append(f'@font-face{{font-family:"{family}";font-weight:{weight};font-style:normal;'
+                     f'font-display:swap;src:url(data:font/woff2;base64,{encoded}) format("woff2");}}')
+    title = data["title"] + (f" · {data['subtitle']}" if data.get("subtitle") else "")
+    replacements = {"TITLE": html.escape(title, quote=True), "DATA": safe_json(data), "FONTS": "\n".join(faces)}
     # A single pass keeps marker-like user text literal, never a second directive.
-    return re.sub(r"__FLY_BRIEF_(TITLE|DATA)__", lambda match: replacements[match[1]], template)
+    return re.sub(r"__FLY_BRIEF_(TITLE|DATA|FONTS)__", lambda match: replacements[match[1]], template)
 
 
 def main() -> int:
