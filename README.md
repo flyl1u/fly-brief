@@ -1,71 +1,74 @@
-**简体中文** · [English](./README.en.md)
+**English** · [简体中文](./README.zh-CN.md)
 
-# Fly Brief
+<p>
+  <img src="./assets/readme/hero.svg" width="100%" alt="Fly Brief — turn a brand brief into four clear answers and concrete video ideas.">
+</p>
 
-帮博主读懂品牌合作 brief，整理重点、要求和可以选择的视频选题。
+Fly Brief is an agent skill for creators working with brands. Give your agent the brief and supporting material; get a local HTML report explaining the product, the promotion, the requirements, and specific video topics you can choose from.
 
-<picture>
-  <source media="(max-width: 600px)" srcset="./assets/readme/reading-flow-mobile.svg">
-  <img src="./assets/readme/reading-flow.svg" width="100%" alt="交互示意：先看四问概览，点加号展开具体选题，再从原文入口核对品牌要求。内容为虚构节选。">
-</picture>
+[Install](#install) · [First use](#first-use) · [Try the example](#try-the-example)
 
-先看结论 → 点 `＋` 展开细节 → 点 `[原文]` 核对出处。
+## See the result
 
-## 开始用
+<img src="./examples/preview-desktop.png" width="100%" alt="Fictional brand brief shown as four report sections, with mandatory shots, restrictions, and deadlines visible before expansion.">
 
-有 Node.js 时，通过 [Skills CLI](https://github.com/vercel-labs/skills) 安装，按提示选择你的 agent：
+This is a **fictional example**, not a client report. The report interface and default writing are currently in Chinese.
+
+<details>
+<summary>See the mobile layout and source excerpts</summary>
+
+<p>
+  <img src="./examples/preview-mobile.png" width="280" alt="The same four questions stacked vertically on a narrow phone screen.">
+</p>
+<p>
+  <img src="./examples/preview-source.png" width="100%" alt="An original-source dialog shows the document name, passage location, exact excerpt, and original-file link.">
+</p>
+
+</details>
+
+## Four questions, answered
+
+| Question | What you get |
+| --- | --- |
+| What does the product do? | A plain explanation of its capabilities, inputs, outputs, and conditions. |
+| What should I promote? | The campaign's focus, separated from the full feature list. |
+| What are the requirements? | Mandatory shots, wording, restrictions, deadlines, and unresolved issues. |
+| What could this video be? | Concrete topics with a title, creator perspective, promoted features, pain point, and case details. |
+
+The overview stays concise. Expand a section for detail; important shooting requirements remain visible while collapsed. Source buttons open the supporting passages, so you can check a claim without searching through the brief again.
+
+Video ideas name a person, a problem, the material to prepare, and a useful result. Each explains how the video could develop, while leaving the full script to you.
+
+## Install
+
+With Node.js available, install through the [Skills CLI](https://github.com/vercel-labs/skills):
 
 ```sh
 npx skills add flyl1u/fly-brief --skill fly-brief
 ```
 
-把 brief 文件、正文或可访问链接一起交给 agent：
+Choose your agent when prompted. Add `-g` if you want the skill available across projects. For agents that load skill folders directly, clone this repository into the agent's skill directory; keep `SKILL.md`, `scripts/`, `assets/`, and `references/` together.
+
+The renderer requires **Python 3.10+** and uses only the standard library. Reading PDFs, slides, images, or protected links depends on the extraction tools and access available to your agent.
+
+## First use
+
+Attach the brief, paste the text, or provide a readable link. Add any known audience, account style, or platform details, then ask:
 
 ```text
-使用 $fly-brief 解读这份合作 brief，生成本地 HTML 报告。
-给几个具体视频选题，先不写完整脚本。
+Use $fly-brief to read this brand brief and its attachments.
+Explain the four questions and generate a local interactive HTML report.
+Give me a few concrete video topics to choose from, without writing a full script.
+Save the result in output/my-campaign/.
 ```
 
-生成后的报告可离线打开，无需构建、API Key 或运行中的服务。生成器需要 Python 3.10+；读取附件取决于 agent 已有的工具和权限。
+The agent reads the material, writes source-linked report data, validates it, and fills the fixed template. Open the resulting `report.html` in a browser. Sections expand independently, and source excerpts open on demand.
 
-## 看真实示例
+**The generated report works offline:** it needs no build step, remote library, API key, or running server. Original-file and reference-video links still need their files or network access. Running your agent may have its own model and tool requirements.
 
-下面是同一份虚构 brief 的真实界面，选择感兴趣的部分展开。
+## Try the example
 
-<details>
-<summary>产品解释：输入、产物和使用条件</summary>
-
-<picture>
-  <source media="(max-width: 600px)" srcset="./assets/readme/product-expanded-mobile.png">
-  <img src="./assets/readme/product-expanded.png" width="100%" alt="展开后的产品解释，逐项说明能力、人工检查条件和对应原文。">
-</picture>
-
-</details>
-
-<details>
-<summary>具体选题：场景、材料和视频怎样推进</summary>
-
-<picture>
-  <source media="(max-width: 600px)" srcset="./assets/readme/topic-expanded-mobile.png">
-  <img src="./assets/readme/topic-expanded.png" width="100%" alt="一个完整的备选视频方向，说明达人身份、推广功能、具体痛点和选题详情。">
-</picture>
-
-</details>
-
-<details>
-<summary>原文出处：资料名称、段落位置和原句</summary>
-
-<picture>
-  <source media="(max-width: 600px)" srcset="./assets/readme/source-open-mobile.png">
-  <img src="./assets/readme/source-open.png" width="100%" alt="来源弹窗展示资料名称、所在段落、原句摘录和原始文件入口。">
-</picture>
-
-</details>
-
-<details>
-<summary>本地试跑与开发说明</summary>
-
-无需准备真实 brief，可以用仓库里的 [虚构材料](./examples/brief.md) 和 [报告数据](./examples/report.json) 试跑：
+Clone the repository and run from its root:
 
 ```sh
 git clone https://github.com/flyl1u/fly-brief.git
@@ -73,16 +76,33 @@ cd fly-brief
 python scripts/render_report.py --input examples/report.json --output output/demo/report.html
 ```
 
-打开 `output/demo/report.html`。生成器负责渲染数据，brief 分析由 agent 完成。
+Open `output/demo/report.html`. The fictional [brief](./examples/brief.md) and [report data](./examples/report.json) show the complete path from material to output. The generator renders prepared JSON; the agent performs the brief analysis.
 
-维护入口：[技能规则](./SKILL.md) · [数据约定](./references/report-format.md) · [模板](./assets/report.html) · [生成器](./scripts/render_report.py)。
+To validate data without generating a file:
+
+```sh
+python scripts/render_report.py --input examples/report.json --check
+```
+
+## What the report keeps explicit
+
+- **Facts and requirements have sources.** Claims, obligations, and conflicts link to excerpts with a page, section, or other location.
+- **Suggestions stay suggestions.** Creative scenarios and proposed identities are distinguished from known facts about the creator.
+- **Missing information stays visible.** Inaccessible material, unclear promotion priorities, and conflicting instructions are identified.
+- **Private material stays local by default.** Client briefs and generated reports belong in ignored `output/`; the public examples are fictional. Remote reading or model processing still depends on your agent and tools.
+
+Fly Brief does not verify a brand's claims by testing its product, invent unseen reference-video analysis, or write a full script by default.
+
+## For contributors
+
+The core files are [SKILL.md](./SKILL.md), the [data contract](./references/report-format.md), the [HTML template](./assets/report.html), and the [renderer](./scripts/render_report.py). The [design notes](./DESIGN.md) record the selected document layout.
+
+Run the renderer checks:
 
 ```sh
 python -m unittest discover -s tests -v
 ```
 
-修改模板还需检查桌面与手机效果。内置字体附有 [来源与许可证](./assets/fonts/SOURCES.md)。
+Template changes also need desktop and mobile visual checks. Keep the four primary questions, visible shooting requirements, traceable sources, and standalone HTML behavior. Never include real client material in a contribution.
 
-</details>
-
-报告默认使用中文。品牌要求与创作建议分开，无法读取的材料会标明；真实客户资料和报告默认保存在本地 `output/`，不会随项目提交。Agent 的模型调用和远程读取取决于所用工具。
+Bundled Noto fonts include their [source notes and SIL Open Font Licenses](./assets/fonts/SOURCES.md).
