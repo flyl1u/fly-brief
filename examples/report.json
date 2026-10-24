@@ -1,0 +1,112 @@
+{
+  "schema_version": 1,
+  "title": "随剪 · 口播拆条合作",
+  "context": "小红书 · 1 条竖屏视频 · 2026.10.30 发布",
+  "demo": true,
+  "sources": [
+    {
+      "id": "product",
+      "title": "随剪合作 brief（虚构）",
+      "location": "第 1 节 · 产品是什么",
+      "excerpt": "用户导入一段长口播，工具按主题推荐可拆出的短片段，并生成字幕。创作者选片段、校对字幕后再导出，减少反复拖动时间轴找片段的步骤。推荐片段和字幕仍需人工检查。",
+      "path": "brief.md"
+    },
+    {
+      "id": "focus",
+      "title": "随剪合作 brief（虚构）",
+      "location": "第 2 节 · 这次主推什么",
+      "excerpt": "本次只重点讲“按主题拆条”：从长口播里找到能单独讲清一个问题的短片段。字幕是辅助演示，不要把本次内容做成字幕功能盘点。",
+      "path": "brief.md"
+    },
+    {
+      "id": "delivery",
+      "title": "随剪合作 brief（虚构）",
+      "location": "第 3 节 · 交付和时间",
+      "excerpt": "小红书发布 1 条 60–90 秒竖屏视频，必须真人出镜。2026 年 10 月 28 日 18:00 前交脚本，2026 年 10 月 30 日发布，时间按北京时间。脚本和成片各安排 1 轮集中修改。",
+      "path": "brief.md"
+    },
+    {
+      "id": "must-show",
+      "title": "随剪合作 brief（虚构）",
+      "location": "第 4 节 · 必须展示",
+      "excerpt": "画面必须包含：导入自己的长口播、查看推荐片段、人工校对字幕、导出结果。发布文案须注明“品牌合作”，带话题 #随剪 和 #口播剪辑。建议选择你日常真的会处理的一段素材，不要求固定口播句式。",
+      "path": "brief.md"
+    },
+    {
+      "id": "limits",
+      "title": "随剪合作 brief（虚构）",
+      "location": "第 5 节 · 不要这样表达",
+      "excerpt": "不能出现竞品名称或界面，不说“全自动不用检查”“字幕零错误”，也不要编造耗时或效率数据。演示素材须为自有或已获授权。",
+      "path": "brief.md"
+    },
+    {
+      "id": "reference",
+      "title": "随剪合作 brief（虚构）",
+      "location": "第 6 节 · 参考与未定事项",
+      "excerpt": "参考入口交互验收链接：https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4 。这是公开测试视频，内容与产品无关，仅用于展示“brief 中有参考视频时直接提供入口”的交互；本演示未查看该视频，不做借鉴分析。",
+      "path": "brief.md"
+    }
+  ],
+  "sections": {
+    "product": {
+      "summary": {"text": "帮口播博主从一段长视频里找出能单独发布的短片段，选好、校对后导出。", "kind": "fact", "source_ids": ["product"]},
+      "details": [
+        {"title": "怎么用？", "items": [
+          {"text": "导入长口播 → 查看按主题推荐的片段 → 选片段、校对字幕 → 导出。", "kind": "fact", "source_ids": ["product"]}
+        ]},
+        {"title": "它替你省了哪一步？", "items": [
+          {"text": "少做反复拖动时间轴找片段的工作。选片和字幕仍要人工检查。", "kind": "fact", "source_ids": ["product"]}
+        ]}
+      ]
+    },
+    "promotion": {
+      "summary": {"text": "重点推“按主题拆条”：长口播不用从头反复找片段。字幕只做辅助展示。", "kind": "required", "source_ids": ["focus"]},
+      "details": [
+        {"title": "观众要记住什么？", "items": [
+          {"text": "一段长口播，可以先按主题找出适合独立讲清问题的片段。", "kind": "fact", "source_ids": ["focus"]}
+        ]},
+        {"title": "怎么让功能看得见？", "items": [
+          {"text": "先说清要找的那个问题，再展示推荐片段是否讲完整了它。少做菜单功能盘点。", "kind": "suggestion", "source_ids": ["focus"]}
+        ]}
+      ]
+    },
+    "requirements": {
+      "summary": {"text": "真人出镜，60–90 秒竖屏。10 月 28 日 18:00 前交脚本，30 日发布（北京时间）。", "kind": "required", "source_ids": ["delivery"]},
+      "highlights": [
+        {"text": "必拍：导入、推荐片段、字幕校对、导出；用自有或已授权素材。", "kind": "required", "source_ids": ["must-show", "limits"]},
+        {"text": "禁区：竞品露出、承诺零错误、编造效率数据。", "kind": "required", "source_ids": ["limits"]}
+      ],
+      "details": [
+        {"title": "发布时不能漏什么？", "items": [
+          {"text": "小红书 1 条视频；文案注明“品牌合作”，带 #随剪、#口播剪辑。", "kind": "required", "source_ids": ["delivery", "must-show"]}
+        ]},
+        {"title": "审稿和表达自由度？", "items": [
+          {"text": "脚本和成片各 1 轮集中修改；没有固定口播句式。", "kind": "fact", "source_ids": ["delivery", "must-show"]},
+          {"text": "不说“全自动不用检查”“字幕零错误”。需要演示字幕人工校对。", "kind": "required", "source_ids": ["limits", "must-show"]}
+        ]},
+        {"title": "需要确认", "items": [
+          {"text": "这条视频是否会投流或二次使用？请确认授权范围、期限，以及费用和付款安排。", "kind": "unknown"}
+        ]}
+      ]
+    },
+    "video": {
+      "summary": {"text": "从“长口播里找一条能发的片段”开场，再用自己的素材走完拆条、校对和导出。", "kind": "suggestion", "source_ids": ["focus", "must-show"]},
+      "references": [
+        {"title": "参考入口 · 公开测试片段", "url": "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4", "status": "unviewed", "source_ids": ["reference"]}
+      ],
+      "details": [
+        {"title": "推荐怎么推进？", "items": [
+          {"text": "开头：真人说清今天想从哪段口播里，找出一个什么问题。", "kind": "suggestion"},
+          {"text": "中间：录屏展示导入和推荐片段；挑一条，说明为什么它能独立讲清楚。", "kind": "suggestion"},
+          {"text": "结尾：展示字幕人工校对和导出结果，给观众看最终得到的短片段。", "kind": "suggestion"}
+        ]},
+        {"title": "为什么选这个方向？", "items": [
+          {"text": "把主推功能放进一个具体任务，能顺带完成四个必拍动作。无需假设你的账号人设。", "kind": "suggestion", "source_ids": ["focus", "must-show"]}
+        ]},
+        {"title": "拍之前准备什么？", "items": [
+          {"text": "找一段有清晰话题的自有口播。先试跑流程，保留真实结果，不预设能省多少时间。", "kind": "suggestion"}
+        ]}
+      ]
+    }
+  }
+}

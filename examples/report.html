@@ -1,0 +1,231 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'unsafe-inline'; style-src 'unsafe-inline'; img-src data:; base-uri 'none'; form-action 'none'">
+  <meta name="color-scheme" content="light">
+  <title>随剪 · 口播拆条合作</title>
+  <style>
+    :root{--paper:#f6f5f1;--surface:#fffefa;--ink:#202c36;--secondary:#5d6670;--line:#dcdedb;--blue:#285a73;--blue-wash:#eaf0f3;--amber:#785819;--amber-wash:#faf1dc;--red:#943d36;--red-wash:#faece8;--radius:18px;--body:16px;--gap:22px}
+    *{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font:var(--body)/1.75 -apple-system,BlinkMacSystemFont,"Segoe UI","Microsoft YaHei","PingFang SC",sans-serif}button,a{-webkit-tap-highlight-color:transparent}button{font:inherit;cursor:pointer;color:inherit}a{color:var(--blue);text-underline-offset:4px}button:focus-visible,a:focus-visible,summary:focus-visible{outline:3px solid var(--blue);outline-offset:4px;border-radius:5px}button{transition:background .16s,transform .16s}button:active{transform:scale(.98)}[hidden]{display:none!important}
+    .page{max-width:1180px;margin:0 auto;padding:38px 40px 24px}.masthead{display:flex;align-items:center;justify-content:space-between;gap:20px;margin-bottom:32px}.brand{display:flex;align-items:center;gap:10px;font-weight:700;font-size:17px;letter-spacing:.01em}.brand-mark{display:grid;place-items:center;background:var(--ink);width:30px;height:30px;border-radius:8px;color:var(--surface)}.brand-mark svg{width:19px;height:19px}.header-note{font-size:14px;color:var(--secondary)}.intro{display:flex;align-items:flex-end;justify-content:space-between;gap:24px;margin-bottom:26px}h1{font-size:clamp(24px,2.7vw,34px);line-height:1.35;margin:0;letter-spacing:-.04em;font-weight:700}.context{margin:8px 0 0;color:var(--secondary);font-size:15px}.actions{display:flex;gap:8px;flex-shrink:0;flex-wrap:wrap}.action{border:1px solid var(--line);border-radius:9px;padding:8px 13px;background:transparent;font-size:14px;line-height:1.5}.action:hover{background:#e9ebe7}.copy{background:var(--ink);color:var(--surface);border-color:var(--ink)}.copy:hover{background:#394956}.demo-note{font-size:14px;color:var(--amber);margin:0 0 18px;padding:8px 12px;background:var(--amber-wash);border-radius:8px}
+    .overview{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--gap);align-items:start}.panel{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:24px 26px 0;min-width:0;scroll-margin-top:24px}.panel-head{display:flex;gap:13px;align-items:baseline;margin-bottom:14px}.number{font-size:14px;color:var(--secondary);font-variant-numeric:tabular-nums}.panel h2{font-size:19px;line-height:1.5;font-weight:650;letter-spacing:-.02em;margin:0}.summary{font-size:18px;line-height:1.85;margin:0;overflow-wrap:anywhere}.kind{font-size:12px;line-height:1.5;padding:3px 7px;border-radius:5px;background:var(--blue-wash);color:var(--blue);display:inline-block;vertical-align:middle;margin-right:7px;font-weight:500;white-space:nowrap}.kind.fact{background:#edeeea;color:#535d57}.kind.required{background:#eef0e7;color:#4b5936}.kind.unknown{background:var(--amber-wash);color:var(--amber)}.kind.conflict{background:var(--red-wash);color:var(--red)}.source-button{border:0;background:transparent;color:var(--secondary);font-size:12px;line-height:1.5;border-bottom:1px dotted #a7adae;padding:0 2px;margin-left:7px;vertical-align:baseline}.source-button:hover{color:var(--blue);background:var(--blue-wash)}
+    .highlights{list-style:none;margin:14px 0 0;padding:0}.highlights li{margin:9px 0;line-height:1.75;font-size:15px;overflow-wrap:anywhere}.highlights .kind{font-size:12px}.disclosure{margin-top:19px;border-top:1px solid var(--line)}summary{display:flex;align-items:center;justify-content:space-between;list-style:none;cursor:pointer;padding:13px 0;color:var(--blue);font-size:14px;line-height:1.6;user-select:none}summary::-webkit-details-marker{display:none}.disclosure-arrow{width:18px;height:18px;transition:transform .2s}details[open] .disclosure-arrow{transform:rotate(180deg)}.detail-body{padding:0 0 22px}.branch{margin-top:18px}.branch:first-child{margin-top:6px}.branch h3{margin:0 0 7px;font-size:15px;font-weight:650}.branch ul{padding:0;list-style:none;margin:0}.branch li{font-size:15px;line-height:1.85;margin-top:8px;overflow-wrap:anywhere}.empty-foot{height:22px}
+    .references{margin-top:17px}.reference{padding:13px 0 4px;border-top:1px solid var(--line)}.reference a{display:inline-flex;gap:8px;align-items:baseline;font-weight:600;font-size:15px;line-height:1.65;overflow-wrap:anywhere}.ref-status{margin:4px 0 0;color:var(--secondary);font-size:12px}.ref-note{font-size:14px;margin:8px 0 0;overflow-wrap:anywhere}.ref-note .kind{font-size:12px}.footer{display:flex;justify-content:space-between;gap:20px;color:var(--secondary);font-size:13px;margin-top:24px}.footer p{margin:0}.feedback{color:var(--blue);min-height:24px}
+    dialog{border:1px solid var(--line);border-radius:18px;max-width:640px;width:calc(100% - 36px);padding:26px;color:var(--ink);background:var(--surface);max-height:85vh;box-shadow:0 20px 80px #15252a26}dialog[open]{animation:dialog-in .18s ease-out}dialog::backdrop{background:#16252d66}.dialog-head{display:flex;align-items:center;justify-content:space-between;gap:18px;margin-bottom:18px}.dialog-head h2{font-size:20px;margin:0}.close{border:1px solid var(--line);border-radius:7px;background:transparent;padding:5px 10px;font-size:14px}.evidence+.evidence{margin-top:24px;padding-top:20px;border-top:1px solid var(--line)}.evidence h3{font-size:16px;margin:0}.location{color:var(--secondary);font-size:14px;margin:2px 0 10px}.evidence blockquote{margin:0 0 12px;font-size:16px;line-height:1.85;white-space:pre-wrap;overflow-wrap:anywhere}.original{font-size:14px}.copy-fallback{width:100%;min-height:180px;font:14px/1.8 inherit;border:1px solid var(--line);padding:12px;border-radius:8px;background:var(--paper);color:var(--ink);resize:vertical}.dialog-hint{font-size:14px;color:var(--secondary);margin:0 0 12px}
+    @keyframes dialog-in{from{opacity:.5;transform:translateY(7px)}to{opacity:1;transform:translateY(0)}}
+    @media(min-width:900px){.panel{min-height:246px}}
+    @media(max-width:760px){.page{padding:24px 20px}.masthead{margin-bottom:26px}.header-note{font-size:12px}.intro{align-items:flex-start;flex-direction:column;gap:17px}.overview{grid-template-columns:1fr;gap:16px}.panel{padding:21px 20px 0}.panel h2{font-size:18px}.summary{font-size:17px}.actions{gap:7px}.footer{flex-direction:column;gap:4px;margin-top:19px}.panel-head{gap:10px;margin-bottom:12px}.context{font-size:14px}.action{font-size:13px;padding:8px 12px}}
+    @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+    @media print{body{background:white}.page{padding:0}.actions,.source-button,.footer,dialog{display:none!important}.overview{display:block}.panel{break-inside:avoid;margin-bottom:18px;border-radius:0}.disclosure{border-top:0}.detail-body{display:block!important}summary{display:none}h1{font-size:25px}}
+  </style>
+</head>
+<body>
+  <main class="page">
+    <header class="masthead">
+      <div class="brand"><span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M5 18V6h14M5 12h10" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/></svg></span>Fly Brief</div>
+      <span class="header-note">四个问题，看懂这次合作</span>
+    </header>
+    <div class="intro">
+      <div><h1 id="report-title"></h1><p class="context" id="context" hidden></p></div>
+      <div class="actions" aria-label="报告操作">
+        <button class="action" id="toggle-all" type="button">展开全部</button>
+        <button class="action copy" id="copy-summary" type="button">复制四块结论</button>
+      </div>
+    </div>
+    <p class="demo-note" id="demo-note" hidden>虚构演示 · 用于展示报告效果，不代表真实产品或合作要求。</p>
+    <div class="overview" id="overview"></div>
+    <footer class="footer"><p>先看结论，按需展开。点击「依据」可核对原文。</p><p class="feedback" id="feedback" role="status" aria-live="polite"></p></footer>
+    <noscript>此交互报告需要浏览器启用 JavaScript。内容保存在本地文件中，无需联网加载。</noscript>
+  </main>
+  <dialog id="evidence-dialog" aria-labelledby="dialog-title">
+    <div class="dialog-head"><h2 id="dialog-title">原文依据</h2><button class="close" id="close-dialog" type="button">关闭</button></div>
+    <div id="dialog-content"></div>
+  </dialog>
+  <script id="report-data" type="application/json">{"schema_version":1,"title":"随剪 · 口播拆条合作","context":"小红书 · 1 条竖屏视频 · 2026.10.30 发布","demo":true,"sources":[{"id":"product","title":"随剪合作 brief（虚构）","location":"第 1 节 · 产品是什么","excerpt":"用户导入一段长口播，工具按主题推荐可拆出的短片段，并生成字幕。创作者选片段、校对字幕后再导出，减少反复拖动时间轴找片段的步骤。推荐片段和字幕仍需人工检查。","url":"file:///D:/fly-Brief/examples/brief.md"},{"id":"focus","title":"随剪合作 brief（虚构）","location":"第 2 节 · 这次主推什么","excerpt":"本次只重点讲“按主题拆条”：从长口播里找到能单独讲清一个问题的短片段。字幕是辅助演示，不要把本次内容做成字幕功能盘点。","url":"file:///D:/fly-Brief/examples/brief.md"},{"id":"delivery","title":"随剪合作 brief（虚构）","location":"第 3 节 · 交付和时间","excerpt":"小红书发布 1 条 60–90 秒竖屏视频，必须真人出镜。2026 年 10 月 28 日 18:00 前交脚本，2026 年 10 月 30 日发布，时间按北京时间。脚本和成片各安排 1 轮集中修改。","url":"file:///D:/fly-Brief/examples/brief.md"},{"id":"must-show","title":"随剪合作 brief（虚构）","location":"第 4 节 · 必须展示","excerpt":"画面必须包含：导入自己的长口播、查看推荐片段、人工校对字幕、导出结果。发布文案须注明“品牌合作”，带话题 #随剪 和 #口播剪辑。建议选择你日常真的会处理的一段素材，不要求固定口播句式。","url":"file:///D:/fly-Brief/examples/brief.md"},{"id":"limits","title":"随剪合作 brief（虚构）","location":"第 5 节 · 不要这样表达","excerpt":"不能出现竞品名称或界面，不说“全自动不用检查”“字幕零错误”，也不要编造耗时或效率数据。演示素材须为自有或已获授权。","url":"file:///D:/fly-Brief/examples/brief.md"},{"id":"reference","title":"随剪合作 brief（虚构）","location":"第 6 节 · 参考与未定事项","excerpt":"参考入口交互验收链接：https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4 。这是公开测试视频，内容与产品无关，仅用于展示“brief 中有参考视频时直接提供入口”的交互；本演示未查看该视频，不做借鉴分析。","url":"file:///D:/fly-Brief/examples/brief.md"}],"sections":{"product":{"summary":{"text":"帮口播博主从一段长视频里找出能单独发布的短片段，选好、校对后导出。","kind":"fact","source_ids":["product"]},"details":[{"title":"怎么用？","items":[{"text":"导入长口播 → 查看按主题推荐的片段 → 选片段、校对字幕 → 导出。","kind":"fact","source_ids":["product"]}]},{"title":"它替你省了哪一步？","items":[{"text":"少做反复拖动时间轴找片段的工作。选片和字幕仍要人工检查。","kind":"fact","source_ids":["product"]}]}]},"promotion":{"summary":{"text":"重点推“按主题拆条”：长口播不用从头反复找片段。字幕只做辅助展示。","kind":"required","source_ids":["focus"]},"details":[{"title":"观众要记住什么？","items":[{"text":"一段长口播，可以先按主题找出适合独立讲清问题的片段。","kind":"fact","source_ids":["focus"]}]},{"title":"怎么让功能看得见？","items":[{"text":"先说清要找的那个问题，再展示推荐片段是否讲完整了它。少做菜单功能盘点。","kind":"suggestion","source_ids":["focus"]}]}]},"requirements":{"summary":{"text":"真人出镜，60–90 秒竖屏。10 月 28 日 18:00 前交脚本，30 日发布（北京时间）。","kind":"required","source_ids":["delivery"]},"highlights":[{"text":"必拍：导入、推荐片段、字幕校对、导出；用自有或已授权素材。","kind":"required","source_ids":["must-show","limits"]},{"text":"禁区：竞品露出、承诺零错误、编造效率数据。","kind":"required","source_ids":["limits"]}],"details":[{"title":"发布时不能漏什么？","items":[{"text":"小红书 1 条视频；文案注明“品牌合作”，带 #随剪、#口播剪辑。","kind":"required","source_ids":["delivery","must-show"]}]},{"title":"审稿和表达自由度？","items":[{"text":"脚本和成片各 1 轮集中修改；没有固定口播句式。","kind":"fact","source_ids":["delivery","must-show"]},{"text":"不说“全自动不用检查”“字幕零错误”。需要演示字幕人工校对。","kind":"required","source_ids":["limits","must-show"]}]},{"title":"需要确认","items":[{"text":"这条视频是否会投流或二次使用？请确认授权范围、期限，以及费用和付款安排。","kind":"unknown"}]}]},"video":{"summary":{"text":"从“长口播里找一条能发的片段”开场，再用自己的素材走完拆条、校对和导出。","kind":"suggestion","source_ids":["focus","must-show"]},"references":[{"title":"参考入口 · 公开测试片段","url":"https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4","status":"unviewed","source_ids":["reference"]}],"details":[{"title":"推荐怎么推进？","items":[{"text":"开头：真人说清今天想从哪段口播里，找出一个什么问题。","kind":"suggestion"},{"text":"中间：录屏展示导入和推荐片段；挑一条，说明为什么它能独立讲清楚。","kind":"suggestion"},{"text":"结尾：展示字幕人工校对和导出结果，给观众看最终得到的短片段。","kind":"suggestion"}]},{"title":"为什么选这个方向？","items":[{"text":"把主推功能放进一个具体任务，能顺带完成四个必拍动作。无需假设你的账号人设。","kind":"suggestion","source_ids":["focus","must-show"]}]},{"title":"拍之前准备什么？","items":[{"text":"找一段有清晰话题的自有口播。先试跑流程，保留真实结果，不预设能省多少时间。","kind":"suggestion"}]}]}}}</script>
+  <script>
+    (() => {
+      'use strict';
+      const data = JSON.parse(document.getElementById('report-data').textContent);
+      const definitions = [
+        ['product','这个产品到底是干嘛的？','了解怎么用'],
+        ['promotion','对方想让我推哪个功能？','看主推理由'],
+        ['requirements','对方的要求和限制？','看完整要求'],
+        ['video','我可以怎么做这条视频？','展开拍摄思路']
+      ];
+      const labels = {fact:'品牌信息',required:'品牌要求',suggestion:'创作建议',unknown:'待确认',conflict:'有冲突'};
+      const statuses = {viewed:'已查看',unviewed:'未查看 · 保留品牌提供的链接',unavailable:'无法访问 · 可自行打开原链接'};
+      const sources = new Map(data.sources.map(source => [source.id,source]));
+      const dialog = document.getElementById('evidence-dialog');
+      const dialogContent = document.getElementById('dialog-content');
+      const dialogTitle = document.getElementById('dialog-title');
+      const toggle = document.getElementById('toggle-all');
+      const disclosures = [];
+      let feedbackTimer;
+
+      function el(tag, className, text) {
+        const node = document.createElement(tag);
+        if (className) node.className = className;
+        if (text !== undefined) node.textContent = text;
+        return node;
+      }
+      function link(url, title, className) {
+        const anchor = el('a',className,title);
+        const parsed = new URL(url);
+        if (['https:','http:','file:'].includes(parsed.protocol)) anchor.href = url;
+        anchor.target = '_blank';
+        anchor.rel = 'noopener noreferrer';
+        return anchor;
+      }
+      function openDialog(title) {
+        dialogTitle.textContent = title;
+        dialogContent.replaceChildren();
+      }
+      function showEvidence(ids) {
+        openDialog('原文依据');
+        [...new Set(ids)].forEach(id => {
+          const source = sources.get(id);
+          const entry = el('section','evidence');
+          entry.append(el('h3','',source.title),el('p','location',source.location),el('blockquote','',source.excerpt));
+          if (source.url) entry.append(link(source.url,'打开原始资料 ↗','original'));
+          dialogContent.append(entry);
+        });
+        dialog.showModal();
+      }
+      function sourceButton(ids, context) {
+        if (!ids || !ids.length) return null;
+        const button = el('button','source-button','依据');
+        button.type = 'button';
+        button.setAttribute('aria-label',`查看依据：${context}`);
+        button.addEventListener('click',() => showEvidence(ids));
+        return button;
+      }
+      function content(record, tag, className) {
+        const node = el(tag,className);
+        node.append(el('span',`kind ${record.kind}`,labels[record.kind]),document.createTextNode(record.text));
+        const evidence = sourceButton(record.source_ids,record.text);
+        if (evidence) node.append(evidence);
+        return node;
+      }
+      function updateToggle() {
+        const allOpen = disclosures.length && disclosures.every(details => details.open);
+        toggle.textContent = allOpen ? '收起全部' : '展开全部';
+        toggle.setAttribute('aria-label',allOpen ? '收起全部详情' : '展开全部详情');
+        toggle.hidden = !disclosures.length;
+      }
+      document.getElementById('report-title').textContent = data.title;
+      if (data.context) {
+        document.getElementById('context').hidden = false;
+        document.getElementById('context').textContent = data.context;
+      }
+      document.getElementById('demo-note').hidden = !data.demo;
+      definitions.forEach(([key,title,action],index) => {
+        const section = data.sections[key];
+        const panel = el('section','panel');
+        panel.id = key;
+        panel.setAttribute('aria-labelledby',`heading-${key}`);
+        const head = el('div','panel-head');
+        const heading = el('h2','',title);
+        heading.id = `heading-${key}`;
+        const number = el('span','number',String(index+1).padStart(2,'0'));
+        number.setAttribute('aria-hidden','true');
+        head.append(number,heading);
+        panel.append(head,content(section.summary,'p','summary'));
+        if (section.highlights && section.highlights.length) {
+          const highlights = el('ul','highlights');
+          section.highlights.forEach(record => highlights.append(content(record,'li','')));
+          panel.append(highlights);
+        }
+        if (section.references && section.references.length) {
+          const references = el('div','references');
+          section.references.forEach(reference => {
+            const entry = el('div','reference');
+            entry.append(link(reference.url,`${reference.title} ↗`,''));
+            const state = el('p','ref-status',statuses[reference.status]);
+            state.append(sourceButton(reference.source_ids,reference.title));
+            entry.append(state);
+            if (reference.status === 'viewed' && reference.note) {
+              entry.append(content({text:reference.note,kind:'suggestion'},'p','ref-note'));
+            }
+            references.append(entry);
+          });
+          panel.append(references);
+        }
+        if (section.details && section.details.length) {
+          const details = el('details','disclosure');
+          details.id = `details-${key}`;
+          const summary = el('summary','');
+          summary.setAttribute('aria-label',`${action}：${title}`);
+          summary.append(el('span','',action));
+          const arrow = document.createElementNS('http://www.w3.org/2000/svg','svg');
+          arrow.setAttribute('viewBox','0 0 24 24');
+          arrow.setAttribute('class','disclosure-arrow');
+          arrow.setAttribute('aria-hidden','true');
+          const path = document.createElementNS('http://www.w3.org/2000/svg','path');
+          path.setAttribute('d','m6 9 6 6 6-6');
+          path.setAttribute('fill','none');
+          path.setAttribute('stroke','currentColor');
+          path.setAttribute('stroke-width','1.7');
+          path.setAttribute('stroke-linecap','round');
+          path.setAttribute('stroke-linejoin','round');
+          arrow.append(path);summary.append(arrow);
+          const body = el('div','detail-body');
+          section.details.forEach(branch => {
+            const group = el('section','branch');
+            const list = el('ul','');
+            branch.items.forEach(record => list.append(content(record,'li','')));
+            group.append(el('h3','',branch.title),list);
+            body.append(group);
+          });
+          details.append(summary,body);
+          details.addEventListener('toggle',updateToggle);
+          disclosures.push(details);
+          panel.append(details);
+        } else panel.append(el('div','empty-foot'));
+        document.getElementById('overview').append(panel);
+      });
+      const state = new URLSearchParams(location.search).get('state');
+      if (state === 'expanded') disclosures.forEach(details => { details.open = true; });
+      toggle.addEventListener('click',() => {
+        const open = !disclosures.every(details => details.open);
+        disclosures.forEach(details => { details.open = open; });
+        updateToggle();
+      });
+      updateToggle();
+      document.getElementById('close-dialog').addEventListener('click',() => dialog.close());
+      dialog.addEventListener('click',event => {
+        const rect = dialog.getBoundingClientRect();
+        if (event.target === dialog && (event.clientX < rect.left || event.clientX > rect.right || event.clientY < rect.top || event.clientY > rect.bottom)) dialog.close();
+      });
+      function plainSummary() {
+        return [data.title,...definitions.map(([key,title]) => {
+          const section = data.sections[key];
+          const lines = [`${title}\n[${labels[section.summary.kind]}] ${section.summary.text}`];
+          (section.highlights || []).forEach(item => lines.push(`[${labels[item.kind]}] ${item.text}`));
+          (section.references || []).forEach(ref => lines.push(`${ref.title}（${statuses[ref.status]}）：${ref.url}`));
+          return lines.join('\n');
+        })].join('\n\n');
+      }
+      document.getElementById('copy-summary').addEventListener('click',async () => {
+        const text = plainSummary();
+        const feedback = document.getElementById('feedback');
+        try {
+          await navigator.clipboard.writeText(text);
+          feedback.textContent = '已复制四块结论与关键要求';
+          clearTimeout(feedbackTimer);
+          feedbackTimer = setTimeout(() => { feedback.textContent = ''; },3500);
+        } catch {
+          openDialog('复制四块结论');
+          dialogContent.append(el('p','dialog-hint','浏览器未允许自动复制，可选中下方文字手动复制。'));
+          const area = el('textarea','copy-fallback');
+          area.value = text;area.readOnly = true;area.setAttribute('aria-label','四块结论');
+          dialogContent.append(area);dialog.showModal();area.focus();area.select();
+        }
+      });
+      window.addEventListener('beforeprint',() => disclosures.forEach(details => { details.dataset.wasOpen = String(details.open);details.open = true; }));
+      window.addEventListener('afterprint',() => disclosures.forEach(details => { details.open = details.dataset.wasOpen === 'true'; }));
+    })();
+  </script>
+</body>
+</html>
