@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>{{product_name}} · {{cooperation}}</title>
+  <style>
+    :root{color-scheme:light}*{box-sizing:border-box}body{margin:0;background:#fff;color:#1d1d1f;font-family:"Microsoft YaHei","Segoe UI",sans-serif}main{width:1056px;margin:0 auto;padding:58px 0 0}header{display:flex;justify-content:space-between;align-items:center;padding-bottom:30px;border-bottom:1px solid #242426}.identity{display:flex;align-items:baseline;gap:17px}h1{font-family:"SimSun",serif;font-size:34px;font-weight:700;letter-spacing:-1px;margin:0}.project{font-size:16px;color:#646466}.header-meta{display:flex;align-items:center;gap:26px;font-size:13px;color:#646466}.source{color:#343437;font-size:13px}.row{display:grid;grid-template-columns:273px 1fr;gap:24px;padding:32px 0 30px;border-bottom:1px solid #e6e6e6}.label{display:flex;align-items:baseline;gap:15px;padding-top:4px}.number{font-size:12px;color:#77777b;font-family:Consolas,monospace}h2{font-size:15px;font-weight:500;margin:0;line-height:1.65}.answer{position:relative;padding-right:32px;min-width:0}.answer p{margin:0;font-size:20px;line-height:1.85;letter-spacing:.1px}.answer strong{font-weight:600}.answer .quiet{font-size:15px;color:#646466;margin-top:7px;line-height:1.8}.expand{position:absolute;right:0;top:4px;font:23px/1 "Segoe UI",sans-serif;color:#737377}.requirements{padding-top:27px;padding-bottom:28px}.requirements .format{font-size:18px}.facts{margin-top:10px;display:grid;grid-template-columns:36px 1fr;gap:4px 13px;font-size:14px;line-height:1.9}.facts dt{color:#77777b}.facts dd{margin:0;color:#414144}.schedule{font-family:Consolas,"Microsoft YaHei",sans-serif;font-size:13px!important;color:#646466;margin-top:10px!important}.video{border-bottom:0;padding-bottom:0}.suggestion{font-size:11px;color:#77777b;border:1px solid #dedee0;border-radius:3px;padding:1px 4px;vertical-align:2px;margin-left:8px}.reference{display:flex;align-items:center;gap:12px;margin-top:15px;font-size:13px;color:#343437}.ref-status{font-size:12px;color:#77777b}.reference-name{border-bottom:1px solid #bbbbbf;padding-bottom:1px}
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <div class="identity"><h1>{{product_name}}</h1><span class="project">{{cooperation}}</span></div>
+      <div class="header-meta"><span>{{platform}}</span><span class="source">原 brief ↗</span></div>
+    </header>
+    <section class="row">
+      <div class="label"><span class="number">01</span><h2>{{q1}}</h2></div>
+      <div class="answer"><p>{{product}}</p><span class="expand" aria-hidden="true">+</span></div>
+    </section>
+    <section class="row">
+      <div class="label"><span class="number">02</span><h2>{{q2}}</h2></div>
+      <div class="answer"><p><strong>{{promotion}}</strong></p><p class="quiet">{{promotion_note}}</p><span class="expand" aria-hidden="true">+</span></div>
+    </section>
+    <section class="row requirements">
+      <div class="label"><span class="number">03</span><h2>{{q3}}</h2></div>
+      <div class="answer">
+        <p class="format">{{format}}</p>
+        <dl class="facts"><dt>必拍</dt><dd>{{shoot_1}} → {{shoot_2}} → {{shoot_3}} → {{shoot_4}}</dd><dt>禁区</dt><dd>{{limits}}</dd></dl>
+        <p class="schedule">{{dates}}</p><span class="expand" aria-hidden="true">+</span>
+      </div>
+    </section>
+    <section class="row video">
+      <div class="label"><span class="number">04</span><h2>{{q4}}<span class="suggestion">建议</span></h2></div>
+      <div class="answer"><p>{{video}}</p><p class="quiet">{{video_note}}</p><div class="reference"><span class="reference-name">{{reference}} ↗</span><span class="ref-status">{{reference_status}}</span></div><span class="expand" aria-hidden="true">+</span></div>
+    </section>
+  </main>
+</body>
+</html>
