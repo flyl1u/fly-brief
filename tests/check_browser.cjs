@@ -1,6 +1,5 @@
-/* Optional browser acceptance check. Requires Playwright and a local Chromium browser.
-   NODE_PATH may point at the host's bundled node_modules; no npm install is needed.
-   node tests/check_browser.cjs [--browser-channel msedge] [--out .qa/browser]
+/* Optional acceptance checks. Use the host's bundled Playwright via NODE_PATH.
+   node tests/check_browser.cjs --browser-channel msedge [--out .qa/document-browser]
 */
 'use strict';
 const assert = require('node:assert/strict');
@@ -8,127 +7,157 @@ const fs = require('node:fs/promises');
 const path = require('node:path');
 const { pathToFileURL } = require('node:url');
 const { chromium } = require('playwright');
-
 const args = process.argv.slice(2);
 const option = (name, fallback) => args.includes(name) ? args[args.indexOf(name) + 1] : fallback;
-const out = path.resolve(option('--out', '.qa/browser'));
-const report = pathToFileURL(path.resolve('examples/report.html')).href;
+const out = path.resolve(option('--out', '.qa/document-browser'));
 const channel = option('--browser-channel', undefined);
+const reportPath = path.resolve('examples/report.html');
+const report = pathToFileURL(reportPath).href;
 
 async function main() {
   await fs.mkdir(out, { recursive: true });
   const browser = await chromium.launch({ headless: true, ...(channel ? { channel } : {}) });
-  const checks = [];
-  const errors = [];
+  const checks = [], errors = [];
   try {
     const context = await browser.newContext({ viewport: { width: 1440, height: 900 } });
-    await context.grantPermissions(['clipboard-read', 'clipboard-write']);
     const page = await context.newPage();
     page.on('pageerror', error => errors.push(error.message));
     let remoteRequests = 0;
     page.on('request', request => { if (/^https?:/.test(request.url())) remoteRequests++; });
     await page.goto(report);
-    assert.equal(await page.locator('.panel').count(), 4);
+    await page.evaluate(() => document.fonts.ready);
+    assert.equal(await page.locator('.row').count(), 4);
     assert.equal(await page.locator('details[open]').count(), 0);
     assert.equal(await page.locator('.references a').isVisible(), true);
-    assert.equal(remoteRequests, 0, 'A local report must not fetch remote resources');
-    checks.push('Local file opens with four collapsed sections and a visible reference, without network requests');
+    assert.equal(remoteRequests, 0);
+    assert.equal(await page.evaluate(() => document.fonts.check('16px "Fly Sans"', '合作拍摄')), true);
+    assert.equal(await page.evaluate(() => document.fonts.check('34px "Fly Serif"', '随剪')), true);
+    checks.push('Standalone file opens with four collapsed questions, reference entry and offline Chinese fonts');
+
+    const videoBottom = await page.locator('#video').evaluate(node => node.getBoundingClientRect().bottom);
+    assert.ok(videoBottom <= 900, `Desktop overview must show all four answers; last row ends at ${videoBottom}`);
+    const visibleOverview = await page.locator('#overview').innerText();
+    assert.doesNotMatch(visibleOverview, /品牌信息|品牌要求|先看结论|点击「依据」/);
+    assert.match(visibleOverview, /人工校对字幕/);
+    assert.match(visibleOverview, /不露竞品/);
+    assert.match(visibleOverview, /10\.28 18:00/);
+    checks.push('Desktop fits all four answers and shows mandatory shots, restrictions and deadline without repeated identity labels');
 
     await page.locator('#details-product summary').click();
     assert.equal(await page.locator('details[open]').count(), 1);
+    await page.locator('#details-product summary[aria-label^="收起"]').waitFor();
     assert.equal(await page.locator('#details-product .detail-body').isVisible(), true);
     assert.equal(await page.locator('.summary:visible').count(), 4);
     await page.locator('#details-product summary').press('Enter');
     assert.equal(await page.locator('details[open]').count(), 0);
-    checks.push('An individual branch opens and closes with mouse and keyboard; other summaries stay visible');
+    checks.push('Plus disclosure works by mouse and keyboard, changes its accessible action and preserves all conclusions');
 
-    await page.locator('#toggle-all').click();
-    assert.equal(await page.locator('details[open]').count(), 4);
-    await page.locator('#toggle-all').click();
-    assert.equal(await page.locator('details[open]').count(), 0);
-    checks.push('Expand all and collapse all update every section');
+    await page.locator('#details-product summary').click();
+    await page.locator('#details-promotion summary').click();
+    assert.equal(await page.locator('details[open]').count(), 2);
+    await page.locator('#details-promotion summary').click();
+    assert.equal(await page.locator('#details-product').getAttribute('open'), '');
+    await page.locator('#details-product summary').click();
+    checks.push('Each row expands independently; closing one preserves another row’s open state');
 
-    await page.locator('#product .summary .source-button').click();
+    await page.locator('#open-sources').click();
     assert.equal(await page.locator('dialog').isVisible(), true);
+    assert.equal(await page.locator('dialog .evidence').count(), 6);
+    await page.locator('#evidence-dialog').evaluate(node => Promise.all(node.getAnimations().map(animation => animation.finished.catch(() => {}))));
+    await page.screenshot({ path: path.join(out, 'all-sources.png') });
+    await page.keyboard.press('Escape');
+    assert.equal(await page.locator('dialog').isVisible(), false);
+    assert.equal(await page.evaluate(() => document.activeElement.id), 'open-sources');
+    checks.push('One header source entry opens all passages; Escape closes the dialog and restores focus');
+
+    await page.locator('#details-product summary').click();
+    const citation = page.locator('#product .branch .source-button').first();
+    await citation.click();
+    assert.equal(await page.locator('dialog .evidence').count(), 1);
     assert.match(await page.locator('dialog blockquote').innerText(), /推荐片段和字幕仍需人工检查/);
     assert.match(await page.locator('dialog .location').innerText(), /第 1 节/);
     assert.match(await page.locator('dialog .original').getAttribute('href'), /^file:.*brief\.md$/);
-    await page.locator('dialog').evaluate(node => Promise.all(node.getAnimations().map(animation => animation.finished.catch(() => {}))));
+    await page.locator('#evidence-dialog').evaluate(node => Promise.all(node.getAnimations().map(animation => animation.finished.catch(() => {}))));
     await page.screenshot({ path: path.join(out, 'source-dialog.png') });
-    await page.keyboard.press('Escape');
-    assert.equal(await page.locator('dialog').isVisible(), false);
-    assert.equal(await page.evaluate(() => document.activeElement.classList.contains('source-button')), true);
-    checks.push('Source dialog shows the actual excerpt and location; Escape closes it and restores focus');
+    await page.locator('#close-dialog').click();
+    assert.equal(await citation.evaluate(node => node === document.activeElement), true);
+    await page.locator('#details-product summary').click();
+    checks.push('Expanded detail cites the exact source excerpt, location and original file; close returns to the cited item');
 
-    await page.locator('#copy-summary').click();
-    await page.locator('#feedback').filter({ hasText: '已复制' }).waitFor();
-    const clipboard = await page.evaluate(() => navigator.clipboard.readText());
-    assert.match(clipboard, /\[品牌要求\].*真人出镜/);
-    assert.match(clipboard, /必拍：导入、推荐片段、人工校对字幕、导出/);
-    assert.match(clipboard, /我可以怎么做这条视频/);
-    checks.push('Clipboard copy includes all four conclusions, critical requirements and source labels');
-
-    // Confirm the preserved link actually opens, with no request sent to its external host.
-    const suppliedReference = 'https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4';
-    await context.route(suppliedReference, route => route.fulfill({ contentType: 'text/plain', body: 'Reference navigation verified by a local test response.' }));
+    const referenceUrl = 'https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4';
+    await context.route(referenceUrl, route => route.fulfill({ contentType: 'text/plain', body: 'Local intercepted navigation check.' }));
     const popupEvent = page.waitForEvent('popup');
     await page.locator('.references a').click();
     const popup = await popupEvent;
     await popup.waitForLoadState();
-    assert.equal(popup.url(), suppliedReference);
+    assert.equal(popup.url(), referenceUrl);
     await popup.close();
-    checks.push('Reference opens its preserved URL in a new tab; external request is intercepted by the test');
+    checks.push('Reference opens its preserved URL in a new tab without fetching the external sample video');
 
-    for (const width of [390, 320]) {
+    for (const width of [390, 320, 768]) {
       await page.setViewportSize({ width, height: 844 });
       await page.reload();
+      await page.evaluate(() => document.fonts.ready);
       assert.equal(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth), true);
-      await page.screenshot({ path: path.join(out, `mobile-${width}.png`), fullPage: true });
-      await page.locator('#toggle-all').click();
+      const toggles = await page.locator('.disclosure-toggle').all();
+      for (const toggle of toggles) {
+        const box = await toggle.boundingBox();
+        if (width < 761) assert.ok(box.width >= 44 && box.height >= 44);
+      }
+      if (width !== 768) await page.screenshot({ path: path.join(out, `mobile-${width}.png`), fullPage: true });
+      for (const toggle of toggles) await toggle.click();
       assert.equal(await page.locator('details[open]').count(), 4);
       assert.equal(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth), true);
-      await page.screenshot({ path: path.join(out, `mobile-${width}-expanded.png`), fullPage: true });
+      if (width !== 768) await page.screenshot({ path: path.join(out, `mobile-${width}-expanded.png`), fullPage: true });
     }
-    checks.push('320 px and 390 px widths have no horizontal overflow, both collapsed and expanded');
+    checks.push('320, 390 and 768 px layouts have no horizontal overflow; phone disclosure targets are at least 44 px');
 
     await page.emulateMedia({ reducedMotion: 'reduce' });
-    assert.equal(await page.locator('.disclosure-arrow').first().evaluate(node => getComputedStyle(node).transitionDuration), '0s');
-    checks.push('Reduced-motion mode disables transition effects');
+    assert.equal(await page.locator('.expand-icon').first().evaluate(node => getComputedStyle(node, '::after').transitionDuration), '0s');
+    checks.push('Reduced-motion mode disables disclosure and dialog transitions');
 
-    const fallbackContext = await browser.newContext();
-    await fallbackContext.addInitScript(() => {
-      Object.defineProperty(navigator, 'clipboard', { configurable: true, value: {
-        writeText: () => Promise.reject(new Error('Denied for fallback testing')),
-      } });
-    });
-    const fallback = await fallbackContext.newPage();
-    fallback.on('pageerror', error => errors.push(error.message));
-    await fallback.goto(report);
-    await fallback.locator('#copy-summary').click();
-    await fallback.locator('.copy-fallback').waitFor();
-    assert.equal(await fallback.locator('.copy-fallback').getAttribute('readonly'), '');
-    assert.match(await fallback.locator('.copy-fallback').inputValue(), /我可以怎么做这条视频/);
-    checks.push('Denied clipboard access offers selectable text for manual copying');
+    await page.reload();
+    await page.locator('#details-product summary').click();
+    await page.evaluate(() => dispatchEvent(new Event('beforeprint')));
+    assert.equal(await page.locator('details[open]').count(), 4);
+    await page.evaluate(() => dispatchEvent(new Event('afterprint')));
+    assert.equal(await page.locator('details[open]').count(), 1);
+    assert.equal(await page.locator('#details-product').getAttribute('open'), '');
+    checks.push('Printing exposes details and restores the original disclosure state afterwards');
 
-    const rawHtml = await fs.readFile(path.resolve('examples/report.html'), 'utf8');
-    const sparse = { schema_version: 1, title: '信息未齐的合作', sources: [], sections: {} };
-    for (const key of ['product', 'promotion', 'requirements', 'video']) {
-      sparse.sections[key] = { summary: { text: '未提供，需确认。', kind: 'unknown' } };
+    const rawHtml = await fs.readFile(reportPath, 'utf8');
+    async function fixture(name, data) {
+      const destination = path.join(out, `${name}.html`);
+      const payload = JSON.stringify(data).replace(/</g, '\\u003c');
+      await fs.writeFile(destination, rawHtml.replace(/(<script id="report-data" type="application\/json">)[\s\S]*?(<\/script>)/, (_, open, close) => open + payload + close));
+      await page.goto(pathToFileURL(destination).href);
+      await page.evaluate(() => document.fonts.ready);
     }
-    const sparseFile = path.join(out, 'sparse.html');
-    await fs.writeFile(sparseFile, rawHtml.replace(/(<script id="report-data" type="application\/json">)[\s\S]*?(<\/script>)/, (_, open, close) => open + JSON.stringify(sparse) + close));
-    await fallback.goto(pathToFileURL(sparseFile).href);
-    assert.equal(await fallback.locator('.panel').count(), 4);
-    assert.equal(await fallback.locator('#toggle-all').isVisible(), false);
-    assert.equal(await fallback.locator('.references').count(), 0);
-    checks.push('Sparse report keeps four questions and omits unavailable detail and reference controls');
+    const sparse = { schema_version: 1, title: '信息未齐的合作', sources: [], sections: {} };
+    for (const key of ['product', 'promotion', 'requirements', 'video']) sparse.sections[key] = { summary: { text: '未提供，需确认。', kind: 'unknown' } };
+    await fixture('sparse', sparse);
+    assert.equal(await page.locator('.row').count(), 4);
+    assert.equal(await page.locator('.disclosure-toggle').count(), 0);
+    assert.equal(await page.locator('#open-sources').isVisible(), false);
+    assert.equal(await page.locator('.references').count(), 0);
+    assert.equal(await page.locator('.section-tag.unknown').count(), 4);
+    checks.push('Sparse reports keep all four questions and explicit unknowns, with no dummy source or expansion controls');
+
+    const long = structuredClone(sparse);
+    long.title = '龘與繁體字很長的合作名稱'.repeat(4);
+    long.subtitle = '需要自然换行的产品合作'.repeat(3);
+    long.sections.product.summary.text = '这是一条没有空格的很长的产品说明'.repeat(30);
+    long.sections.video.summary = { kind: 'suggestion', text: '<img src=x onerror="window.reportInjected=true">请按真实任务演示。' };
+    await fixture('long-text', long);
+    assert.equal(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth), true);
+    assert.equal(await page.locator('.summary img').count(), 0);
+    assert.equal(await page.evaluate(() => window.reportInjected), undefined);
+    checks.push('Long names and arbitrary Chinese wrap naturally; untrusted markup remains inert text');
 
     assert.deepEqual(errors, []);
     checks.push('No uncaught browser errors');
     await fs.writeFile(path.join(out, 'results.json'), JSON.stringify({ passed: checks.length, checks, errors }, null, 2));
     console.log(JSON.stringify({ passed: checks.length, checks }, null, 2));
-  } finally {
-    await browser.close();
-  }
+  } finally { await browser.close(); }
 }
 main().catch(error => { console.error(error); process.exitCode = 1; });

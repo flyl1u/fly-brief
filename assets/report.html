@@ -98,7 +98,7 @@
         if(labels[section.summary.kind]) labelText.append(el('span',`section-tag ${section.summary.kind}`,labels[section.summary.kind]));
         label.append(number,labelText);row.append(label);
         const answer=el('div','answer');answer.append(content(section.summary,'p','summary',false,false));
-        if(section.note) answer.append(content(section.note,'p','note'));
+        if(section.note) answer.append(content(section.note,'p','note',false,section.note.kind!==section.summary.kind));
         if(section.highlights?.length){const list=el('ul','highlights');section.highlights.forEach(record=>{const item=el('li',record.label==='时间'?'schedule':'');if(record.label) item.append(el('span','highlight-label',record.label));item.append(content(record,'span','highlight-text'));list.append(item);});answer.append(list);}
         if(section.references?.length){const references=el('div','references');section.references.forEach(reference=>{const entry=el('div','reference');entry.append(link(reference.url,`${reference.title} ↗`,''));if(statuses[reference.status]) entry.append(el('span','ref-status',statuses[reference.status]));references.append(entry);});answer.append(references);}
         const ids=sourceIds(section);const referenceNotes=(section.references||[]).filter(reference=>reference.status==='viewed'&&reference.note);
@@ -107,7 +107,7 @@
           const toggle=el('summary','disclosure-toggle');toggle.setAttribute('aria-label',`展开：${title}`);toggle.title='展开';
           const icon=el('span','expand-icon');icon.setAttribute('aria-hidden','true');toggle.append(icon);
           const body=el('div','detail-body');
-          (section.details||[]).forEach(branch=>{const group=el('section','branch');const list=el('ul','');branch.items.forEach(item=>list.append(content(item,'li','',true)));group.append(el('h3','',branch.title),list);body.append(group);});
+          (section.details||[]).forEach(branch=>{const group=el('section','branch');const list=el('ul','');branch.items.forEach(item=>list.append(content(item,'li','',true,item.kind!==section.summary.kind)));group.append(el('h3','',branch.title),list);body.append(group);});
           if(referenceNotes.length){const group=el('section','branch');group.append(el('h3','','参考怎么用？'));const list=el('ul','');referenceNotes.forEach(reference=>list.append(content({text:`${reference.title}：${reference.note}`,kind:'suggestion',source_ids:reference.source_ids},'li','',true)));group.append(list);body.append(group);}
           if(ids.length){const evidence=el('p','section-evidence');evidence.append(sourceButton(ids,title,'本节原文'));body.append(evidence);}
           details.append(toggle,body);details.addEventListener('toggle',()=>{const action=details.open?'收起':'展开';toggle.setAttribute('aria-label',`${action}：${title}`);toggle.title=action;});disclosures.push(details);answer.append(details);
