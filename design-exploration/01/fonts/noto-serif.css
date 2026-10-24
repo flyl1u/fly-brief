@@ -1,0 +1,14 @@
+@font-face {
+  font-family: 'Noto Serif SC';
+  font-style: normal;
+  font-weight: 600;
+  font-display: block;
+  src: url(./fonts/noto-serif-0.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Noto Serif SC';
+  font-style: normal;
+  font-weight: 700;
+  font-display: block;
+  src: url(./fonts/noto-serif-1.ttf) format('truetype');
+}

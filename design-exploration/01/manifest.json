@@ -10,7 +10,7 @@
       "id": "document",
       "name": "白纸文档",
       "concept": "像读一张已经划过重点的合作单，四个答案沿一条阅读轴展开。",
-      "typography": "宋体标题 34px，微软雅黑正文 20px；问题 15px，数字等宽。",
+      "typography": "Noto Serif SC 标题 34px，Noto Sans SC 正文 20px；问题 15px，数字等宽。",
       "palette": ["#FFFFFF", "#1D1D1F", "#646466", "#E6E6E6"],
       "traits": ["纵向四行", "无卡片", "黑白排版"],
       "source": "01-document.html"
@@ -19,7 +19,7 @@
       "id": "workspace",
       "name": "分栏工作台",
       "concept": "左边弄懂产品，右边直接安排怎么拍；主推功能和必拍流程各有落点。",
-      "typography": "微软雅黑与 Segoe UI；主推 34px，结论 21–25px，时间数字用 Consolas。",
+      "typography": "Noto Sans SC；主推 34px，结论 21–25px，时间数字用 Consolas。",
       "palette": ["#F3F5F8", "#273C61", "#FFFFFF", "#DCE2EA"],
       "traits": ["左右非对称", "主推功能大字", "横向拍摄流程"],
       "source": "02-workspace.html"
@@ -28,7 +28,7 @@
       "id": "branches",
       "name": "分支导图",
       "concept": "从一次合作出发，四条答案向右展开；不需要拖动画布。",
-      "typography": "等线与 Segoe UI；根节点 36px，问题 16px，结论 22px。",
+      "typography": "Noto Sans SC 轻字重；根节点 36px，问题 16px，结论 22px。",
       "palette": ["#F4F7F2", "#36583F", "#243129", "#C9D6C9"],
       "traits": ["四条固定分支", "无卡片容器", "连接关系可视化"],
       "source": "03-branches.html"

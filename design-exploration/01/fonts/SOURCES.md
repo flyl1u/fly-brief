@@ -1,0 +1,1 @@
+Preview glyph subsets obtained from the official Google Fonts API for Noto Sans SC and Noto Serif SC. Both use the SIL Open Font License (OFL.txt). Only the fictional fixture glyphs are included; a production template needs a full-font or system-font strategy after selection. No font is fetched when opening the previews.
