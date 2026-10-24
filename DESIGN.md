@@ -16,15 +16,15 @@ North star: 打开能复述合作，展开能开始构思视频。
 - Header contains only product/title, optional cooperation subtitle and the original-brief entry. No demonstration marker or separate platform label, as requested in the browser annotations. No toolbar or tutorial footer. Sources are in the header and expanded details, not appended repeatedly to default summaries.
 - Default content is short. Critical obligations cannot be collapsed, truncated or hidden in tooltips to fit a viewport. Reference video links belong in the fourth panel's default view.
 - Show source excerpts on demand in a native dialog with keyboard close and focus return. Noto Sans SC and Noto Serif SC are embedded from local, licensed WOFF2 assets. Opening the standalone report requires no remote libraries, images, fonts or analytics.
-- All four summaries use regular weight. Expanded headings are bold; each capability occupies its own dash-marked list item. Use direct headings and enough words to distinguish similar concepts.
+- All four summaries use regular weight. Expanded headings are bold; each capability occupies its own dash-marked list item. Explain inputs, processing, outputs, concrete uses and relevant conditions without inventing unsupported behavior. The default reading budget does not constrain necessary expanded detail.
 - Inline citations read `[原文]`. The dialog emphasizes the source document name, followed by the secondary location and normal-weight excerpt; no generic heading competes with the source name.
-- The video section offers a few distinct directions and short outlines, normally 2–3. It does not select the creator's topic or supply dialogue, detailed scripts or finished content.
+- The video section offers 2–3 concrete topic choices. Each heading is a topic title; four items cover creator perspective, promoted features, a specific pain point, and topic details (case, materials, feature use, output and video progression). Options differ in the task or intended use, not just feature names or presentation order. Unknown identities are marked as proposed scenarios. It stops before dialogue, shot-by-shot scripts or finished content.
 - Three restrained interaction cues: button press feedback, plus-to-minus transition and source-dialog entrance. Respect reduced-motion settings. Reading never waits for an entrance animation.
 - No additional summary module, invented brand claims, decorative charts, canvas panning, autoplay video, editing controls or backend.
 
 Development sample content must be explicitly identified as fictional. Client output has no developer notes. QA evidence and results are recorded after implementation.
 
-Current readability validation: 12 Python tests, skill validation and 16 browser checks pass. Desktop and phone overview, expanded capability/direction lists and source dialogs were visually checked. The fictional previews are regenerated from the fixed template; real client artifacts remain in ignored local output.
+Current readability validation: 12 Python tests, skill validation and 16 browser checks pass. The concrete-topic update also passed 8 local checks on the private report. Desktop and phone expanded product explanations and concrete topic choices were visually checked; 1440, 768, 390 and 320 px report layouts have no horizontal overflow. The fictional previews are regenerated from the fixed template; real client artifacts remain in ignored local output. This validates structure and interaction, not the actual behavior of any promoted product.
 
 ## Historical verification · initial card layout
 

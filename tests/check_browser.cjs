@@ -104,11 +104,11 @@ async function main() {
     await page.locator('#details-video summary').click();
     assert.equal(await page.locator('#video .branch').count(), 3);
     for (const direction of await page.locator('#video .branch').all()) {
-      assert.equal(await direction.locator('li').count(), 2);
+      assert.equal(await direction.locator('li').count(), 4);
     }
     await page.screenshot({ path: path.join(out, 'desktop-video-expanded.png'), fullPage: true });
     await page.locator('#details-video summary').click();
-    checks.push('Video suggestions expose several separate directions with short outlines');
+    checks.push('Video suggestions expose separate topic titles with creator perspective, feature use, pain point and case details');
 
     const referenceUrl = 'https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4';
     await context.route(referenceUrl, route => route.fulfill({ contentType: 'text/plain', body: 'Local intercepted navigation check.' }));
