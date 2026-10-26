@@ -4,27 +4,17 @@
   <img src="./assets/readme/hero.svg" width="100%" alt="Fly Brief — turn a brand brief into four clear answers and concrete video ideas.">
 </p>
 
-Fly Brief is an agent skill for creators working with brands. Give your agent the brief and supporting material; get a local HTML report explaining the product, the promotion, the requirements, and specific video topics you can choose from.
+**A brief is supposed to be a short task overview. So why do brands send a bloated wall of text and call it a brief?**
+
+fly-Brief is an agent skill for creators. Give your agent the brief and supporting material, and get a concise, visual HTML report you can open locally: what the product does, what to promote, the requirements, and concrete video topics to choose from—all clearly laid out.
 
 [Install](#install) · [First use](#first-use) · [Try the example](#try-the-example)
 
 ## See the result
 
+This is a local HTML page created by an agent using fly-Brief. ***In the actual report, click the plus sign to expand each section for more detail***, or follow the source links to the original material. Expanded brand-brief content isn't shown in this public preview.
+
 <img src="./examples/preview-desktop.png" width="100%" alt="Fictional brand brief shown as four report sections, with mandatory shots, restrictions, and deadlines visible before expansion.">
-
-This is a **fictional example**, not a client report. The report interface and default writing are currently in Chinese.
-
-<details>
-<summary>See the mobile layout and source excerpts</summary>
-
-<p>
-  <img src="./examples/preview-mobile.png" width="280" alt="The same four questions stacked vertically on a narrow phone screen.">
-</p>
-<p>
-  <img src="./examples/preview-source.png" width="100%" alt="An original-source dialog shows the document name, passage location, exact excerpt, and original-file link.">
-</p>
-
-</details>
 
 ## Four questions, answered
 
@@ -35,7 +25,7 @@ This is a **fictional example**, not a client report. The report interface and d
 | What are the requirements? | Mandatory shots, wording, restrictions, deadlines, and unresolved issues. |
 | What could this video be? | Concrete topics with a title, creator perspective, promoted features, pain point, and case details. |
 
-The overview stays concise. Expand a section for detail; important shooting requirements remain visible while collapsed. Source buttons open the supporting passages, so you can check a claim without searching through the brief again.
+**Read the short conclusions first, then expand for the explanation.** Important shooting requirements remain visible while collapsed; `[原文]` opens the supporting passages, so you can check a claim without searching through the brief again.
 
 Video ideas name a person, a problem, the material to prepare, and a useful result. Each explains how the video could develop, while leaving the full script to you.
 
