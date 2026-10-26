@@ -8,11 +8,11 @@
 
 fly-Brief is an agent skill for creators. Give your agent the brief and supporting material, and get a concise, visual HTML report you can open locally: what the product does, what to promote, the requirements, and concrete video topics to choose from—all clearly laid out.
 
-[Install](#install) · [First use](#first-use) · [Try the example](#try-the-example)
+[Live preview](https://flyl1u.github.io/fly-brief/) · [Install](#install) · [First use](#first-use) · [Try the example](#try-the-example)
 
 ## See the result
 
-This is a local HTML page created by an agent using fly-Brief. ***In the actual report, click the plus sign to expand each section for more detail***, or follow the source links to the original material. Expanded brand-brief content isn't shown in this public preview.
+This is a local HTML page created by an agent using fly-Brief. ***Click the plus sign to expand each section for more detail***, or follow the source links to the original material. Real briefs cannot be shared publicly, so this example uses a fictional brief. The screenshot below is static; open the [live preview](https://flyl1u.github.io/fly-brief/) to explore the report.
 
 <img src="./examples/preview-desktop.png" width="100%" alt="Fictional brand brief shown as four report sections, with mandatory shots, restrictions, and deadlines visible before expansion.">
 
@@ -31,15 +31,14 @@ Video ideas name a person, a problem, the material to prepare, and a useful resu
 
 ## Install
 
-With Node.js available, install through the [Skills CLI](https://github.com/vercel-labs/skills):
+Send this request to an agent that supports skills and let it handle the installation:
 
-```sh
-npx skills add flyl1u/fly-brief --skill fly-brief
+```text
+Please install the fly-brief skill from https://github.com/flyl1u/fly-brief
+and configure it for this agent's skill directory and setup.
 ```
 
-Choose your agent when prompted. Add `-g` if you want the skill available across projects. For agents that load skill folders directly, clone this repository into the agent's skill directory; keep `SKILL.md`, `scripts/`, `assets/`, and `references/` together.
-
-The renderer requires **Python 3.10+** and uses only the standard library. Reading PDFs, slides, images, or protected links depends on the extraction tools and access available to your agent.
+Generating reports requires **Python 3.10+**; your agent can check the environment. Reading attachments and links uses the tools and access already available to the agent.
 
 ## First use
 
@@ -57,6 +56,8 @@ The agent reads the material, writes source-linked report data, validates it, an
 **The generated report works offline:** it needs no build step, remote library, API key, or running server. Original-file and reference-video links still need their files or network access. Running your agent may have its own model and tool requirements.
 
 ## Try the example
+
+[Open the fictional Suijian brief report](https://flyl1u.github.io/fly-brief/) to expand all four sections and check their sources.
 
 Clone the repository and run from its root:
 

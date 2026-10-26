@@ -1,0 +1,63 @@
+name: Deploy demo to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - .github/workflows/pages.yml
+      - examples/report.json
+      - examples/brief.md
+      - assets/report.html
+      - assets/fonts/**
+      - scripts/render_report.py
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v6
+      - name: Configure GitHub Pages
+        id: pages
+        uses: actions/configure-pages@v5
+      - name: Prepare the fictional demo
+        env:
+          PAGES_BASE_URL: ${{ steps.pages.outputs.base_url }}
+        run: |
+          python - <<'PY'
+          import json
+          import os
+          import shutil
+          from pathlib import Path
+          from scripts.render_report import render_html, validate_report
+
+          examples = Path("examples")
+          report = json.loads((examples / "report.json").read_text(encoding="utf-8"))
+          for source in report["sources"]:
+              source.pop("path")
+              source["url"] = os.environ["PAGES_BASE_URL"].rstrip("/") + "/brief.md"
+          data, _ = validate_report(report, examples)
+          site = Path("_site")
+          site.mkdir()
+          (site / "index.html").write_text(render_html(data), encoding="utf-8")
+          shutil.copyfile(examples / "brief.md", site / "brief.md")
+          PY
+      - name: Upload the demo
+        uses: actions/upload-pages-artifact@v4
+        with:
+          path: _site
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

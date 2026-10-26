@@ -8,8 +8,8 @@
 fly-Brief 是给博主用的 agent skill，只需把 brief 和补充材料交给 agent，你就可以得到一份本地的精简可视化 HTML 报告：产品做什么、这次推什么、有哪些要求，以及可以选择的具体视频选题，看都看得一清二楚
 
 ## 先看效果
-这是一份由 agent 使用 fly-Brief 处理过过的本地 HTML 网页，***其中点击加号可以展开观看每个部分更加详细的部分***，也可以直接跳转到对应原文，由于品牌方的bf不便于演示，因此这里没法展开
-[在线预览](#试跑示例)
+这是一份由 agent 使用 fly-Brief 处理过过的本地 HTML 网页，***其中点击加号可以展开观看每个部分更加详细的部分***，也可以直接跳转到对应原文，由于真实bf不方便展示，此为模拟的bf报告，因此这里没法展开 [在线预览](https://flyl1u.github.io/fly-brief/)
+
 <img src="./examples/preview-desktop.png" width="100%" alt="虚构 brief 被整理为四块报告，收起时仍能看到必拍画面、禁区和交付时间。">
 
 ## 四个问题，读完就清楚
@@ -27,15 +27,14 @@ fly-Brief 是给博主用的 agent skill，只需把 brief 和补充材料交给
 
 ## 安装
 
-有 Node.js 时，通过 [Skills CLI](https://github.com/vercel-labs/skills) 安装：
+将下面的请求发送给支持 skill 的 agent，由它完成安装：
 
-```sh
-npx skills add flyl1u/fly-brief --skill fly-brief
+```text
+请从 https://github.com/flyl1u/fly-brief 安装 fly-brief skill，
+并按照当前 agent 的技能目录和配置方式完成设置。
 ```
 
-按提示选择你的 agent。希望跨项目使用时，加上 `-g`。如果你的 agent 直接加载 skill 文件夹，也可以把仓库克隆到它的技能目录；请保留 `SKILL.md`、`scripts/`、`assets/` 和 `references/` 的相对位置。
-
-生成器需要 **Python 3.10+**，只使用标准库。读取 PDF、幻灯片、图片或需要登录的链接，取决于 agent 已有的提取工具和访问权限。
+生成报告需要 **Python 3.10+**；可让 agent 检查当前环境。读取附件和链接时，使用 agent 已有的工具与访问权限。
 
 ## 开始使用
 
@@ -53,6 +52,8 @@ Agent 会读取材料，整理带来源的数据，校验后填入固定模板�
 **生成后的报告可离线打开**：不需要构建、远程库、API Key 或运行中的服务。原始文件和参考视频链接仍需要对应文件或网络；运行 agent 本身可能需要模型和工具配置。
 
 ## 试跑示例
+
+[在线预览“随剪”模拟 brief 报告](https://flyl1u.github.io/fly-brief/)，可以直接展开四个部分并查看来源。
 
 克隆仓库，在根目录执行：
 
