@@ -8,7 +8,7 @@
 fly-Brief 是给博主用的 agent skill，只需把 brief 和补充材料交给 agent，你就可以得到一份本地的精简可视化 HTML 报告：产品做什么、这次推什么、有哪些要求，以及可以选择的具体视频选题，看都看得一清二楚
 
 ## 先看效果
-这是一份由 agent 使用 fly-Brief 处理过过的本地 HTML 网页，***其中点击加号可以展开观看每个部分更加详细的部分***，也可以直接跳转到对应原文，由于真实bf不方便展示，此为模拟的bf报告，因此这里没法展开 [在线预览](https://flyl1u.github.io/fly-brief)
+这是一份由 agent 使用 fly-Brief 处理过过的本地 HTML 网页，***其中点击加号可以展开观看每个部分更加详细的部分***，也可以直接跳转到对应原文，由于真实bf不方便展示，此为模拟的bf报告，[在线体验](https://flyl1u.github.io/fly-brief)
 
 <img src="./examples/preview-desktop.png" width="100%" alt="虚构 brief 被整理为四块报告，收起时仍能看到必拍画面、禁区和交付时间。">
 
