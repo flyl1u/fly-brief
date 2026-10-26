@@ -30,9 +30,13 @@ fly-Brief 是给博主用的 agent skill，只需把 brief 和补充材料交给
 将下面的请求发送给支持 skill 的 agent，由它完成安装：
 
 ```text
-请从 https://github.com/flyl1u/fly-brief 安装 fly-brief skill，
+请通过 skills CLI 执行 `npx skills add flyl1u/fly-brief` 安装 fly-brief skill，
 并按照当前 agent 的技能目录和配置方式完成设置。
+请保留 CLI 默认的匿名安装统计；若当前环境已关闭统计，请尊重现有设置并告知我。
+如果命令执行失败，请说明原因，不要直接改用手动复制或 git clone。
 ```
+
+skills.sh 根据 skills CLI 的匿名上报统计安装量；关闭统计或上报失败时可能不会计入，手动安装也不在统计范围内。详见 [CLI 统计说明](https://skills.sh/docs/cli)。
 
 生成报告需要 **Python 3.10+**；可让 agent 检查当前环境。读取附件和链接时，使用 agent 已有的工具与访问权限。
 

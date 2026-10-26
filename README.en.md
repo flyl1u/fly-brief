@@ -34,9 +34,13 @@ Video ideas name a person, a problem, the material to prepare, and a useful resu
 Send this request to an agent that supports skills and let it handle the installation:
 
 ```text
-Please install the fly-brief skill from https://github.com/flyl1u/fly-brief
+Please install the fly-brief skill by running `npx skills add flyl1u/fly-brief` through the skills CLI
 and configure it for this agent's skill directory and setup.
+Keep the CLI's default anonymous installation telemetry; if telemetry is already disabled in this environment, respect that setting and let me know.
+If the command fails, explain why instead of switching directly to manual copying or git clone.
 ```
+
+skills.sh counts installations through anonymous skills CLI telemetry. Disabled or failed telemetry may leave an installation uncounted, and manual installations are outside these counts. See the [CLI telemetry documentation](https://skills.sh/docs/cli).
 
 Generating reports requires **Python 3.10+**; your agent can check the environment. Reading attachments and links uses the tools and access already available to the agent.
 
