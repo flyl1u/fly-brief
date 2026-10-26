@@ -1,4 +1,4 @@
 interface:
-  display_name: "Fly Brief · 合作速读"
+  display_name: "Fly Brief"
   short_description: "把品牌合作 brief 变成四块可展开、能追溯原文的本地交互报告"
   default_prompt: "使用 $fly-brief 读懂这份合作 brief，用大白话提炼四个问题，并生成可以本地打开的交互 HTML。"
