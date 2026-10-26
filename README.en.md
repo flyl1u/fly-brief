@@ -8,11 +8,11 @@
 
 fly-Brief is an agent skill for creators. Give your agent the brief and supporting material, and get a concise, visual HTML report you can open locally: what the product does, what to promote, the requirements, and concrete video topics to choose from—all clearly laid out.
 
-[Live preview](https://flyl1u.github.io/fly-brief/) · [Install](#install) · [First use](#first-use) · [Try the example](#try-the-example)
+[Live preview](https://flyl1u.github.io/fly-brief) · [Install](#install) · [First use](#first-use) · [Try the example](#try-the-example)
 
 ## See the result
 
-This is a local HTML page created by an agent using fly-Brief. ***Click the plus sign to expand each section for more detail***, or follow the source links to the original material. Real briefs cannot be shared publicly, so this example uses a fictional brief. The screenshot below is static; open the [live preview](https://flyl1u.github.io/fly-brief/) to explore the report.
+This is a local HTML page created by an agent using fly-Brief. ***Click the plus sign to expand each section for more detail***, or follow the source links to the original material. Real briefs cannot be shared publicly, so this example uses a fictional brief. The screenshot below is static; open the [live preview](https://flyl1u.github.io/fly-brief) to explore the report.
 
 <img src="./examples/preview-desktop.png" width="100%" alt="Fictional brand brief shown as four report sections, with mandatory shots, restrictions, and deadlines visible before expansion.">
 
@@ -57,7 +57,7 @@ The agent reads the material, writes source-linked report data, validates it, an
 
 ## Try the example
 
-[Open the fictional Suijian brief report](https://flyl1u.github.io/fly-brief/) to expand all four sections and check their sources.
+[Open the fictional Suijian brief report](https://flyl1u.github.io/fly-brief) to expand all four sections and check their sources.
 
 Clone the repository and run from its root:
 
