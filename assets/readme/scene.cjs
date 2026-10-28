@@ -7,33 +7,24 @@ module.exports = ({draw: d, sceneDir}) => {
   const sans = 'Microsoft YaHei, PingFang SC, Noto Sans CJK SC, sans-serif';
   const hand = 'Comic Sans MS, Segoe Print';
   const nodes = [
-    {name:'Claude Code', file:'claudecode-color.svg', cx:660, cy:125, fill:'#F6DFD2', rotate:-4},
-    {name:'Codex', file:'codex.svg', cx:805, cy:116, fill:'#DDE8DE', rotate:3},
-    {name:'Kimi', file:'kimi-color.svg', cx:950, cy:106, fill:'#DFEAFA', rotate:-3},
-    {name:'WorkBuddy', file:'workbuddy-color.svg', cx:660, cy:486, fill:'#DDEDE2', rotate:3},
-    {name:'Cursor', file:'cursor.svg', cx:805, cy:505, fill:'#E8E2EF', rotate:-4},
-    {name:'Gemini CLI', file:'gemini-color.svg', cx:950, cy:519, fill:'#DFEAFA', rotate:3},
+    {name:'Claude Code', file:'claudecode-color.svg', cx:660, cy:140, fill:'#F6DFD2', rotate:-4},
+    {name:'Codex', file:'codex.svg', cx:835, cy:140, fill:'#DDE8DE', rotate:3},
+    {name:'Kimi', file:'kimi-color.svg', cx:660, cy:315, fill:'#DFEAFA', rotate:-3},
+    {name:'WorkBuddy', file:'workbuddy-color.svg', cx:835, cy:315, fill:'#DDEDE2', rotate:3},
+    {name:'Cursor', file:'cursor.svg', cx:660, cy:490, fill:'#E8E2EF', rotate:-4},
+    {name:'Gemini CLI', file:'gemini-color.svg', cx:835, cy:490, fill:'#DFEAFA', rotate:3},
   ];
 
-  // All six paths finish horizontally at the left edge of the skill.
-  // Nested curves and distinct landing points keep the lines apart.
-  const connections = [
-    {from:[660,217], lead:[740,290], to:[979,310]},
-    {from:[805,207], lead:[805,258], to:[979,288]},
-    {from:[950,195], lead:[950,239], to:[979,266]},
-    {from:[660,427], lead:[740,350], to:[979,336]},
-    {from:[805,447], lead:[805,387], to:[979,358]},
-    {from:[950,460], lead:[950,416], to:[979,380]},
-  ];
-  const incomingArrow = ({from,lead,to:[x,y]}) => {
-    const curve = `M${from.join(' ')} C${lead.join(' ')} ${x-70} ${y} ${x} ${y}`;
-    return d.path(curve,{color:'#4D5147',width:2.9})
-      + `<g transform="translate(0 3)">${d.path(curve,{color:'#4D5147',width:1.1,opacity:.35})}</g>`
-      + d.path(`M${x-13} ${y-7} L${x} ${y} L${x-13} ${y+7}`,{color:'#4D5147',width:2.9});
-  };
-  const hub = d.box({x:1004,y:239,w:185,h:168,fill:'#F4D786',rotate:-2,seed:11})
-    + d.image({file:path.join(sceneDir,'..','favicon.svg'),x:1042,y:249,w:110,h:110,alt:'fly-brief'})
-    + d.path('M1158 218 l8 -13 M1181 228 l16 -4 M1138 210 l-1 -15', {color:'#BD9744',width:2.7});
+  // A light brace groups the six hosts into one shared input.
+  // One arrow keeps the skill's left edge clear at README scale.
+  const inputs = d.path('M917 91 Q944 89 943 116 L941 282 Q941 307 955 322 Q941 337 941 362 L944 536 Q945 560 919 560',
+      {color:'#777B6E',width:2.7})
+    + d.path('M921 96 Q938 95 938 117 L937 280 M938 363 L940 534 Q940 554 920 555',
+      {color:'#777B6E',width:1,opacity:.3})
+    + d.arrow({from:[968,322],to:[1016,322],bend:-1,width:3.1,head:15});
+  const hub = d.box({x:1040,y:239,w:185,h:168,fill:'#F4D786',rotate:-2,seed:11})
+    + d.image({file:path.join(sceneDir,'..','favicon.svg'),x:1078,y:249,w:110,h:110,alt:'fly-brief'})
+    + d.path('M1194 218 l8 -13 M1217 228 l16 -4 M1174 210 l-1 -15', {color:'#BD9744',width:2.7});
 
   const report = d.box({x:1338,y:188,w:254,h:284,fill:'#E7ECDD',rotate:4,seed:3})
     + d.box({x:1327,y:177,w:254,h:284,fill:'#FFFDF7',rotate:1,seed:4})
@@ -51,10 +42,10 @@ module.exports = ({draw: d, sceneDir}) => {
   const scale = .93, offsetX = 112.7, offsetY = 22.4;
   const diagramLabel = t => ({...t,x:t.x*scale+offsetX,y:t.y*scale+offsetY,
     w:t.w*scale,h:t.h*scale,size:t.size*scale});
-  const diagram = connections.map(incomingArrow).join('')
+  const diagram = inputs
     + nodes.map((n,i) => d.sticker({...n,file:path.join(sceneDir,'icons',n.file),size:84,seed:i+1})).join('')
     + hub
-    + d.arrow({from:[1214,322],to:[1298,322],bend:-4,width:3.7,head:18})
+    + d.arrow({from:[1250,322],to:[1298,322],bend:-2,width:3.7,head:16})
     + report;
   const art = d.path('M65 301 Q248 312 505 298',{color:'#F4D786',width:17,opacity:.7})
     + d.path('M587 146 Q583 309 588 484',{color:'#C9C5B6',width:1.4,opacity:.65})
@@ -66,7 +57,7 @@ module.exports = ({draw: d, sceneDir}) => {
   ];
   const diagramLabels = [
     ...nodes.map(n => ({text:n.name,x:n.cx-102,y:n.cy+52,w:204,h:37,size:25,font:hand,align:'center',rotate:n.rotate/2})),
-    {text:'fly-brief',x:1009,y:360,w:171,h:41,size:30,font:hand,bold:true,rotate:-2},
+    {text:'fly-brief',x:1045,y:360,w:171,h:41,size:30,font:hand,bold:true,rotate:-2},
     {text:'report.html',x:1395,y:185,w:165,h:31,size:21,font:hand,align:'left',color:muted,rotate:1},
   ];
   const copy = {
