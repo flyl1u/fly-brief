@@ -2,18 +2,22 @@
 
 North star: 打开能复述合作，展开能开始构思视频。
 
-## 当前状态 · 已选 01 白纸文档
+## 当前状态 · 01 白纸文档与 04 层层读清图标
 
 用户选择：`01：选 01 白纸文档`。以 `design-exploration/01/01-document.html` 为正式模板的视觉基线。下文首版卡片布局及其评分为历史记录，不作为后续设计依据。真实 brief 测试已用于迭代通用规则，客户材料只保留在本地忽略目录。
 
-当前固定要求：只呈现四个核心问题及其内容；不在正文放工具口号、使用教程、制作说明或重复的身份标签。来源、详情和必要状态通过固定模板中的轻量入口承载。按用户批注，页头不显示“演示”和单独的平台标签；虚构性质保留在样例材料和说明中。
+当前固定要求：正文只呈现四个核心问题及其内容；不放工具口号、使用教程、制作说明或重复的身份标签。来源、详情和必要状态通过固定模板中的轻量入口承载。按用户批注，合作标题不显示“演示”和单独的平台标签；虚构性质保留在样例材料和说明中。
 
-实施约束：纯白底、单列四行、左问题右答案、右端加号展开；桌面保留选定方向的 1056 px 阅读宽度和排版尺度，窄屏自然堆叠问题与答案。原文入口集中在页头，具体出处放在展开内容中。不恢复首版的品牌行、复制／全部展开工具条、页尾教程和彩色身份标签。固定模板由生成器填充，agent 不为每份 brief 改结构。
+2026-10-28 用户确认：采用 `design-exploration/favicon-01/icons/04.svg`「层层读清」，新增固定页头，左侧为图标 + `fly-brief`，右侧为「觉得还不错？去点颗star」和星星；两处链接均指向 fly-brief 仓库。图标源文件为 `assets/favicon.svg`，生成器内嵌到单文件报告，同时用作 favicon。
+
+本轮排版取舍（Agent 推断，按用户授权处理双黑线问题）：品牌栏下仅留一条 `--line` 浅灰分隔线；移除合作标题下的黑线，用留白区分标题与第一问。缩减原顶部空白以容纳品牌栏，保留原来的正文阅读宽度和字号。窄屏保留全部 Star 文案，必要时自然换行；打印时隐藏品牌栏，保留合作标题和正文。
+
+实施约束：纯白底、单列四行、左问题右答案、右端加号展开；桌面保留选定方向的 1056 px 阅读宽度和排版尺度，窄屏自然堆叠问题与答案。原文入口集中在合作标题区，具体出处放在展开内容中。品牌仅使用固定页头，不追加额外品牌行、复制／全部展开工具条、页尾教程和彩色身份标签。固定模板由生成器填充，agent 不为每份 brief 改结构。
 
 - A creator's private reading tool, not a dashboard or marketing page. The four questions are always the top-level navigation and content structure.
-- Pure white document, black text, gray secondary text and thin structural rules. No panel containers, tinted page background or brand masthead. The selected preview in `design-exploration/01/01-document.html` is the visual baseline.
+- Pure white document, black text, gray secondary text and thin structural rules. No panel containers or tinted page background. The fixed, compact brand masthead is followed by the report title and four rows. The selected preview in `design-exploration/01/01-document.html` remains the body-layout baseline; `assets/report.html` owns the current header.
 - Four document rows with left-aligned questions and answers; 1056 px reading width on desktop. Each plus independently opens details under its answer. Narrow screens stack question and answer. Reading follows the document; there is no nested reading scrollbar.
-- Header contains only product/title, optional cooperation subtitle and the original-brief entry. No demonstration marker or separate platform label, as requested in the browser annotations. No toolbar or tutorial footer. Sources are in the header and expanded details, not appended repeatedly to default summaries.
+- The fixed brand masthead contains the selected icon, `fly-brief` and the Star link. The report title area below contains only product/title, optional cooperation subtitle and the original-brief entry, without a bottom rule. No demonstration marker or separate platform label, as requested in the browser annotations. No toolbar or tutorial footer. Sources are beside the report title and in expanded details, not appended repeatedly to default summaries.
 - Default content is short. Critical obligations cannot be collapsed, truncated or hidden in tooltips to fit a viewport. Reference video links belong in the fourth panel's default view.
 - Show source excerpts on demand in a native dialog with keyboard close and focus return. Noto Sans SC and Noto Serif SC are embedded from local, licensed WOFF2 assets. Opening the standalone report requires no remote libraries, images, fonts or analytics.
 - All four summaries use regular weight. Expanded headings are bold; each capability occupies its own list item with a round bullet. Explain inputs, processing, outputs, concrete uses and relevant conditions without inventing unsupported behavior. The default reading budget does not constrain necessary expanded detail.
@@ -24,7 +28,7 @@ North star: 打开能复述合作，展开能开始构思视频。
 
 Development sample content must be explicitly identified as fictional. Client output has no developer notes. QA evidence and results are recorded after implementation.
 
-Current readability validation: 12 Python tests, skill validation and 16 browser checks pass. The concrete-topic update also passed 8 local checks on the private report. Desktop and phone expanded product explanations and concrete topic choices were visually checked; 1440, 768, 390 and 320 px report layouts have no horizontal overflow. The fictional previews are regenerated from the fixed template; real client artifacts remain in ignored local output. This validates structure and interaction, not the actual behavior of any promoted product.
+Current readability validation: 12 Python tests, skill validation and 17 browser checks pass. The brand-header update was also checked on the user-designated private report: its data remained identical, the embedded icon loaded offline, all four disclosures and source dialogs worked, and the masthead was omitted in print. Desktop and phone states were compared before and after; 1440, 768, 390 and 320 px report layouts have no horizontal overflow or masthead overlap. At 320 px the Star invitation wraps into two complete phrases. This was a focused self-review of the header; no independent whole-page review was run. The fictional previews are regenerated from the fixed template; real client artifacts and QA screenshots remain in ignored local output and `.qa/brand-header/`. This validates structure and interaction, not the actual behavior of any promoted product.
 
 ## Historical verification · initial card layout
 

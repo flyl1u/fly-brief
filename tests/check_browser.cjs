@@ -1,5 +1,6 @@
 /* Optional acceptance checks. Use the host's bundled Playwright via NODE_PATH.
    node tests/check_browser.cjs --browser-channel msedge [--out .qa/document-browser]
+   Or pass --browser-executable with the installed browser's absolute path.
 */
 'use strict';
 const assert = require('node:assert/strict');
@@ -11,12 +12,13 @@ const args = process.argv.slice(2);
 const option = (name, fallback) => args.includes(name) ? args[args.indexOf(name) + 1] : fallback;
 const out = path.resolve(option('--out', '.qa/document-browser'));
 const channel = option('--browser-channel', undefined);
+const executablePath = option('--browser-executable', undefined);
 const reportPath = path.resolve('examples/report.html');
 const report = pathToFileURL(reportPath).href;
 
 async function main() {
   await fs.mkdir(out, { recursive: true });
-  const browser = await chromium.launch({ headless: true, ...(channel ? { channel } : {}) });
+  const browser = await chromium.launch({ headless: true, ...(executablePath ? { executablePath } : channel ? { channel } : {}) });
   const checks = [], errors = [];
   try {
     const context = await browser.newContext({ viewport: { width: 1440, height: 900 } });
@@ -33,6 +35,31 @@ async function main() {
     assert.equal(await page.evaluate(() => document.fonts.check('16px "Fly Sans"', '合作拍摄')), true);
     assert.equal(await page.evaluate(() => document.fonts.check('34px "Fly Serif"', '随剪')), true);
     checks.push('Standalone file opens with four collapsed questions, reference entry and offline Chinese fonts');
+
+    const projectUrl = 'https://github.com/flyl1u/fly-brief';
+    const icon = await page.locator('link[rel="icon"]').getAttribute('href');
+    assert.match(icon, /^data:image\/svg\+xml;base64,/);
+    assert.equal(await page.locator('.brand-icon').getAttribute('src'), icon);
+    assert.equal(await page.locator('.brand-icon').evaluate(node => node.complete && node.naturalWidth > 0), true);
+    assert.equal(await page.locator('.page-header').evaluate(node => getComputedStyle(node).borderBottomWidth), '0px');
+    await context.route(projectUrl, route => route.fulfill({ contentType: 'text/plain', body: 'Local intercepted project navigation check.' }));
+    for (const selector of ['.brand-link', '.star-link']) {
+      const link = page.locator(selector);
+      assert.equal(await link.getAttribute('href'), projectUrl);
+      const opened = page.waitForEvent('popup');
+      await link.click();
+      const project = await opened;
+      await project.waitForLoadState();
+      assert.equal(project.url(), projectUrl);
+      await project.close();
+    }
+    await page.locator('.star-link').hover();
+    await page.locator('.star-icon').evaluate(node => Promise.all(node.getAnimations().map(animation => animation.finished.catch(() => {}))));
+    assert.notEqual(await page.locator('.star-icon').evaluate(node => getComputedStyle(node).fill), 'rgba(0, 0, 0, 0)');
+    await page.mouse.move(0, 0);
+    await page.locator('.star-link').blur();
+    await page.locator('.star-icon').evaluate(node => Promise.all(node.getAnimations().map(animation => animation.finished.catch(() => {}))));
+    checks.push('Embedded favicon and masthead icon work offline; both project links navigate correctly; Star hover fills; report title has no duplicate rule');
 
     const videoBottom = await page.locator('#video').evaluate(node => node.getBoundingClientRect().bottom);
     assert.ok(videoBottom <= 900, `Desktop overview must show all four answers; last row ends at ${videoBottom}`);

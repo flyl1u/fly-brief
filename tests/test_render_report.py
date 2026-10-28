@@ -1,4 +1,5 @@
 from copy import deepcopy
+import base64
 import importlib.util
 import json
 from pathlib import Path
@@ -62,6 +63,10 @@ class ReportTests(unittest.TestCase):
         self.assertNotIn("__FLY_BRIEF_FONTS__", document)
         self.assertNotIn("fonts.googleapis.com", document)
         self.assertIn("font-src data:", document)
+        icon = re.search(r'<link rel="icon" type="image/svg\+xml" href="([^"]+)"', document)[1]
+        self.assertEqual(base64.b64decode(icon.split(",", 1)[1]), (ROOT / "assets" / "favicon.svg").read_bytes())
+        self.assertIn(f'src="{icon}"', document)
+        self.assertNotIn("__FLY_BRIEF_ICON__", document)
 
     def test_sparse_report_has_exactly_four_sections(self):
         data, warnings = renderer.validate_report(minimal(), ROOT)

@@ -176,9 +176,11 @@ def render_html(data: dict) -> str:
         faces.append(f'@font-face{{font-family:"{family}";font-weight:{weight};font-style:normal;'
                      f'font-display:swap;src:url(data:font/woff2;base64,{encoded}) format("woff2");}}')
     title = data["title"] + (f" · {data['subtitle']}" if data.get("subtitle") else "")
-    replacements = {"TITLE": html.escape(title, quote=True), "DATA": safe_json(data), "FONTS": "\n".join(faces)}
+    icon = base64.b64encode((ROOT / "assets" / "favicon.svg").read_bytes()).decode("ascii")
+    replacements = {"TITLE": html.escape(title, quote=True), "DATA": safe_json(data),
+                    "FONTS": "\n".join(faces), "ICON": f"data:image/svg+xml;base64,{icon}"}
     # A single pass keeps marker-like user text literal, never a second directive.
-    return re.sub(r"__FLY_BRIEF_(TITLE|DATA|FONTS)__", lambda match: replacements[match[1]], template)
+    return re.sub(r"__FLY_BRIEF_(TITLE|DATA|FONTS|ICON)__", lambda match: replacements[match[1]], template)
 
 
 def main() -> int:
