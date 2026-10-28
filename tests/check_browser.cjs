@@ -41,7 +41,12 @@ async function main() {
     assert.match(icon, /^data:image\/svg\+xml;base64,/);
     assert.equal(await page.locator('.brand-icon').getAttribute('src'), icon);
     assert.equal(await page.locator('.brand-icon').evaluate(node => node.complete && node.naturalWidth > 0), true);
-    assert.equal(await page.locator('.page-header').evaluate(node => getComputedStyle(node).borderBottomWidth), '0px');
+    const headerRules = await page.locator('.brand-header, .page-header').evaluateAll(nodes => nodes.map(node => {
+      const style = getComputedStyle(node);
+      return { width: style.borderBottomWidth, color: style.borderBottomColor };
+    }));
+    assert.equal(headerRules.filter(rule => rule.width !== '0px').length, 1);
+    assert.equal(headerRules[1].color, 'rgb(230, 230, 230)');
     await context.route(projectUrl, route => route.fulfill({ contentType: 'text/plain', body: 'Local intercepted project navigation check.' }));
     for (const selector of ['.brand-link', '.star-link']) {
       const link = page.locator(selector);
@@ -59,7 +64,7 @@ async function main() {
     await page.mouse.move(0, 0);
     await page.locator('.star-link').blur();
     await page.locator('.star-icon').evaluate(node => Promise.all(node.getAnimations().map(animation => animation.finished.catch(() => {}))));
-    checks.push('Embedded favicon and masthead icon work offline; both project links navigate correctly; Star hover fills; report title has no duplicate rule');
+    checks.push('Embedded favicon and masthead icon work offline; both project links navigate correctly; Star hover fills; a single light-gray header rule separates title and questions');
 
     const videoBottom = await page.locator('#video').evaluate(node => node.getBoundingClientRect().bottom);
     assert.ok(videoBottom <= 900, `Desktop overview must show all four answers; last row ends at ${videoBottom}`);
