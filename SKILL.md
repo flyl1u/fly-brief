@@ -49,7 +49,7 @@ description: 把博主收到的品牌合作 brief 解读成四块可展开的本
 
 按 [数据约定](references/report-format.md) 写 UTF-8 JSON，格式可参照 [演示数据](examples/report.json)。把事实和硬性要求关联到具体页码、段落、幻灯片或聊天时间，并摘录必要原句。数据中保留 `kind`；默认界面只在必要时显示“建议 / 待确认 / 有冲突”，不重复标“品牌信息 / 品牌要求”。
 
-固定品牌页头左侧为 04「层层读清」图标和 `fly-brief`，右侧为原 brief 入口、「觉得还不错？去点颗star」及黄色描边星星；品牌和 Star 都链接到 `https://github.com/flyl1u/fly-brief`。图标由 `assets/favicon.svg` 内嵌，同时用作标签页 favicon，不为每份合作更换。品牌栏下只有一条浅灰线，随后直接显示四个问题，不再显示独立的合作标题行。
+固定品牌页头左侧为 08「圈出重点」图标和 `fly-brief`，右侧为原 brief 入口、「觉得还不错？去点颗star」及黄色描边星星；品牌和 Star 都链接到 `https://github.com/flyl1u/fly-brief`。图标由 `assets/favicon.svg` 内嵌，同时用作标签页 favicon，不为每份合作更换。品牌栏下只有一条浅灰线，随后直接显示四个问题，不再显示独立的合作标题行。
 
 `title` 和可选的 `subtitle` 用于浏览器标签页标题；正文不额外显示产品名、合作主题或独立标题区。平台、时间、规格写进第三块。兼容字段 `context`、`demo` 只保留在数据中，不渲染到页头。
 

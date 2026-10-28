@@ -2,13 +2,13 @@
 
 North star: 打开能复述合作，展开能开始构思视频。
 
-## 当前状态 · 01 白纸文档与 04 层层读清图标
+## 当前状态 · 01 白纸文档与 08 圈出重点图标
 
 用户选择：`01：选 01 白纸文档`。以 `design-exploration/01/01-document.html` 为正式模板的视觉基线。下文首版卡片布局及其评分为历史记录，不作为后续设计依据。真实 brief 测试已用于迭代通用规则，客户材料只保留在本地忽略目录。
 
 当前固定要求：正文只呈现四个核心问题及其内容；不放工具口号、使用教程、制作说明或重复的身份标签。来源、详情和必要状态通过固定模板中的轻量入口承载。按用户要求，删除独立的合作标题行，品牌页头下面直接开始四个问题；虚构性质保留在样例材料和说明中。
 
-2026-10-28 用户最新选择：保留 `design-exploration/favicon-01/icons/04.svg`「层层读清」，撤回 08。固定页头左侧为图标 + `fly-brief`，右侧为「原 brief」入口、「觉得还不错？去点颗star」和星星；品牌和 Star 链接均指向 fly-brief 仓库。图标源文件为 `assets/favicon.svg`，生成器内嵌到单文件报告，同时用作 favicon。
+2026-10-28 用户最新选择：采用 `design-exploration/favicon-01/icons/08.svg`「圈出重点」。固定页头左侧为图标 + `fly-brief`，右侧为「原 brief」入口、「觉得还不错？去点颗star」和星星；品牌和 Star 链接均指向 fly-brief 仓库。图标源文件为 `assets/favicon.svg`，生成器内嵌到单文件报告，同时用作 favicon。
 
 本轮排版取舍：按用户要求删除整行合作标题及其增大的留白，恢复品牌栏下方的一条 `--line` 浅灰线，随后直接显示第一问（用户确认）。将「原 brief」并入品牌页头右侧，保留全局来源入口（Agent 推断）。保留原来的正文阅读宽度和字号。`title`、`subtitle` 继续组成浏览器标签页标题，报告名称同时提供给读屏；不再渲染可见的合作标题行。窄屏保留全部 Star 文案，必要时分成两个完整短语；打印时隐藏品牌栏，直接显示四个问题。
 
@@ -28,7 +28,7 @@ North star: 打开能复述合作，展开能开始构思视频。
 
 Development sample content must be explicitly identified as fictional. Client output has no developer notes. QA evidence and results are recorded after implementation.
 
-Current readability validation: 12 Python tests, skill validation and 17 browser checks pass. The restored 04 icon and removed cooperation title row were also checked on the user-designated private report: its data remained identical, the embedded icon matched the selected SVG, and all four disclosures and source dialogs worked. Desktop and phone states were visually checked; 1440, 768, 390 and 320 px layouts have no horizontal overflow or masthead overlap. The four questions follow the single brand masthead directly. At 320 px the Star invitation wraps into two complete phrases. This was a focused self-review of the header; no independent whole-page review was run. The fictional previews are regenerated from the fixed template; real client artifacts and QA screenshots remain in ignored local output and `.qa/compact-header/`. This validates structure and interaction, not the actual behavior of any promoted product.
+Current readability validation: 12 Python tests, skill validation and 17 browser checks pass. The selected 08 icon and removed cooperation title row were also checked on the user-designated private report: its data remained identical, the embedded icon matched the selected SVG, and all four disclosures and source dialogs worked. Desktop and phone states were visually checked; 1440, 768, 390 and 320 px layouts have no horizontal overflow or masthead overlap. The four questions follow the single brand masthead directly. At 320 px the Star invitation wraps into two complete phrases. This was a focused self-review of the header; no independent whole-page review was run. The fictional previews are regenerated from the fixed template; real client artifacts and QA screenshots remain in ignored local output and `.qa/compact-header/`. This validates structure and interaction, not the actual behavior of any promoted product.
 
 ## Historical verification · initial card layout
 

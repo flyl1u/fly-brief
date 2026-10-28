@@ -1,8 +1,7 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
-<title>层层读清</title>
-<path d="m7 38 25 14 25-14v8L32 60 7 46Z" fill="#324c3d" stroke="#e4eadf" stroke-width="1.5" stroke-linejoin="round"/>
-<path d="m7 30 25 14 25-14v8L32 52 7 38Z" fill="#7d9576" stroke="#e4eadf" stroke-width="1.5" stroke-linejoin="round"/>
-<path d="m7 22 25 14 25-14v8L32 44 7 30Z" fill="#b7c7a5" stroke="#e4eadf" stroke-width="1.5" stroke-linejoin="round"/>
-<path d="m7 18 25-14 25 14v4L32 36 7 22Z" fill="#ece6d6" stroke="#38503e" stroke-width="2" stroke-linejoin="round"/>
-<path d="m7 18 25 14 25-14M32 32v4" fill="none" stroke="#38503e" stroke-width="2" stroke-linejoin="round"/>
+<title>圈出重点</title>
+<g transform="rotate(-7 32 32)"><path d="M17 8h29v47H17Z" fill="#fbf2df" stroke="#756658" stroke-width="2"/>
+<path d="M24 19h15M24 29h15M24 40h11" stroke="#47413b" stroke-width="4" stroke-linecap="round"/>
+<path d="M47 22C41 14 14 16 10 29c-4 15 31 19 40 8 7-9-5-19-15-18" fill="none" stroke="#c94a37" stroke-width="5" stroke-linecap="round"/>
+<path d="m43 46 10 8" stroke="#c94a37" stroke-width="5" stroke-linecap="round"/></g>
 </svg>
