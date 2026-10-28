@@ -1,7 +1,7 @@
 中文 · [English](./README.en.md)
 
 <p>
-  <img src="./assets/readme/hero.zh-CN.svg" width="100%" alt="Fly Brief — 把品牌合作 brief 读成四个清楚的答案和具体视频选题。">
+  <img src="./assets/readme/hero.zh-CN.svg" width="100%" alt="fly-brief — Claude Code、Codex、Kimi、WorkBuddy、Cursor 和 Gemini CLI 汇入 Skill，生成包含产品用途、本次主推、要求限制和视频方向的本地 HTML 报告。">
 </p>
 
 **brief 这个词原本的意思是任务简介，但现在的品牌方把brief写的又臭又长，你管这玩意叫bf?**

@@ -1,7 +1,7 @@
 [简体中文](./README.md) · **English**
 
 <p>
-  <img src="./assets/readme/hero.svg" width="100%" alt="Fly Brief — turn a brand brief into four clear answers and concrete video ideas.">
+  <img src="./assets/readme/hero.svg" width="100%" alt="fly-brief — Claude Code, Codex, Kimi, WorkBuddy, Cursor, and Gemini CLI feed into the skill to produce a local HTML report covering product, promotion, requirements, and video ideas.">
 </p>
 
 **A brief is supposed to be a short task overview. So why do brands send a bloated wall of text and call it a brief?**
