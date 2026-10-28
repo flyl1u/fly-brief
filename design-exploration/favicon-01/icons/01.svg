@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
+<title>折页提要</title>
+<path d="M16 6h23l13 13v35a4 4 0 0 1-4 4H16a4 4 0 0 1-4-4V10a4 4 0 0 1 4-4Z" fill="#27292a" stroke="#f5f1e9" stroke-width="2"/>
+<path d="M38 7v13h13" fill="#ded7c9"/>
+<path d="M22 28h20M22 36h20M22 44h20M22 52h12" fill="none" stroke="#faf7ef" stroke-width="4" stroke-linecap="round"/>
+</svg>

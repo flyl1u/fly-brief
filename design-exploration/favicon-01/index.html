@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="zh-CN" data-theme="light">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="color-scheme" content="light dark">
+    <meta name="theme-color" content="#f3f2ee">
+    <meta name="description" content="fly-brief 网页标签页图标交互对比">
+    <link id="preview-favicon" rel="icon" type="image/svg+xml" href="./icons/01.svg">
+    <link rel="stylesheet" href="./preview.css?v=20261026-prompt-actions">
+    <script id="comparison-data" type="application/json">{"brand": "fly-brief", "original_prompt": "使用fly-favicon为fly-brief探索10种不同风格的icon", "headline": "让一份长 brief，有一个清楚的入口。", "intro": "为 fly-brief 探索 10 种图形语言。点选试用真实标签页图标，比较深浅底下的小尺寸表现。", "tab_title": "fly-brief · 把合作读清楚", "edition": "2026.10.28 · 第一轮", "allow_text": false, "download_prefix": "fly-brief", "recommendations": [{"id": "01", "reason": "白纸黑字气质最贴合，四行提要在小尺寸下仍清楚"}, {"id": "02", "reason": "四块结构最能表达产品特征，轮廓简单、容易记住"}, {"id": "05", "reason": "纸翼呼应 fly，适合更轻快的创作者工具气质"}], "directions": [{"id": "01", "title": "折页提要", "category": "极简黑白 · 文档剪影", "description": "把长 brief 收成四行提要，延续白纸黑字的阅读气质。", "icon": "icons/01.svg"}, {"id": "02", "title": "四问拼图", "category": "瑞士几何 · 四块结构", "description": "四个清楚的色块，对应产品、主推、要求和视频四个问题。", "icon": "icons/02.svg"}, {"id": "03", "title": "留下重点", "category": "圆形负形 · 信息提炼", "description": "让繁杂信息经过一道筛选，只留下这次合作真正要讲的重点。", "icon": "icons/03.svg"}, {"id": "04", "title": "层层读清", "category": "等距体块 · 叠页", "description": "四层纸页逐层展开，呼应先读结论、再看详情的阅读方式。", "icon": "icons/04.svg"}, {"id": "05", "title": "纸翼启程", "category": "折纸双色 · 创作出发", "description": "把 brief 折成一只纸翼，从看懂合作飞向可拍的视频方向。", "icon": "icons/05.svg"}, {"id": "06", "title": "聊出画面", "category": "有机线稿 · 对话气泡", "description": "用柔和气泡包住播放符号，把品牌沟通落到视频构思。", "icon": "icons/06.svg"}, {"id": "07", "title": "像素便笺", "category": "复古像素 · 任务便笺", "description": "把冗长资料变成一张易读便笺，给工具一点轻巧的游戏感。", "icon": "icons/07.svg"}, {"id": "08", "title": "圈出重点", "category": "手绘圈注 · 编辑笔触", "description": "像用红笔读 brief，先圈出主推和不能漏掉的拍摄要求。", "icon": "icons/08.svg"}, {"id": "09", "title": "选题对焦", "category": "开放线框 · 取景符号", "description": "用取景框锁定播放符号，强调读完之后能选定视频方向。", "icon": "icons/09.svg"}, {"id": "10", "title": "封蜡确认", "category": "浮雕材质 · 确认印记", "description": "像盖下一枚确认章，提醒创作前把品牌要求逐项看清。", "icon": "icons/10.svg"}]}</script>
+    <script src="./preview.js" defer></script>
+    <title>折页提要 · 图标探索</title>
+  </head>
+  <body>
+    <div class="page">
+      <header class="masthead">
+        <a class="wordmark" href="https://github.com/flyl1u/fly-favicon" target="_blank" rel="noopener noreferrer">fly-favicon<span> / 图标探索</span></a>
+        <a class="star-link" href="https://github.com/flyl1u/fly-favicon" target="_blank" rel="noopener noreferrer">
+          <span>觉得还不错？去点颗star</span>
+          <svg class="star-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m12 3 2.8 5.7 6.3.9-4.6 4.4 1.1 6.2-5.6-3-5.6 3 1.1-6.2L2.9 9.6l6.3-.9L12 3Z"/></svg>
+        </a>
+      </header>
+      <main>
+        <section class="intro" aria-labelledby="page-title">
+          <div>
+            <p class="eyebrow">网站标签页图标</p>
+            <h1 id="page-title">让一份长 brief，有一个清楚的入口。</h1>
+            <p class="lede">为 fly-brief 探索 10 种图形语言。点选试用真实标签页图标，比较深浅底下的小尺寸表现。</p>
+          </div>
+          <div class="theme-control" role="group" aria-label="对比页背景">
+            <button type="button" data-theme-choice="light" aria-pressed="true">浅色</button>
+            <button type="button" data-theme-choice="dark" aria-pressed="false">深色</button>
+          </div>
+        </section>
+        <section class="selection" aria-label="当前选中的图标">
+          <div class="selected-identity">
+            <img id="selected-icon" src="./icons/01.svg" width="48" height="48" alt="折页提要">
+            <div><p class="selected-label">当前试用 <span id="selected-number">01</span></p><h2 id="selected-title">折页提要</h2></div>
+          </div>
+          <div class="browser-pair" aria-label="实际 16 像素的标签页预览">
+            <div class="browser-tab browser-tab--light"><img class="tab-icon" src="./icons/01.svg" width="16" height="16" alt=""><span>fly-brief · 把合作读清楚</span><span class="tab-close" aria-hidden="true">×</span></div>
+            <div class="browser-tab browser-tab--dark"><img class="tab-icon" src="./icons/01.svg" width="16" height="16" alt=""><span>fly-brief · 把合作读清楚</span><span class="tab-close" aria-hidden="true">×</span></div>
+          </div>
+          <div class="selection-actions">
+            <button id="view-prompt" class="prompt-trigger" type="button" aria-haspopup="dialog" aria-controls="prompt-dialog">查看提示词</button>
+            <a id="download-selected" class="download" href="./icons/01.svg" download="fly-brief-01.svg">下载矢量图 <span aria-hidden="true">↗</span></a>
+          </div>
+        </section>
+        <div id="directions" class="directions" aria-label="图标方案">
+          <button class="direction" type="button" data-id="01" aria-pressed="true" aria-label="试用 01 折页提要：极简黑白 · 文档剪影">
+            <span class="direction-meta"><span class="direction-number">01</span><span class="direction-state" aria-hidden="true">试用中</span></span>
+            <span class="artwork"><img src="./icons/01.svg" width="80" height="80" alt=""></span>
+            <span class="direction-title">折页提要</span>
+            <span class="direction-category">极简黑白 · 文档剪影</span>
+            <span class="direction-description">把长 brief 收成四行提要，延续白纸黑字的阅读气质。</span>
+            <span class="samples samples--light" aria-hidden="true"><img src="./icons/01.svg" width="16" height="16" alt=""><img src="./icons/01.svg" width="24" height="24" alt=""><img src="./icons/01.svg" width="32" height="32" alt=""></span><span class="samples samples--dark" aria-hidden="true"><img src="./icons/01.svg" width="16" height="16" alt=""><img src="./icons/01.svg" width="24" height="24" alt=""><img src="./icons/01.svg" width="32" height="32" alt=""></span>
+            <span class="sizes" aria-hidden="true"><span>16</span><span>24</span><span>32</span></span>
+          </button>
+          <button class="direction" type="button" data-id="02" aria-pressed="false" aria-label="试用 02 四问拼图：瑞士几何 · 四块结构">
+            <span class="direction-meta"><span class="direction-number">02</span><span class="direction-state" aria-hidden="true">试用中</span></span>
+            <span class="artwork"><img src="./icons/02.svg" width="80" height="80" alt=""></span>
+            <span class="direction-title">四问拼图</span>
+            <span class="direction-category">瑞士几何 · 四块结构</span>
+            <span class="direction-description">四个清楚的色块，对应产品、主推、要求和视频四个问题。</span>
+            <span class="samples samples--light" aria-hidden="true"><img src="./icons/02.svg" width="16" height="16" alt=""><img src="./icons/02.svg" width="24" height="24" alt=""><img src="./icons/02.svg" width="32" height="32" alt=""></span><span class="samples samples--dark" aria-hidden="true"><img src="./icons/02.svg" width="16" height="16" alt=""><img src="./icons/02.svg" width="24" height="24" alt=""><img src="./icons/02.svg" width="32" height="32" alt=""></span>
+            <span class="sizes" aria-hidden="true"><span>16</span><span>24</span><span>32</span></span>
+          </button>
+          <button class="direction" type="button" data-id="03" aria-pressed="false" aria-label="试用 03 留下重点：圆形负形 · 信息提炼">
+            <span class="direction-meta"><span class="direction-number">03</span><span class="direction-state" aria-hidden="true">试用中</span></span>
+            <span class="artwork"><img src="./icons/03.svg" width="80" height="80" alt=""></span>
+            <span class="direction-title">留下重点</span>
+            <span class="direction-category">圆形负形 · 信息提炼</span>
+            <span class="direction-description">让繁杂信息经过一道筛选，只留下这次合作真正要讲的重点。</span>
+            <span class="samples samples--light" aria-hidden="true"><img src="./icons/03.svg" width="16" height="16" alt=""><img src="./icons/03.svg" width="24" height="24" alt=""><img src="./icons/03.svg" width="32" height="32" alt=""></span><span class="samples samples--dark" aria-hidden="true"><img src="./icons/03.svg" width="16" height="16" alt=""><img src="./icons/03.svg" width="24" height="24" alt=""><img src="./icons/03.svg" width="32" height="32" alt=""></span>
+            <span class="sizes" aria-hidden="true"><span>16</span><span>24</span><span>32</span></span>
+          </button>
+          <button class="direction" type="button" data-id="04" aria-pressed="false" aria-label="试用 04 层层读清：等距体块 · 叠页">
+            <span class="direction-meta"><span class="direction-number">04</span><span class="direction-state" aria-hidden="true">试用中</span></span>
+            <span class="artwork"><img src="./icons/04.svg" width="80" height="80" alt=""></span>
+            <span class="direction-title">层层读清</span>
+            <span class="direction-category">等距体块 · 叠页</span>
+            <span class="direction-description">四层纸页逐层展开，呼应先读结论、再看详情的阅读方式。</span>
+            <span class="samples samples--light" aria-hidden="true"><img src="./icons/04.svg" width="16" height="16" alt=""><img src="./icons/04.svg" width="24" height="24" alt=""><img src="./icons/04.svg" width="32" height="32" alt=""></span><span class="samples samples--dark" aria-hidden="true"><img src="./icons/04.svg" width="16" height="16" alt=""><img src="./icons/04.svg" width="24" height="24" alt=""><img src="./icons/04.svg" width="32" height="32" alt=""></span>
+            <span class="sizes" aria-hidden="true"><span>16</span><span>24</span><span>32</span></span>
+          </button>
+          <button class="direction" type="button" data-id="05" aria-pressed="false" aria-label="试用 05 纸翼启程：折纸双色 · 创作出发">
+            <span class="direction-meta"><span class="direction-number">05</span><span class="direction-state" aria-hidden="true">试用中</span></span>
+            <span class="artwork"><img src="./icons/05.svg" width="80" height="80" alt=""></span>
+            <span class="direction-title">纸翼启程</span>
+            <span class="direction-category">折纸双色 · 创作出发</span>
+            <span class="direction-description">把 brief 折成一只纸翼，从看懂合作飞向可拍的视频方向。</span>
+            <span class="samples samples--light" aria-hidden="true"><img src="./icons/05.svg" width="16" height="16" alt=""><img src="./icons/05.svg" width="24" height="24" alt=""><img src="./icons/05.svg" width="32" height="32" alt=""></span><span class="samples samples--dark" aria-hidden="true"><img src="./icons/05.svg" width="16" height="16" alt=""><img src="./icons/05.svg" width="24" height="24" alt=""><img src="./icons/05.svg" width="32" height="32" alt=""></span>
+            <span class="sizes" aria-hidden="true"><span>16</span><span>24</span><span>32</span></span>
+          </button>
+          <button class="direction" type="button" data-id="06" aria-pressed="false" aria-label="试用 06 聊出画面：有机线稿 · 对话气泡">
+            <span class="direction-meta"><span class="direction-number">06</span><span class="direction-state" aria-hidden="true">试用中</span></span>
+            <span class="artwork"><img src="./icons/06.svg" width="80" height="80" alt=""></span>
+            <span class="direction-title">聊出画面</span>
+            <span class="direction-category">有机线稿 · 对话气泡</span>
+            <span class="direction-description">用柔和气泡包住播放符号，把品牌沟通落到视频构思。</span>
+            <span class="samples samples--light" aria-hidden="true"><img src="./icons/06.svg" width="16" height="16" alt=""><img src="./icons/06.svg" width="24" height="24" alt=""><img src="./icons/06.svg" width="32" height="32" alt=""></span><span class="samples samples--dark" aria-hidden="true"><img src="./icons/06.svg" width="16" height="16" alt=""><img src="./icons/06.svg" width="24" height="24" alt=""><img src="./icons/06.svg" width="32" height="32" alt=""></span>
+            <span class="sizes" aria-hidden="true"><span>16</span><span>24</span><span>32</span></span>
+          </button>
+          <button class="direction" type="button" data-id="07" aria-pressed="false" aria-label="试用 07 像素便笺：复古像素 · 任务便笺">
+            <span class="direction-meta"><span class="direction-number">07</span><span class="direction-state" aria-hidden="true">试用中</span></span>
+            <span class="artwork"><img src="./icons/07.svg" width="80" height="80" alt=""></span>
+            <span class="direction-title">像素便笺</span>
+            <span class="direction-category">复古像素 · 任务便笺</span>
+            <span class="direction-description">把冗长资料变成一张易读便笺，给工具一点轻巧的游戏感。</span>
+            <span class="samples samples--light" aria-hidden="true"><img src="./icons/07.svg" width="16" height="16" alt=""><img src="./icons/07.svg" width="24" height="24" alt=""><img src="./icons/07.svg" width="32" height="32" alt=""></span><span class="samples samples--dark" aria-hidden="true"><img src="./icons/07.svg" width="16" height="16" alt=""><img src="./icons/07.svg" width="24" height="24" alt=""><img src="./icons/07.svg" width="32" height="32" alt=""></span>
+            <span class="sizes" aria-hidden="true"><span>16</span><span>24</span><span>32</span></span>
+          </button>
+          <button class="direction" type="button" data-id="08" aria-pressed="false" aria-label="试用 08 圈出重点：手绘圈注 · 编辑笔触">
+            <span class="direction-meta"><span class="direction-number">08</span><span class="direction-state" aria-hidden="true">试用中</span></span>
+            <span class="artwork"><img src="./icons/08.svg" width="80" height="80" alt=""></span>
+            <span class="direction-title">圈出重点</span>
+            <span class="direction-category">手绘圈注 · 编辑笔触</span>
+            <span class="direction-description">像用红笔读 brief，先圈出主推和不能漏掉的拍摄要求。</span>
+            <span class="samples samples--light" aria-hidden="true"><img src="./icons/08.svg" width="16" height="16" alt=""><img src="./icons/08.svg" width="24" height="24" alt=""><img src="./icons/08.svg" width="32" height="32" alt=""></span><span class="samples samples--dark" aria-hidden="true"><img src="./icons/08.svg" width="16" height="16" alt=""><img src="./icons/08.svg" width="24" height="24" alt=""><img src="./icons/08.svg" width="32" height="32" alt=""></span>
+            <span class="sizes" aria-hidden="true"><span>16</span><span>24</span><span>32</span></span>
+          </button>
+          <button class="direction" type="button" data-id="09" aria-pressed="false" aria-label="试用 09 选题对焦：开放线框 · 取景符号">
+            <span class="direction-meta"><span class="direction-number">09</span><span class="direction-state" aria-hidden="true">试用中</span></span>
+            <span class="artwork"><img src="./icons/09.svg" width="80" height="80" alt=""></span>
+            <span class="direction-title">选题对焦</span>
+            <span class="direction-category">开放线框 · 取景符号</span>
+            <span class="direction-description">用取景框锁定播放符号，强调读完之后能选定视频方向。</span>
+            <span class="samples samples--light" aria-hidden="true"><img src="./icons/09.svg" width="16" height="16" alt=""><img src="./icons/09.svg" width="24" height="24" alt=""><img src="./icons/09.svg" width="32" height="32" alt=""></span><span class="samples samples--dark" aria-hidden="true"><img src="./icons/09.svg" width="16" height="16" alt=""><img src="./icons/09.svg" width="24" height="24" alt=""><img src="./icons/09.svg" width="32" height="32" alt=""></span>
+            <span class="sizes" aria-hidden="true"><span>16</span><span>24</span><span>32</span></span>
+          </button>
+          <button class="direction" type="button" data-id="10" aria-pressed="false" aria-label="试用 10 封蜡确认：浮雕材质 · 确认印记">
+            <span class="direction-meta"><span class="direction-number">10</span><span class="direction-state" aria-hidden="true">试用中</span></span>
+            <span class="artwork"><img src="./icons/10.svg" width="80" height="80" alt=""></span>
+            <span class="direction-title">封蜡确认</span>
+            <span class="direction-category">浮雕材质 · 确认印记</span>
+            <span class="direction-description">像盖下一枚确认章，提醒创作前把品牌要求逐项看清。</span>
+            <span class="samples samples--light" aria-hidden="true"><img src="./icons/10.svg" width="16" height="16" alt=""><img src="./icons/10.svg" width="24" height="24" alt=""><img src="./icons/10.svg" width="32" height="32" alt=""></span><span class="samples samples--dark" aria-hidden="true"><img src="./icons/10.svg" width="16" height="16" alt=""><img src="./icons/10.svg" width="24" height="24" alt=""><img src="./icons/10.svg" width="32" height="32" alt=""></span>
+            <span class="sizes" aria-hidden="true"><span>16</span><span>24</span><span>32</span></span>
+          </button></div>
+        <noscript><p class="lede">当前为静态对比；启用 JavaScript 可点选试用和切换背景。所有 SVG 可从 icons 文件夹单独取用。</p></noscript>
+        <p id="selection-status" class="visually-hidden" role="status" aria-live="polite"></p>
+      </main>
+      <footer><p><strong>01</strong>：白纸黑字气质最贴合，四行提要在小尺寸下仍清楚；<strong>02</strong>：四块结构最能表达产品特征，轮廓简单、容易记住；<strong>05</strong>：纸翼呼应 fly，适合更轻快的创作者工具气质</p><p>10 个方向 · 纯图形 · 原生矢量</p></footer>
+    </div>
+    <dialog id="prompt-dialog" class="prompt-dialog" aria-labelledby="prompt-title">
+      <div class="prompt-heading">
+        <h2 id="prompt-title">原始提示词</h2>
+        <button id="close-prompt" class="prompt-close" type="button" aria-label="关闭提示词" autofocus>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="m6 6 12 12M6 18 18 6"/></svg>
+        </button>
+      </div>
+      <pre class="prompt-text"><span id="prompt-content">使用fly-favicon为fly-brief探索10种不同风格的icon</span></pre>
+    </dialog>
+  </body>
+</html>

@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
+<title>像素便笺</title>
+<path d="M12 4h28v4h8v8h4v40h-4v4H12v-4H8V8h4Z" fill="#24392f" stroke="#eaf2d9" stroke-width="1.5"/>
+<path d="M16 12h20v12h12v28H16Z" fill="#e7f1c8"/>
+<path d="M40 12h4v8h-4Z" fill="#8db779"/>
+<path d="M20 28h20v4H20Zm0 8h16v4H20Zm0 8h20v4H20Z" fill="#284b36"/>
+</svg>

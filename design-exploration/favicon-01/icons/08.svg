@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
+<title>圈出重点</title>
+<g transform="rotate(-7 32 32)"><path d="M17 8h29v47H17Z" fill="#fbf2df" stroke="#756658" stroke-width="2"/>
+<path d="M24 19h15M24 29h15M24 40h11" stroke="#47413b" stroke-width="4" stroke-linecap="round"/>
+<path d="M47 22C41 14 14 16 10 29c-4 15 31 19 40 8 7-9-5-19-15-18" fill="none" stroke="#c94a37" stroke-width="5" stroke-linecap="round"/>
+<path d="m43 46 10 8" stroke="#c94a37" stroke-width="5" stroke-linecap="round"/></g>
+</svg>

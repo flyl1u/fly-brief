@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
+<title>四问拼图</title>
+<path d="M6 10a4 4 0 0 1 4-4h18v22H6Z" fill="#292c2b" stroke="#eee9dd" stroke-width="1.5"/>
+<path d="M36 6h18a4 4 0 0 1 4 4v18H36Z" fill="#c67a4e" stroke="#eee9dd" stroke-width="1.5"/>
+<path d="M6 36h22v22H10a4 4 0 0 1-4-4Z" fill="#858e7d" stroke="#eee9dd" stroke-width="1.5"/>
+<path d="M36 36h22v18a4 4 0 0 1-4 4H36Z" fill="#e7dac3" stroke="#b5a997" stroke-width="1.5"/>
+</svg>

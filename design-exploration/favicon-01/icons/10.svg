@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
+<title>封蜡确认</title>
+<defs><linearGradient id="wax" x1="12" y1="6" x2="50" y2="58" gradientUnits="userSpaceOnUse"><stop stop-color="#eeb085"/><stop offset=".45" stop-color="#bd6247"/><stop offset="1" stop-color="#783b30"/></linearGradient><linearGradient id="rim" x1="20" y1="12" x2="44" y2="52" gradientUnits="userSpaceOnUse"><stop stop-color="#f9cda2"/><stop offset="1" stop-color="#a5573e"/></linearGradient></defs>
+<path d="M32 4c5-3 9 5 14 4 6-1 5 9 11 12 5 4-1 10 3 15 3 6-6 8-7 14-1 6-9 4-14 9-4 4-10-2-15-1-7 1-7-7-13-10-5-2-1-10-6-15-4-5 3-10 3-15 0-6 8-5 12-10 3-5 7-1 12-3Z" fill="url(#wax)" stroke="#f2dcc6" stroke-width="1.5"/>
+<circle cx="32" cy="31" r="20" fill="#9c4d37" stroke="url(#rim)" stroke-width="3"/>
+<path d="m22 32 7 7 14-16" fill="none" stroke="#5c2e24" stroke-width="7" stroke-linecap="round" stroke-linejoin="round" transform="translate(0 1.8)"/>
+<path d="m22 32 7 7 14-16" fill="none" stroke="#ffe0b2" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

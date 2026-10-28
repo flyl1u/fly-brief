@@ -1,0 +1,96 @@
+{
+  "brand": "fly-brief",
+  "original_prompt": "使用fly-favicon为fly-brief探索10种不同风格的icon",
+  "headline": "让一份长 brief，有一个清楚的入口。",
+  "intro": "为 fly-brief 探索 10 种图形语言。点选试用真实标签页图标，比较深浅底下的小尺寸表现。",
+  "tab_title": "fly-brief · 把合作读清楚",
+  "edition": "2026.10.28 · 第一轮",
+  "allow_text": false,
+  "download_prefix": "fly-brief",
+  "recommendations": [
+    {
+      "id": "01",
+      "reason": "白纸黑字气质最贴合，四行提要在小尺寸下仍清楚"
+    },
+    {
+      "id": "02",
+      "reason": "四块结构最能表达产品特征，轮廓简单、容易记住"
+    },
+    {
+      "id": "05",
+      "reason": "纸翼呼应 fly，适合更轻快的创作者工具气质"
+    }
+  ],
+  "directions": [
+    {
+      "id": "01",
+      "title": "折页提要",
+      "category": "极简黑白 · 文档剪影",
+      "description": "把长 brief 收成四行提要，延续白纸黑字的阅读气质。",
+      "icon": "icons/01.svg"
+    },
+    {
+      "id": "02",
+      "title": "四问拼图",
+      "category": "瑞士几何 · 四块结构",
+      "description": "四个清楚的色块，对应产品、主推、要求和视频四个问题。",
+      "icon": "icons/02.svg"
+    },
+    {
+      "id": "03",
+      "title": "留下重点",
+      "category": "圆形负形 · 信息提炼",
+      "description": "让繁杂信息经过一道筛选，只留下这次合作真正要讲的重点。",
+      "icon": "icons/03.svg"
+    },
+    {
+      "id": "04",
+      "title": "层层读清",
+      "category": "等距体块 · 叠页",
+      "description": "四层纸页逐层展开，呼应先读结论、再看详情的阅读方式。",
+      "icon": "icons/04.svg"
+    },
+    {
+      "id": "05",
+      "title": "纸翼启程",
+      "category": "折纸双色 · 创作出发",
+      "description": "把 brief 折成一只纸翼，从看懂合作飞向可拍的视频方向。",
+      "icon": "icons/05.svg"
+    },
+    {
+      "id": "06",
+      "title": "聊出画面",
+      "category": "有机线稿 · 对话气泡",
+      "description": "用柔和气泡包住播放符号，把品牌沟通落到视频构思。",
+      "icon": "icons/06.svg"
+    },
+    {
+      "id": "07",
+      "title": "像素便笺",
+      "category": "复古像素 · 任务便笺",
+      "description": "把冗长资料变成一张易读便笺，给工具一点轻巧的游戏感。",
+      "icon": "icons/07.svg"
+    },
+    {
+      "id": "08",
+      "title": "圈出重点",
+      "category": "手绘圈注 · 编辑笔触",
+      "description": "像用红笔读 brief，先圈出主推和不能漏掉的拍摄要求。",
+      "icon": "icons/08.svg"
+    },
+    {
+      "id": "09",
+      "title": "选题对焦",
+      "category": "开放线框 · 取景符号",
+      "description": "用取景框锁定播放符号，强调读完之后能选定视频方向。",
+      "icon": "icons/09.svg"
+    },
+    {
+      "id": "10",
+      "title": "封蜡确认",
+      "category": "浮雕材质 · 确认印记",
+      "description": "像盖下一枚确认章，提醒创作前把品牌要求逐项看清。",
+      "icon": "icons/10.svg"
+    }
+  ]
+}

@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
+<title>选题对焦</title>
+<path d="M23 8H8v15M41 8h15v15M8 41v15h15M56 41v15H41" fill="none" stroke="#f3f1eb" stroke-width="10" stroke-linejoin="round"/>
+<path d="M23 8H8v15M41 8h15v15M8 41v15h15M56 41v15H41" fill="none" stroke="#5968a0" stroke-width="6" stroke-linejoin="round"/>
+<path d="m25 20 20 12-20 12Z" fill="#e9ab4c" stroke="#785537" stroke-width="2" stroke-linejoin="round"/>
+</svg>
