@@ -33,7 +33,6 @@ async function main() {
     assert.equal(await page.locator('.references a').isVisible(), true);
     assert.equal(remoteRequests, 0);
     assert.equal(await page.evaluate(() => document.fonts.check('16px "Fly Sans"', '合作拍摄')), true);
-    assert.equal(await page.evaluate(() => document.fonts.check('34px "Fly Serif"', '随剪')), true);
     checks.push('Standalone file opens with four collapsed questions, reference entry and offline Chinese fonts');
 
     const projectUrl = 'https://github.com/flyl1u/fly-brief';
@@ -46,7 +45,9 @@ async function main() {
       return { width: style.borderBottomWidth, color: style.borderBottomColor };
     }));
     assert.equal(headerRules.filter(rule => rule.width !== '0px').length, 1);
-    assert.equal(headerRules[1].color, 'rgb(230, 230, 230)');
+    assert.equal(headerRules.length, 1);
+    assert.equal(headerRules[0].color, 'rgb(230, 230, 230)');
+    assert.equal(await page.locator('.page-header').count(), 0);
     await context.route(projectUrl, route => route.fulfill({ contentType: 'text/plain', body: 'Local intercepted project navigation check.' }));
     for (const selector of ['.brand-link', '.star-link']) {
       const link = page.locator(selector);
@@ -64,7 +65,7 @@ async function main() {
     await page.mouse.move(0, 0);
     await page.locator('.star-link').blur();
     await page.locator('.star-icon').evaluate(node => Promise.all(node.getAnimations().map(animation => animation.finished.catch(() => {}))));
-    checks.push('Embedded favicon and masthead icon work offline; both project links navigate correctly; Star hover fills; a single light-gray header rule separates title and questions');
+    checks.push('Embedded favicon and masthead icon work offline; both project links navigate correctly; Star hover fills; questions follow the masthead directly without a cooperation title row');
 
     const videoBottom = await page.locator('#video').evaluate(node => node.getBoundingClientRect().bottom);
     assert.ok(videoBottom <= 900, `Desktop overview must show all four answers; last row ends at ${videoBottom}`);
