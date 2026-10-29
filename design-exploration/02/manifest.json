@@ -1,0 +1,36 @@
+{
+  "schemaVersion": 1,
+  "lang": "zh",
+  "project": "fly-brief · 阅读体验前后对比",
+  "brief": "同一份虚构的随剪合作。保留白纸文档、四个问题与来源入口，比较要求层级、详情编排、选题比较和展开入口。",
+  "round": "02",
+  "nativeViewport": "1440x900",
+  "serve": {
+    "command": "python -m http.server 8765 --bind 127.0.0.1 --directory design-exploration/02",
+    "cwd": "D:\\fly-Brief",
+    "url": "http://127.0.0.1:8765/style-explorer.html"
+  },
+  "candidates": [
+    {
+      "id": "current",
+      "name": "当前版本",
+      "baseline": true,
+      "kind": "url",
+      "concept": "四个问题，收起看结论，展开看长列表。",
+      "typography": "内嵌 Fly Sans；结论 20px，时间 13px。",
+      "palette": ["#FFFFFF", "#1D1D1F", "#646466", "#E6E6E6"],
+      "traits": ["现有正式模板", "四块独立展开", "来源摘录"],
+      "url": "http://127.0.0.1:8765/current.html"
+    },
+    {
+      "id": "refined",
+      "name": "重点更清楚",
+      "kind": "url",
+      "concept": "先看清合作要求，再根据现有素材比较选题，按需读拍法。",
+      "typography": "沿用 Fly Sans；主推 28px，结论 22px，日期 20px，详情 15–16px。",
+      "palette": ["#FFFFFF", "#1D1D1F", "#646466", "#E6E6E6"],
+      "traits": ["交付时间更醒目", "详情按任务分组", "三个选题直接比较", "文字展开入口"],
+      "url": "http://127.0.0.1:8765/report.html"
+    }
+  ]
+}
