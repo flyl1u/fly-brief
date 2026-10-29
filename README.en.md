@@ -12,7 +12,7 @@ fly-Brief is an agent skill for creators. Give your agent the brief and supporti
 
 ## See the result
 
-This is a local HTML page created by an agent using fly-Brief. ***Click the plus sign to expand each section for more detail***, or follow the source links to the original material. Real briefs cannot be shared publicly, so this example uses a fictional brief. The screenshot below is static; open the [live preview](https://flyl1u.github.io/fly-brief) to explore the report.
+This report uses a fictional brand brief. Script and publishing deadlines and mandatory shots stay visible. Video topics compare the materials to prepare and the result to make; each has its own expandable plan. Open details or source excerpts as needed. The screenshot is static; use the [live preview](https://flyl1u.github.io/fly-brief) to explore the report.
 
 <img src="./examples/preview-desktop.png" width="100%" alt="Fictional brand brief shown as four report sections, with mandatory shots, restrictions, and deadlines visible before expansion.">
 
@@ -25,7 +25,7 @@ This is a local HTML page created by an agent using fly-Brief. ***Click the plus
 | What are the requirements? | Mandatory shots, wording, restrictions, deadlines, and unresolved issues. |
 | What could this video be? | Concrete topics with a title, creator perspective, promoted features, pain point, and case details. |
 
-**Read the short conclusions first, then expand for the explanation.** Important shooting requirements remain visible while collapsed; `[原文]` opens the supporting passages, so you can check a claim without searching through the brief again.
+**Scan conclusions, requirements, and topic differences first, then expand for details.** Product explanations separate inputs, processing, human judgment, and output. Important shooting requirements remain visible; `原文` opens the supporting passages.
 
 Video ideas name a person, a problem, the material to prepare, and a useful result. Each explains how the video could develop, while leaving the full script to you.
 
@@ -51,7 +51,7 @@ Give me a few concrete video topics to choose from, without writing a full scrip
 Save the result in output/my-campaign/.
 ```
 
-The agent reads the material, writes source-linked report data, validates it, and fills the fixed template. Open the resulting `report.html` in a browser. Sections expand independently, and source excerpts open on demand.
+The agent reads the material, writes source-linked report data, validates it, and fills the fixed template. Open the resulting `report.html` in a browser. The first three sections and each video topic expand independently, and source excerpts open on demand.
 
 **The generated report works offline:** it needs no build step, remote library, API key, or running server. Original-file and reference-video links still need their files or network access. Running your agent may have its own model and tool requirements.
 

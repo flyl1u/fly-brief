@@ -38,6 +38,54 @@ def sourced():
 
 
 class ReportTests(unittest.TestCase):
+    def test_scheduled_deadlines_are_sourced_and_counted(self):
+        raw = sourced()
+        milestone = {"label": "交脚本", "text": "10.28 18:00 前", "datetime": "2026-10-28T18:00:00+08:00",
+                     "kind": "required", "source_ids": ["s1"]}
+        raw["sections"]["requirements"]["schedule"] = [milestone]
+        data, _ = renderer.validate_report(raw, ROOT)
+        self.assertEqual(data["sections"]["requirements"]["schedule"][0], milestone)
+        for field, value in (("source_ids", []), ("label", ""), ("datetime", "2026-13-40")):
+            broken = deepcopy(raw)
+            broken["sections"]["requirements"]["schedule"][0][field] = value
+            with self.subTest(field=field), self.assertRaises(renderer.ReportError):
+                renderer.validate_report(broken, ROOT)
+        milestone["text"] *= 60
+        self.assertTrue(any("默认态" in warning for warning in renderer.validate_report(raw, ROOT)[1]))
+        raw["sections"]["product"]["schedule"] = raw["sections"]["requirements"]["schedule"]
+        with self.assertRaisesRegex(renderer.ReportError, "只能放在 requirements"):
+            renderer.validate_report(raw, ROOT)
+
+    def test_topic_previews_and_steps_validate_without_changing_legacy_data(self):
+        raw = sourced()
+        preview = {key: {"text": key, "kind": "suggestion"} for key in ("role", "materials", "output")}
+        branch = {"title": "具体选题", "preview": preview,
+                  "items": [{"label": "选题详情", "text": "保留人工检查。", "kind": "suggestion",
+                             "steps": ["准备自己的口播。", "选片并校对字幕。"]}]}
+        raw["sections"]["video"]["details"] = [branch]
+        original = deepcopy(raw)
+        renderer.validate_report(raw, ROOT)
+        self.assertEqual(raw, original)
+        for steps in ([], "一步", [""]):
+            branch["items"][0]["steps"] = steps
+            with self.subTest(steps=steps), self.assertRaises(renderer.ReportError):
+                renderer.validate_report(raw, ROOT)
+        branch["items"][0]["steps"] = ["校对字幕。"]
+        preview["output"]["kind"] = "fact"
+        with self.assertRaisesRegex(renderer.ReportError, "必须附来源"):
+            renderer.validate_report(raw, ROOT)
+        preview["output"]["source_ids"] = ["s1"]
+        renderer.validate_report(raw, ROOT)
+        del preview["role"]
+        with self.assertRaisesRegex(renderer.ReportError, "role、materials、output"):
+            renderer.validate_report(raw, ROOT)
+
+    def test_new_visible_topic_fields_count_toward_reading_budget(self):
+        raw = minimal()
+        raw["sections"]["video"]["details"] = [{"title": "可比较的选题", "items": [{"text": "具体案例", "kind": "suggestion"}],
+            "preview": {key: {"text": "选题比较内容" * 40, "kind": "suggestion"} for key in ("role", "materials", "output")}}]
+        self.assertTrue(any("默认态" in warning for warning in renderer.validate_report(raw, ROOT)[1]))
+
     def test_compact_subtitle_note_and_requirement_labels_are_sourced(self):
         raw = sourced()
         raw["subtitle"] = "口播合作"

@@ -6,6 +6,7 @@ from __future__ import annotations
 import argparse
 import base64
 from copy import deepcopy
+from datetime import datetime
 import html
 import json
 from pathlib import Path
@@ -97,7 +98,7 @@ def validate_report(raw: object, base_dir: Path) -> tuple[dict, list[str]]:
             string(source_id, f"{at}.source_ids")
             require(source_id in source_ids, f"{at}: 找不到来源 {source_id}")
 
-    def item(record: object, at: str) -> None:
+    def item(record: object, at: str, *, allow_steps: bool = False) -> None:
         require(isinstance(record, dict), f"{at}: 需要内容对象")
         string(record.get("text"), f"{at}.text")
         kind = record.get("kind")
@@ -105,6 +106,12 @@ def validate_report(raw: object, base_dir: Path) -> tuple[dict, list[str]]:
         refs(record, at, mandatory=kind in {"fact", "required", "conflict"})
         if "label" in record:
             string(record["label"], f"{at}.label")
+        if "steps" in record:
+            require(allow_steps, f"{at}.steps: 步骤只能放在展开条目中")
+            steps = array(record["steps"], f"{at}.steps")
+            require(bool(steps), f"{at}.steps: 步骤不能是空的")
+            for index, step in enumerate(steps):
+                string(step, f"{at}.steps[{index}]")
 
     sections = data.get("sections")
     require(isinstance(sections, dict) and set(sections) == set(SECTION_KEYS),
@@ -122,6 +129,19 @@ def validate_report(raw: object, base_dir: Path) -> tuple[dict, list[str]]:
         for index, highlight in enumerate(array(section.get("highlights", []), f"{at}.highlights")):
             item(highlight, f"{at}.highlights[{index}]")
             visible.append(highlight["text"])
+        schedule = array(section.get("schedule", []), f"{at}.schedule")
+        require(key == "requirements" or not schedule, "交付时间只能放在 requirements 模块")
+        for index, milestone in enumerate(schedule):
+            here = f"{at}.schedule[{index}]"
+            item(milestone, here)
+            string(milestone.get("label"), f"{here}.label")
+            if "datetime" in milestone:
+                value = string(milestone["datetime"], f"{here}.datetime")
+                try:
+                    datetime.fromisoformat(value)
+                except ValueError:
+                    raise ReportError(f"{here}.datetime: 需要 ISO 日期或时间") from None
+            visible.extend([milestone["label"], milestone["text"]])
         for index, branch in enumerate(array(section.get("details", []), f"{at}.details")):
             here = f"{at}.details[{index}]"
             require(isinstance(branch, dict), f"{here}: 需要对象")
@@ -129,7 +149,16 @@ def validate_report(raw: object, base_dir: Path) -> tuple[dict, list[str]]:
             items = array(branch.get("items"), f"{here}.items")
             require(bool(items), f"{here}: 分支不能是空的")
             for row, content in enumerate(items):
-                item(content, f"{here}.items[{row}]")
+                item(content, f"{here}.items[{row}]", allow_steps=True)
+            if "preview" in branch:
+                preview = branch["preview"]
+                require(key == "video", "选题比较字段只能放在 video 模块")
+                require(isinstance(preview, dict) and set(preview) == {"role", "materials", "output"},
+                        f"{here}.preview: 必须包含 role、materials、output")
+                for field, record in preview.items():
+                    item(record, f"{here}.preview.{field}")
+                    visible.append(record["text"])
+                visible.append(branch["title"])
         references = array(section.get("references", []), f"{at}.references")
         require(key == "video" or not references, "参考视频只能放在 video 模块")
         for index, reference in enumerate(references):

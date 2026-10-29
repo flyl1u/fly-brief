@@ -2,35 +2,21 @@
 
 North star: 打开能复述合作，展开能开始构思视频。
 
-## 当前状态 · 01 白纸文档与 08 圈出重点图标
+## 当前状态 · 白纸文档与可比较选题 · 2026-10-29
 
-用户选择：`01：选 01 白纸文档`。以 `design-exploration/01/01-document.html` 为正式模板的视觉基线。下文首版卡片布局及其评分为历史记录，不作为后续设计依据。真实 brief 测试已用于迭代通用规则，客户材料只保留在本地忽略目录。
+- 用户确认：采用 `design-exploration/02/report.html` 的整理方向，保留黑白文档、四个主问题、固定品牌页头；删去截图圈出的独立“2026 年 · 北京时间”行和参考入口后的“未查看”文字。正式模板为 `assets/report.html`，示例为 `examples/report.html`。
+- 用户确认：主推名称使用更大字号，交付时间与必拍流程加强强调。前三块显示文字加号入口；视频选题直接比较视角、素材和产物，每个选题独立展开。
+- 用户确认：第一块按输入、工具处理、人工判断、产物阅读；展开详情控制行长，选题推进分步骤表达。
+- 既有用户约束继续有效：纯白底，桌面 1056 px 阅读宽度，左问右答；不加合作标题行、工具口号、复制／全部展开工具条或页尾教程。品牌、原 brief、Star 入口与 08「圈出重点」图标保留。
+- Agent 实现：小于等于 900 px 堆叠阅读，避免中屏挤压比较列；手机选题改为同字段的纵向列表。窄屏文字自然换行，不截断关键要求。
+- Agent 实现：第三块 `schedule` 承载每个交付节点，不生成独立年份／时区说明行。完整日期、时区保留在来源摘录及可选 `datetime`；需要区分跨年或跨时区时写进对应节点文字。
+- Agent 实现：参考链接保留，`unviewed` 留在 JSON 中且仍禁止借鉴分析，不显示未查看徽标；`unavailable` 继续提示无法访问。
+- Agent 实现：`details.items.label` 全部存在时按字段排版；`steps` 用有序列表；视频 `preview` 显示视角、素材、产物。旧报告仍可用原项目列表，不推断缺失字段。
+- 事实、品牌要求、冲突保留精确来源；建议和未知事项继续标识。来源弹窗突出资料名称、位置和摘录，Esc 关闭并返回原入口焦点。
+- 单文件内嵌字体、图标、数据、脚本和样式，无远程加载依赖。原资料及参考保留原链接。
+- 动效沿用按下反馈、加号变减号、详情轻微位移和弹窗出场，支持减少动态效果；阅读不等待首次进入或滚动动画。
 
-当前固定要求：正文只呈现四个核心问题及其内容；不放工具口号、使用教程、制作说明或重复的身份标签。来源、详情和必要状态通过固定模板中的轻量入口承载。按用户要求，删除独立的合作标题行，品牌页头下面直接开始四个问题；虚构性质保留在样例材料和说明中。
-
-2026-10-28 用户最新选择：采用 `design-exploration/favicon-01/icons/08.svg`「圈出重点」。固定页头左侧为图标 + `fly-brief`，右侧为「原 brief」入口、「觉得还不错？去点颗star」和星星；品牌和 Star 链接均指向 fly-brief 仓库。图标源文件为 `assets/favicon.svg`，生成器内嵌到单文件报告，同时用作 favicon。
-
-本轮排版取舍：按用户要求删除整行合作标题及其增大的留白，恢复品牌栏下方的一条 `--line` 浅灰线，随后直接显示第一问（用户确认）。将「原 brief」并入品牌页头右侧，保留全局来源入口（Agent 推断）。保留原来的正文阅读宽度和字号。`title`、`subtitle` 继续组成浏览器标签页标题，报告名称同时提供给读屏；不再渲染可见的合作标题行。窄屏保留全部 Star 文案，必要时分成两个完整短语；打印时隐藏品牌栏，直接显示四个问题。
-
-正文整体再往下移一点、页头位置保持不变（用户确认）；屏幕视图在 `#overview` 顶部增加 28px 间距，比上一版再增加 12px，桌面和手机一致，打印不增加这段间距（Agent 取值）。
-
-实施约束：纯白底、单列四行、左问题右答案、右端加号展开；桌面保留选定方向的 1056 px 阅读宽度和排版尺度，窄屏自然堆叠问题与答案。原文入口集中在品牌页头，具体出处放在展开内容中。品牌仅使用固定页头，不追加合作标题行、额外品牌行、复制／全部展开工具条、页尾教程和彩色身份标签。固定模板由生成器填充，agent 不为每份 brief 改结构。
-
-- A creator's private reading tool, not a dashboard or marketing page. The four questions are always the top-level navigation and content structure.
-- Pure white document, black text, gray secondary text and thin structural rules. No panel containers or tinted page background. The fixed, compact brand masthead is followed directly by four rows. The selected preview in `design-exploration/01/01-document.html` remains the body-layout baseline; `assets/report.html` owns the current header.
-- Four document rows with left-aligned questions and answers; 1056 px reading width on desktop. Each plus independently opens details under its answer. Narrow screens stack question and answer. Reading follows the document; there is no nested reading scrollbar.
-- The fixed brand masthead contains the selected icon, `fly-brief`, the original-brief entry and the Star link, with a single light-gray bottom divider. There is no visible cooperation title area between it and the questions. The report name remains in tab metadata and a nonvisual accessible heading. No demonstration marker, separate platform label, toolbar or tutorial footer. Specific source controls remain in expanded details.
-- Default content is short. Critical obligations cannot be collapsed, truncated or hidden in tooltips to fit a viewport. Reference video links belong in the fourth panel's default view.
-- Show source excerpts on demand in a native dialog with keyboard close and focus return. Noto Sans SC and Noto Serif SC are embedded from local, licensed WOFF2 assets. Opening the standalone report requires no remote libraries, images, fonts or analytics.
-- All four summaries use regular weight. Expanded headings are bold; each capability occupies its own list item with a round bullet. Explain inputs, processing, outputs, concrete uses and relevant conditions without inventing unsupported behavior. The default reading budget does not constrain necessary expanded detail.
-- Inline citations read `[原文]`. The dialog emphasizes the source document name, followed by the secondary location and normal-weight excerpt; no generic heading competes with the source name.
-- The video section offers 2–3 concrete topic choices. Each heading is a topic title; four items cover creator perspective, promoted features, a specific pain point, and topic details (case, materials, feature use, output and video progression). Options differ in the task or intended use, not just feature names or presentation order. Unknown identities are marked as proposed scenarios. It stops before dialogue, shot-by-shot scripts or finished content.
-- Three restrained interaction cues: button press feedback, plus-to-minus transition and source-dialog entrance. Respect reduced-motion settings. Reading never waits for an entrance animation.
-- No additional summary module, invented brand claims, decorative charts, canvas panning, autoplay video, editing controls or backend.
-
-Development sample content must be explicitly identified as fictional. Client output has no developer notes. QA evidence and results are recorded after implementation.
-
-Current readability validation: 12 Python tests, skill validation and 17 browser checks pass. The selected 08 icon and removed cooperation title row were also checked on the user-designated private report: its data remained identical, the embedded icon matched the selected SVG, and all four disclosures and source dialogs worked. Desktop and phone states were visually checked; 1440, 768, 390 and 320 px layouts have no horizontal overflow or masthead overlap. The four questions follow the single brand masthead directly. At 320 px the Star invitation wraps into two complete phrases. This was a focused self-review of the header; no independent whole-page review was run. The fictional previews are regenerated from the fixed template; real client artifacts and QA screenshots remain in ignored local output and `.qa/compact-header/`. This validates structure and interaction, not the actual behavior of any promoted product.
+当前验证：15 项生成器测试与 18 项浏览器检查通过；覆盖字段来源、日期、步骤、旧数据、独立展开、键盘、来源弹窗、参考导航、打印和减少动态效果。已目视查看桌面及 320/390/768/901 px 的默认和展开状态，未发现控制台错误、横向溢出、失败图片或可读性 lint。README 桌面、手机与来源预览图已刷新。来源摘录、原始参考 URL 和 unviewed 状态与修改前一致。正式报告与安装目录 junction 同源。证据在忽略目录 `.qa/approved-report/` 与 `.qa/approved-visual/`。本轮沿用用户确认的小样，仅做主 Agent 视觉核对，未独立评分；历史评分不适用于本次版本。
 
 ## Historical verification · initial card layout
 

@@ -27,7 +27,8 @@ For pasted text without a file, omit `url` and `path`, and give a useful `title`
 - `summary`: one content item, required.
 - `note`: optional content item, one short supporting sentence. It needs its own kind and sources, under the same rules as any other item. It supplements the summary, not repeats it.
 - `highlights`: optional array of content items, visible before expansion. Primarily for critical requirements and unresolved blockers. No hard count limit: do not hide obligations to fit a layout.
-- `details`: optional array of branches, each with `title` and nonempty `items` (content items). Group by questions users have, not by the original document order.
+- `schedule`: optional array of content items, allowed in `requirements` only. Each needs a nonempty `label` (e.g. `交脚本`) and the normal kind/source fields. It appears as prominent delivery milestones before the other highlights.
+- `details`: optional array of branches, each with `title` and nonempty `items` (content items). Group by questions users have, not by the original document order. In `video`, each branch expands independently; an optional `preview` object supplies the default comparison fields described below.
 - `references`: optional array, allowed in `video` only. Every reference entry is visible before expansion.
 
 ### Content item
@@ -52,15 +53,29 @@ For pasted text without a file, omit `url` and `path`, and give a useful `title`
 
 Every `fact`, `required` or `conflict` item needs at least one valid source ID. `source_ids` may be omitted for suggestions and unknowns. Do not use `suggestion` to evade sourcing a factual assertion. Source buttons open the exact excerpts in a native dialog.
 
-Content items may have a short `label`, used for default highlights, for example `必拍`, `禁区`, `素材`, `时间`, `待确认`. Do not repeat that label in `text`. The `时间` label uses the template's compact date style. Missing labels render as normal short lines, preserving compatibility with earlier data.
+Content items may have a short `label`. Use it for highlights (`必拍`, `禁区`, `素材`), milestone actions, and detail fields (`导入什么`, `工具处理`, `你来决定`, `最后得到`). Do not repeat the label in `text`. If every item in a detail branch has a label, the template renders a definition list; otherwise it retains the branch title and bullet list. Legacy `时间` highlights remain readable without any automatic text stripping.
 
-The selected white-document template owns all layout and UI text, including the fixed brand masthead: the embedded paper-and-red-circle icon (direction 08) and `fly-brief` on the left, and the original-brief entry and Star link on the right. Brand and Star links target `https://github.com/flyl1u/fly-brief`; these are template assets, not report data fields. A single light-gray masthead rule is followed directly by the four questions. Do not add a visible cooperation title row; `title` and `subtitle` identify the browser tab, with an accessible nonvisual report heading. The agent fills data only; do not provide CSS/HTML or additional top-level sections. Internal `kind` is always retained, but routine fact/required tags are not repeated on screen. Suggestions and unresolved information are identified where needed. Individual citations appear in expanded details, with one overview source entry in the masthead. Reference videos remain visible before expansion; any viewed-reference analysis is in the expanded fourth section.
+A schedule item may include an ISO `datetime`, e.g. `2026-10-28T18:00:00+08:00`. Its visible `text` is a concise sourced date, such as `10.28 18:00 前`. The template does not add a separate year/timezone line. Preserve the full date/timezone in the source excerpt and optional datetime. If a cross-year or cross-timezone distinction matters, include it in that milestone text.
 
-All four summaries use regular weight. Expanded branch titles are bold; each `items` entry is a separate list item with a round bullet provided by the template. Do not prefix text fields with literal dashes. For multiple capabilities, write one capability per item, never one paragraph combining several capabilities. Use direct branch titles without editorial suffixes such as “说人话”. Product explanations cover inputs, processing, outputs, a concrete task and relevant conditions to the extent supported by the sources. Explain similar concepts separately. The overview reading budget does not cap necessary expanded explanations; do not invent missing product behavior to make them detailed.
+Detail items may include a nonempty `steps` array of nonempty plain strings. The ordered steps inherit the parent item’s kind and source IDs; `text` remains required and supplies a short condition or qualification shown after the steps. Steps are not allowed on summaries, highlights, schedule or comparison fields.
 
-Inline source controls display `[原文]`, regardless of how many source IDs they contain; IDs remain internal and still resolve to the exact passages. The dialog uses the document name as its visible heading, without a second generic “原文” heading.
+The selected white-document template owns all layout and UI text, including the fixed brand masthead: the embedded paper-and-red-circle icon (direction 08) and `fly-brief` on the left, and the original-brief entry and Star link on the right. Brand and Star links target `https://github.com/flyl1u/fly-brief`; these are template assets, not report data fields. A single light-gray masthead rule is followed directly by the four questions. Do not add a visible cooperation title row; `title` and `subtitle` identify the browser tab, with an accessible nonvisual report heading. The agent fills data only; do not provide CSS/HTML or additional top-level sections. Internal `kind` is always retained, but routine fact/required tags are not repeated on screen. Suggestions and unresolved information are identified where needed. Individual citations appear in expanded details, with one overview source entry in the masthead. Reference videos remain visible before expansion. Unviewed state stays in data without a visible badge; genuine unavailability remains visible.
 
-In `video`, the summary names concrete topic choices. Usually provide 2–3 distinct direction branches using the existing `details` structure. Put the topic title in `branch.title` (e.g. “方向一 · 旧教程里的答案，剪给反复提问的粉丝看”), and write four separate `items` prefixed with `达人身份：`, `推广功能：`, `解决痛点：` and `选题详情：`. These are content conventions, not new schema fields or generator requirements for sparse/legacy reports.
+Summaries use regular weight, with larger promotion text and stronger milestone/mandatory-shot emphasis. Product and requirement details prefer short labeled fields. Unlabeled legacy items remain separate bullet entries. Never put literal bullet markers, HTML or CSS in the data. The overview budget does not cap necessary expanded explanations.
+
+Inline source controls display `原文`, regardless of how many source IDs they contain. All IDs resolve to the exact passages. The dialog uses the document name as its heading.
+
+In `video`, use a short summary and usually 2–3 distinct branches. Write the topic title directly in `branch.title`. Each branch may provide a `preview` object containing exactly `role`, `materials`, `output`; each value is a normal content item with its own text, kind and sources. It identifies the proposed creator perspective, materials to prepare and output to make. These fields and the topic title are counted toward the visible-content budget. Suggested scenarios use `kind: suggestion`; factual preview claims still require sources.
+
+```json
+"preview": {
+  "role": {"text": "知识 / 教程博主", "kind": "suggestion"},
+  "materials": {"text": "摄影长口播 + 真实评论", "kind": "suggestion"},
+  "output": {"text": "一条逆光人像答疑短片", "kind": "suggestion"}
+}
+```
+
+Write four `items` with `label` values `达人视角`, `推广功能`, `解决痛点`, `选题详情`. Use the final item’s `steps` for 2–4 concrete content-progression steps. These fields are backward-compatible version-1 extensions: sparse and legacy reports without them remain valid, with no invented comparison metadata.
 
 The pain point identifies a person, the step they are stuck on and the consequence. Topic details name a case, its input materials, how the promoted features participate, what the output contains and how the video develops from problem to result. A feature name, “任务实测”, or “痛点 → 操作 → 结果” alone is not a concrete topic. Directions differ in audience, task, pain point or use of the output, not just feature name or presentation order. Features can be combined when the task calls for it; do not force one feature per direction.
 
@@ -79,7 +94,7 @@ Use `kind: suggestion` for proposed scenarios and topics. If the creator's ident
 
 `title`, `url`, `status`, `source_ids` are required; IDs must resolve. This URL is illustrative, not an actual reference to ship. Production reports preserve supplied URLs exactly. Local videos use `path` instead of `url`. No autoplaying iframe or remotely loaded thumbnail is needed.
 
-`status` is `viewed` (已查看), `unviewed` (未查看), or `unavailable` (无法访问). For `viewed`, provide `note` describing briefly what is worth borrowing, as an agent suggestion. For other statuses omit `note`; a description explicitly supplied by the brand belongs in a sourced detail item. A local reference path must exist, even if the agent has not watched it.
+`status` is `viewed` (已查看), `unviewed` (未查看), or `unavailable` (无法访问). The page omits the `unviewed` badge while preserving this state in JSON; `unavailable` still shows an access warning. For `viewed`, provide `note` describing briefly what is worth borrowing, as an agent suggestion. For other statuses omit `note`; a description explicitly supplied by the brand belongs in a sourced detail item. A local reference path must exist, even if the agent has not watched it.
 
 ## Minimal object
 
